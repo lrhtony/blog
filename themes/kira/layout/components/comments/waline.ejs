@@ -1,0 +1,25 @@
+<% if (theme.waline.active) { %>
+    <link rel="stylesheet" href="<%- theme.cdn.waline.css %>" />
+    <div id="waline"></div>
+    <script type="module">
+        import { init } from '<%- theme.cdn.waline.js %>';
+        init({
+            el: '#waline',
+            serverURL: '<%- theme.waline.serverURL %>',
+            search: false,
+            emoji: [
+                <% for (emoji in theme.waline.emojis) { %>
+                '<%= theme.waline.emojis[emoji] %>',
+                <% } %>
+            ],
+            lang: '<%= config.language %>',
+            requiredMeta: ['nick', 'mail'],
+            wordLimit: 2048,
+            imageUploader: false,
+            recaptchaV3Key: '<%= theme.waline.recaptchaV3Key %>',
+            locale: {
+                placeholder: '记得留下昵称和邮箱哦~\n评论会人工审核，别急',
+            }
+        });
+    </script>
+<% } %>
