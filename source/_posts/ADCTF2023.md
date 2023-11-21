@@ -10,7 +10,7 @@ categories:
 
 
 
-不会的题以后用空在做（咕……
+不会的题以后用空再做（咕……
 
 ## Web
 
@@ -174,7 +174,7 @@ if(isset($_GET['cmd'])){
 
 ### Lhander
 
-发现存在www.zip，得到文件上传路径`/Admin-26E023E3-3BDD-AFB2-A59A-AD835FBE6E7C/`，然后不会了，但看代码总感觉哪里见过
+发现存在www.zip。得到文件上传路径`/Admin-26E023E3-3BDD-AFB2-A59A-AD835FBE6E7C/`，然后不会了，但看代码总感觉哪里见过
 
 ### poppoppop
 
