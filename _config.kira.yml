@@ -12,8 +12,8 @@ iconlib: //at.alicdn.com/t/c/font_2602317_ka2kswzg98j.css
 
 cdn:
     waline:
-        css: https://registry.npmmirror.com/@waline/client/latest/files/dist/waline.css
-        js: https://registry.npmmirror.com/@waline/client/latest/files/dist/waline.mjs
+        css: https://registry.npmmirror.com/@waline/client/v2/files/dist/waline.css
+        js: https://registry.npmmirror.com/@waline/client/v2/files/dist/waline.mjs
 
 # beian: 赣ICP备2021007955号-3 # 备案号（选填）
 
