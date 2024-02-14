@@ -3,6 +3,9 @@ title: AI在逆向中的应用
 comments: true
 date: 2024-01-28 17:58:15
 tags:
+  - CTF
+categories:
+  - 技术
 ---
 在做题中，AI可以在一些加密算法中起到作用
 

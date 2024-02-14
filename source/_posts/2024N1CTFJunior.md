@@ -4,6 +4,8 @@ comments: true
 date: 2024-02-04 14:33:35
 tags:
   - CTF
+categories:
+  - 技术
 ---
 
 就做了一题逆向，其他都不会， 是个废物www

@@ -4,6 +4,8 @@ comments: true
 date: 2024-01-18 22:41:51
 tags:
   - CTF
+categories:
+  - 技术
 ---
 
 逆向练习
