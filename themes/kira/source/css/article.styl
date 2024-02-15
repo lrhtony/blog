@@ -1,3 +1,4 @@
+//文章内容
 @import 'constants.styl';
 
 article {
@@ -8,7 +9,7 @@ article {
 		line-height: 24px;
 	}
 
-	.highlight {
+	.highlight {  // 代码块
 		padding: 0 0.5em;
 		background: #282c34;
 		color: #abb2bf;
@@ -19,6 +20,26 @@ article {
 		.gutter {
 			border-right: 1px solid #35393b;
 		}
+
+		table {
+			overflow: auto;
+			display: block;
+
+			&::-webkit-scrollbar {
+				height: 6px;
+			}
+
+			&::-webkit-scrollbar-track {
+				background: #282c34;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background: #777777;
+				-webkit-border-radius: 3px;
+			}
+
+		}
+
 	}
 
 	pre {
@@ -37,6 +58,10 @@ article {
 			border: none;
 			border-radius: 0;
 			font-size: 100%;
+			font-family: Consolas;
+		}
+
+		span {
 			font-family: Consolas;
 		}
 	}
@@ -372,14 +397,7 @@ article {
 		background: transparent;
 		display: block;
 
-		&::-webkit-scrollbar {
-			width: 6px;
-			height: 6px;
-		}
 
-		&::-webkit-scrollbar-thumb {
-			background-color: #888;
-		}
 
 		thead {
 			border-bottom: 1px solid #eee;

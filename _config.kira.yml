@@ -117,6 +117,9 @@ friends:
     # - avatar: <友链缩略图>
     #   link: <跳转连接>
     #   name: <名称>
+    - avatar: https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png
+      link: https://www.baidu.com
+      name: 百度
 
 # 可复制的代码块
 copyableCodeblock: true
