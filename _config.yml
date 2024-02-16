@@ -115,3 +115,4 @@ search:
 markdown:
   render:
     typographer: false
+    linkify: false
