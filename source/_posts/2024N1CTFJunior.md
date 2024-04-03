@@ -1,5 +1,5 @@
 ---
-title: 2024 N1CTF Junior
+title: 2024 N1CTF Junior Reverse
 comments: true
 date: 2024-02-04 14:33:35
 tags:
