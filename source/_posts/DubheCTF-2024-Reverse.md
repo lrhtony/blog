@@ -173,7 +173,7 @@ for i in range(12):
 
 ## ezVK
 
-IDA进去后就看到调用了一堆API，查了一线得知是Vulkan，大概意思是读取`ezVK`这个资源文件运行，将输入送进去，再将结果取出来对比。用die提取文件
+IDA进去后就看到调用了一堆API，查了一下得知是Vulkan，大概意思是读取`ezVK`这个资源文件运行，将输入送进去，再将结果取出来对比。用die提取文件
 
 ```bash
 $ file ezVK_dump
