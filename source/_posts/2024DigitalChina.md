@@ -74,3 +74,5 @@ read_node(start_addr)
 ![image-20240521164545050](https://img.jks.moe/od/01tklsjzapjmr2pg5qgzhley23xklarv3d)
 
 该题的难点主要在于前面巨大的生成迷宫代码，给逆向及动调都带来了麻烦。不过耐心点还是可以动调看汇编看出原理的。算不上特别难，但需要有阅读汇编的能力和足够的耐心。
+
+[HardTree_28464ab375c3023701cbb725d8c63450.zip](https://shamiko-my.sharepoint.com/:u:/g/personal/m_yuru_pro/EVucLgnx63ROiw4Hi4qW6d8B7H6b_9Dpz5vR6uPiciX3fA?e=ftkATR)
