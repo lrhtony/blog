@@ -12,8 +12,8 @@ iconlib: //at.alicdn.com/t/c/font_2602317_ka2kswzg98j.css
 
 cdn:
     waline:
-        css: https://registry.npmmirror.com/@waline/client/v2/files/dist/waline.css
-        js: https://registry.npmmirror.com/@waline/client/v2/files/dist/waline.mjs
+        css: https://registry.npmmirror.com/@waline/client/v3/files/dist/waline.css
+        js: https://registry.npmmirror.com/@waline/client/v3/files/dist/waline.js
 
 # beian: 赣ICP备2021007955号-3 # 备案号（选填）
 
@@ -117,9 +117,16 @@ friends:
     # - avatar: <友链缩略图>
     #   link: <跳转连接>
     #   name: <名称>
-    - avatar: https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png
-      link: https://www.baidu.com
-      name: 百度
+    二进制:
+        - avatar: https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png
+          link: https://www.baidu.com
+          name: 百度
+          description: 百度一下，你就知道
+    团队:
+        - avatar: https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png
+          link: https://www.google.com
+          name: 谷歌
+          description: 谷歌搜索
 
 # 可复制的代码块
 copyableCodeblock: true

@@ -52,15 +52,28 @@
       }
     }
 
-    & > .kira-friends-blogName {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 16px;
-      font-weight: bold;
-      position: relative;
-      z-index: 1;
-      transition: all 0.2s ease;
+    & > .kira-friends-blogDetails {
+      & > .kira-friends-blogName {
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        font-size: 16px;
+        font-weight: bold;
+        position: relative;
+        z-index: 1;
+        transition: all 0.2s ease;
+      }
+
+      & > .kira-friends-blogDescription {
+        margin-top: 4px;
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        font-size: 14px;
+        position: relative;
+        z-index: 1;
+        transition: all 0.2s ease;
+      }
     }
 
     &:hover {
@@ -74,9 +87,20 @@
         transform: rotateZ(360deg);
       }
 
-      & > .kira-friends-blogName {
-        color: #fff;
+      & > .kira-friends-blogDetails {
+        & > .kira-friends-blogName {
+          color: #fff;
+        }
+
+        & > .kira-friends-blogDescription {
+          color: #fff;
+        }
       }
     }
   } 
+}
+@media screen and (max-width: 600px) {  // 移动端显示优化
+  .kira-friends-friendWrapper > a > .kira-friends-blogDetails {
+    display: none;
+  }
 }
