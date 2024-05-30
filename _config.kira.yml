@@ -117,16 +117,12 @@ friends:
     # - avatar: <友链缩略图>
     #   link: <跳转连接>
     #   name: <名称>
-    二进制:
-        - avatar: https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png
-          link: https://www.baidu.com
-          name: 百度
-          description: 百度一下，你就知道
-    团队:
-        - avatar: https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png
-          link: https://www.google.com
-          name: 谷歌
-          description: 谷歌搜索
+    #   description: <描述>
+    朋友:
+        - name: CDM258
+          link: http://cdm258.tech/
+          avatar: https://0.gravatar.com/avatar/cdc1b1ffd4c68f546ebde3ab56ef34e7f1bf6a9b426527a9112cf4c816ec30de?size=512
+          description: Think what Ichiro would do
 
 # 可复制的代码块
 copyableCodeblock: true
