@@ -183,6 +183,33 @@ for i in range(6, 42, 3):
 # flag{7f9a2d3c-07de-11ef-be5e-cf1e88674c0b}
 ```
 
+更新： 在看了别人的wp后发现加密逻辑没分析错，不知道为什么长度56写成了55，这里也贴一下修改后正确的
+
+```python
+import random
+import base64
+
+encry = [108, 117, 72, 80, 64, 49, 99, 19, 69, 115, 94, 93, 94, 115, 71, 95, 84, 89, 56, 101, 70, 2, 84, 75, 127, 68, 103, 85, 105, 113, 80, 103, 95, 67, 81, 7, 113, 70, 47, 73, 92, 124, 93, 120, 104, 108, 106, 17, 80, 102, 101, 75, 93, 68, 121, 26]
+
+random.seed(0)
+encode_list = [0 for _ in range(56)]
+rand_list = []
+for i in range(56):
+    rand_list.append(random.randint(0, 56))
+
+for i in range(56):
+    encode_list[i] = encry[i] ^ rand_list[i]
+
+print(encode_list)
+base64_str = ''
+for i in range(56):
+    base64_str += chr(encode_list[i])
+print(base64_str)
+
+decode = base64.b64decode(base64_str)
+print(decode)
+# flag{7f9a2d3c-07de-11ef-be5e-cf1e88674c0b}
+```
 
 
 ### gdb_debug
@@ -203,7 +230,8 @@ for i in range(len(encode)):
 
 ptr = [j for j in range(38)]
 for k in range(37, 0, -1):
-    v18 = rand_data[38+k] % (k+1)
+    # v18 = rand_data[38+k] % (k+1)  # 6
+    v18 = rand_data[75-k] % (k+1)
     v19 = ptr[k]
     ptr[k] = ptr[v18]
     ptr[v18] = v19
@@ -217,5 +245,7 @@ for i in range(38):
 
 for i in range(38):
     print(chr(encode2[i]), end='')
+# flag{78bace5989660ee38f1fd980a4b4fbcd}
 ```
 
+发现问题，引以为戒
