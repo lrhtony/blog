@@ -9,7 +9,7 @@ categories:
 cover: https://img.jks.moe/od/01tklsjzgbdnstmw5wxjbyknn4nwrijxuj
 ---
 
-大家都好有实力{{{(>_<)}}}，就只做出babyapk
+大家都好有实力{{'{'}}{{'{'}}(>_<){{'}'}}{{'}'}}，就只做出babyapk
 
 ## 分析
 
