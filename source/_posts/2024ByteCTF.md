@@ -1,5 +1,5 @@
 ---
-title: 2024ByteCTF Reverse BabyAPK
+title: 2024 ByteCTF Reverse BabyAPK
 comments: true
 date: 2024-09-22 19:52:29
 tags:
