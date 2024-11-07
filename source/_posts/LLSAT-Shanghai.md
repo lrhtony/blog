@@ -8,7 +8,7 @@ tags:
   - 二次元
   - Live
 categories: 
-  - 随笔
+  - 游记
 cover: https://img.jks.moe/od/01tklsjzcqseqj2mtxwvc2vr52m4agwq6l
 ---
 
