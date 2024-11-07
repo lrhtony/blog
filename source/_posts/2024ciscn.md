@@ -6,7 +6,7 @@ tags:
   - CTF
 categories:
   - 技术
-cover: https://img.jks.moe/od/01tklsjzeuadpiikx2enhy53bbtwifp7mt
+cover: https://img.0a0.moe/od/01tklsjzeuadpiikx2enhy53bbtwifp7mt
 ---
 
 > 封面：[X@ryoutanf](https://x.com/ryoutanf/status/1630775568148074496)
@@ -19,7 +19,7 @@ cover: https://img.jks.moe/od/01tklsjzeuadpiikx2enhy53bbtwifp7mt
 
 ### 火锅链观光打卡
 
-连接钱包，答题，兑换NFT即可获得![img](https://img.jks.moe/od/01tklsjzer6uxtkad3wzgy3c2hrbwatazm)
+连接钱包，答题，兑换NFT即可获得![img](https://img.0a0.moe/od/01tklsjzer6uxtkad3wzgy3c2hrbwatazm)
 
 后面想用blockchain browser通过rpc去查看链上记录，好像不行
 
@@ -44,11 +44,11 @@ for i in range(80, 120):
     plt.show()
 ```
 
-![image-20240520012016582](https://img.jks.moe/od/01tklsjzbs5s3ylawmxzd3youjmqgnfj2n)
+![image-20240520012016582](https://img.0a0.moe/od/01tklsjzbs5s3ylawmxzd3youjmqgnfj2n)
 
-![image-20240520012024713](https://img.jks.moe/od/01tklsjzacfz5g4zjzpjf26jlaixrf6i4f)
+![image-20240520012024713](https://img.0a0.moe/od/01tklsjzacfz5g4zjzpjf26jlaixrf6i4f)
 
-![image-20240520012032452](https://img.jks.moe/od/01tklsjzf5mrmdqp4zkncig3r6ah4f5tch)
+![image-20240520012032452](https://img.0a0.moe/od/01tklsjzf5mrmdqp4zkncig3r6ah4f5tch)
 
 这样一来就能明显看出该位密码是c，循环此步骤最后得到`flag{_ciscn_2024_}`
 
@@ -58,7 +58,7 @@ for i in range(80, 120):
 
 文件是IDA逆向后得到的汇编代码。这里偷了个懒，直接丢给ChatGPT，也算是体验了GPT-4o的强大
 
-![image-20240520012651462](https://img.jks.moe/od/01tklsjzd7wl6mihkc4jgyiqmwbna4zpcr)
+![image-20240520012651462](https://img.0a0.moe/od/01tklsjzd7wl6mihkc4jgyiqmwbna4zpcr)
 
 ```python
 data = [0x1fd7, 0x21b7, 0x1e47, 0x2027, 0x26e7, 0x10d7, 0x1127, 0x2007, 0x11c7, 0x1e47, 0x1017, 0x1017, 0x11f7, 0x2007, 0x1037, 0x1107, 0x1f17, 0x10d7, 0x1017, 0x1017, 0x1f67, 0x1017, 0x11c7, 0x11c7, 0x1017, 0x1fd7, 0x1f17, 0x1107, 0x0f47, 0x1127, 0x1037, 0x1e47, 0x1037, 0x1fd7, 0x1107, 0x1fd7, 0x1107, 0x2787]
@@ -141,9 +141,9 @@ int __fastcall Java_com_example_re11113_jni_getkey(int a1)
 }
 ```
 
-![屏幕截图 2024-05-19 163919](https://img.jks.moe/od/01tklsjzdye4l5psib6vdittea36cqmn35)
+![屏幕截图 2024-05-19 163919](https://img.0a0.moe/od/01tklsjzdye4l5psib6vdittea36cqmn35)
 
-![屏幕截图 2024-05-19 163942](https://img.jks.moe/od/01tklsjza2w2zex7eld5gjx3cf4ftszdp4)
+![屏幕截图 2024-05-19 163942](https://img.0a0.moe/od/01tklsjza2w2zex7eld5gjx3cf4ftszdp4)
 
 因此通过iv:`Wf3DLups`,key:`A8UdWaeq`解`JqslHrdvtgJrRs2QAp+FEVdwRPNLswrnykD/sZMivmjGRKUMVIC/rw==`得`188cba3a5c0fbb2250b5a2e590c391ce`
 

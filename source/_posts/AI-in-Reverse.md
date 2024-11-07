@@ -38,13 +38,13 @@ void __fastcall sub_A84(char a1[], _BYTE *a2)
 
 我没能看出来这是Base64，但我使用Bing就能提示出来
 
-<img src="https://img.jks.moe/od/01tklsjzbmuya3iepptffzpdqiuovx4agw" style="zoom:50%;" />
+<img src="https://img.0a0.moe/od/01tklsjzbmuya3iepptffzpdqiuovx4agw" style="zoom:50%;" />
 
-<img src="https://img.jks.moe/od/01tklsjzcgritrfebxzfh3q3umprey5sfe" style="zoom:50%;" />
+<img src="https://img.0a0.moe/od/01tklsjzcgritrfebxzfh3q3umprey5sfe" style="zoom:50%;" />
 
 以及像AES算法
 
-<img src="https://img.jks.moe/od/01tklsjzcuy42s5gzmdvei57k6mywolveq" style="zoom:50%;" />
+<img src="https://img.0a0.moe/od/01tklsjzcuy42s5gzmdvei57k6mywolveq" style="zoom:50%;" />
 
 还有像normal21中的RC4算法
 
@@ -89,7 +89,7 @@ void __cdecl sub_401850(_DWORD *a1, int a2, int a3)
 }
 ```
 
-<img src="https://img.jks.moe/od/01tklsjzea6v5o6wdxt5bklmjzgm7e2x2a" style="zoom:50%;" />
+<img src="https://img.0a0.moe/od/01tklsjzea6v5o6wdxt5bklmjzgm7e2x2a" style="zoom:50%;" />
 
 ```c
 void __cdecl sub_4018D0(_DWORD *a1, _BYTE *a2, int a3)
@@ -131,7 +131,7 @@ void __cdecl sub_4018D0(_DWORD *a1, _BYTE *a2, int a3)
 }
 ```
 
-<img src="https://img.jks.moe/od/01tklsjzhy6333mrzppzhj4zbsqzj4xgjw" style="zoom:50%;" />
+<img src="https://img.0a0.moe/od/01tklsjzhy6333mrzppzhj4zbsqzj4xgjw" style="zoom:50%;" />
 
 但是要注意AI的能力有限，对于一些修改AI可能识别不出来，像安洵杯这个魔改的base64
 
@@ -167,4 +167,4 @@ __int64 __fastcall sub_140001360(char a1[], char a2[], int a3)
 }
 ```
 
-<img src="https://img.jks.moe/od/01tklsjzgprueprbezyzg3xfgx6uot7flu" style="zoom:50%;" />
+<img src="https://img.0a0.moe/od/01tklsjzgprueprbezyzg3xfgx6uot7flu" style="zoom:50%;" />

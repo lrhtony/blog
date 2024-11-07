@@ -26,11 +26,11 @@ adb forward tcp:23946 tcp:23946
 
 将APK文件解包，将运行的对应架构so文件拖入对应版本IDA，这里我用是是`x86_64`架构。然后在对应函数下断点，我这里是`cmpstr`
 
-![image-20240712232247988](https://img.jks.moe/od/01tklsjzbrqnnq7pi5tbb2w5ibx762qdx3)
+![image-20240712232247988](https://img.0a0.moe/od/01tklsjzbrqnnq7pi5tbb2w5ibx762qdx3)
 
 配置Remote Linux debugger的Hostname和Port
 
-![image-20240712232346619](https://img.jks.moe/od/01tklsjzgoiagugjn34za2zuhzj6vooneb)
+![image-20240712232346619](https://img.0a0.moe/od/01tklsjzgoiagugjn34za2zuhzj6vooneb)
 
 调试模式启动应用
 
@@ -53,7 +53,7 @@ stop;start;
 adb forward tcp:[port] jdwp:[pid]
 ```
 
-IDA-Debugger-Attach to process...，里面找到进程，可以<kbd>Ctrl</kbd>+<kbd>F</kbd>查找，这里也能看到pid![image-20240712233456572](https://img.jks.moe/od/01tklsjzds434vj2itv5fzsa6u7ermp3xn)
+IDA-Debugger-Attach to process...，里面找到进程，可以<kbd>Ctrl</kbd>+<kbd>F</kbd>查找，这里也能看到pid![image-20240712233456572](https://img.0a0.moe/od/01tklsjzds434vj2itv5fzsa6u7ermp3xn)
 
 然后使用`jdb`连接就行了
 
@@ -77,14 +77,14 @@ adb shell pm path com.ad2001.frida0x8
 
 这时应用运行时优先使用lib中的so文件
 
-![image-20240712235323035](https://img.jks.moe/od/01tklsjzggsdm65n26p5gz7od7pgjvf236)
+![image-20240712235323035](https://img.0a0.moe/od/01tklsjzggsdm65n26p5gz7od7pgjvf236)
 
 ## 继续调试
 
-这时就能在断点处正常断下了![image-20240712235529299](https://img.jks.moe/od/01tklsjzeyjcftnsrrrvbifq2jkbqq3rrx)
+这时就能在断点处正常断下了![image-20240712235529299](https://img.0a0.moe/od/01tklsjzeyjcftnsrrrvbifq2jkbqq3rrx)
 
 平时怎么动调现在怎么动调就行，对应的变量的值也能够正常读取显示
 
-![image-20240712235713830](https://img.jks.moe/od/01tklsjzbu6tuf47mxavck7kjfxp626cwu)
+![image-20240712235713830](https://img.0a0.moe/od/01tklsjzbu6tuf47mxavck7kjfxp626cwu)
 
 至此通过IDA完成对Android so文件的动调

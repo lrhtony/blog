@@ -10,7 +10,7 @@ categories:
 
 就做了一题逆向，其他都不会， 是个废物www
 
-![n1ctf_junior](https://img.jks.moe/od/01tklsjza5eirpvm3pv5e3vorzinsdgrtd)
+![n1ctf_junior](https://img.0a0.moe/od/01tklsjza5eirpvm3pv5e3vorzinsdgrtd)
 
 ## 四海流云
 ### 分析
@@ -70,7 +70,7 @@ void __noreturn sigtrap_handler()
 
 通过动调，将hint输入，将res放在rcx，输入dest放在rsi传入magic函数。在magic函数里通过lodsb将输入读出到al，逐个进行比对跳转到程序不同部分。同时还可发现程序在执行到如图位置产生signal=5的信号进入到sigtrap_handler函数进行最后的判断。同时也能在此处得知，最后的res和qword_559862087C48就是这里的rdi和rdx寄存器。rdi记录跳转的次数，也就是字符串的长度，而rdx则要通过一系列计算得到。
 
-![final_addr](https://img.jks.moe/od/01tklsjzdgai7vbroyfzek4gfl3w4yw3k6)
+![final_addr](https://img.0a0.moe/od/01tklsjzdgai7vbroyfzek4gfl3w4yw3k6)
 
 ### 解题
 

@@ -10,23 +10,23 @@ categories:
 
 无力吐槽
 ## re1
-双击打开程序，卧槽闪退？！留意到有输出！![image-20240513233527257](https://img.jks.moe/od/01tklsjzawmqgcjmd22jf2q2xerhyb34jn)
+双击打开程序，卧槽闪退？！留意到有输出！![image-20240513233527257](https://img.0a0.moe/od/01tklsjzawmqgcjmd22jf2q2xerhyb34jn)
 
 看看代码
 
-![image-20240513233623216](https://img.jks.moe/od/01tklsjzbshw6eq32ovbc2kxqcugp4zqal)
+![image-20240513233623216](https://img.0a0.moe/od/01tklsjzbshw6eq32ovbc2kxqcugp4zqal)
 
 ？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
 
 还真没东西。留意到`0x401190`有个函数结构，创建函数
 
-![image-20240513233808527](https://img.jks.moe/od/01tklsjzaal7u3fchjl5c23byrk347lmpx)
+![image-20240513233808527](https://img.0a0.moe/od/01tklsjzaal7u3fchjl5c23byrk347lmpx)
 
 没看懂在干嘛，比赛时直接丢了
 
 ## re2
 
-这个可以输入了。查看代码，首先是rand1部分。![image-20240513234013385](https://img.jks.moe/od/01tklsjzbsbavv4nf4hzgy2qbqqndpku7v)
+这个可以输入了。查看代码，首先是rand1部分。![image-20240513234013385](https://img.0a0.moe/od/01tklsjzbsbavv4nf4hzgy2qbqqndpku7v)
 
 通过查询`crc32_table`（未重命名前）的数据和对比代码，可以确定下方是一个标准的crc32算法。该部分输入5次，通过将输入向右位移处理后查表替换，然后存储到`v26`的位置，再对`v26`进行crc32计算。因此可以写出爆破脚本
 
@@ -101,7 +101,7 @@ int main(int argc, char const *argv[])
 
 经过一段时间等待跑出256个结果，然后可以通过反查位移推出可能的rand1的key
 
-接下来是rand2部分![image-20240513234648747](https://img.jks.moe/od/01tklsjzg7pf3qj6qdzzg2qy3rxzx6tlm5)
+接下来是rand2部分![image-20240513234648747](https://img.0a0.moe/od/01tklsjzg7pf3qj6qdzzg2qy3rxzx6tlm5)
 
 该部分的下边依旧是一个crc32算法，对`byte_B24AD8`的16个字节进行crc32计算。上面部分是通过输入，对`byte_B24AD8`使用`v26`进行替换处理。第 i 个输入的数为 j，则`byte_B24AD8`的第 j 个数换成`v26`的第 i 个数。再次写出爆破脚本
 
@@ -238,10 +238,10 @@ for i in range(len(origin)):
 # 28672 12779520 1744830464 129 13824
 ```
 
-![image-20240513235554564](https://img.jks.moe/od/01tklsjzbt5qahvmmsxvalkkigcelxg6ce)
+![image-20240513235554564](https://img.0a0.moe/od/01tklsjzbt5qahvmmsxvalkkigcelxg6ce)
 
 所以要怎么用key解密这个flag？
 
 卡就卡在这里。看了别的wp才知道key是上面修改后的`byte_B24AD8`而不是输入的key😅
 
-![image-20240514002655007](https://img.jks.moe/od/01tklsjzcqc5pbwmed3bglrvgcpbqprtcy)
+![image-20240514002655007](https://img.0a0.moe/od/01tklsjzcqc5pbwmed3bglrvgcpbqprtcy)

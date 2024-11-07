@@ -1,10 +1,10 @@
-avatar: https://img.jks.moe/od/01tklsjzdclem6s7tmfzczilh5oktcpyji # 网站 Logo
+avatar: https://img.0a0.moe/od/01tklsjzdclem6s7tmfzczilh5oktcpyji # 网站 Logo
 background: # 既是博客的背景，又是文章默认头图
-    path: https://img.jks.moe/od/01tklsjzfwjkirxxtttrhj77jylk77wrrj
+    path: https://img.0a0.moe/od/01tklsjzfwjkirxxtttrhj77jylk77wrrj
     width: 2000
     height: 1260
 favicon:
-    href: https://img.jks.moe/od/01tklsjzhkysc76bfzi5d3bt2qphxw5iaf # 网站图标
+    href: https://img.0a0.moe/od/01tklsjzhkysc76bfzi5d3bt2qphxw5iaf # 网站图标
     type: image/png # 图标类型，可能的值有(image/png, image/vnd.microsoft.icon, image/x-icon, image/gif)
 
 # 附加图标库 使用说明：https://hexo.kira.host/config/icon.html

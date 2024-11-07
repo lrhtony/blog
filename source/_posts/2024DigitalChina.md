@@ -6,7 +6,7 @@ tags:
   - CTF
 categories:
   - 技术
-cover: https://img.jks.moe/od/01tklsjzbx3vmxhujafjazoxpahcloib3v
+cover: https://img.0a0.moe/od/01tklsjzbx3vmxhujafjazoxpahcloib3v
 ---
 
 > 封面：[pixiv@海月ヨル](https://www.pixiv.net/artworks/118919349)
@@ -71,7 +71,7 @@ read_node(start_addr)
 
 验证
 
-![image-20240521164545050](https://img.jks.moe/od/01tklsjzapjmr2pg5qgzhley23xklarv3d)
+![image-20240521164545050](https://img.0a0.moe/od/01tklsjzapjmr2pg5qgzhley23xklarv3d)
 
 该题的难点主要在于前面巨大的生成迷宫代码，给逆向及动调都带来了麻烦。不过耐心点还是可以动调看汇编看出原理的。算不上特别难，但需要有阅读汇编的能力和足够的耐心。
 

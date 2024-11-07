@@ -6,7 +6,7 @@ tags:
   - CTF
 categories:
   - 技术
-cover: https://img.jks.moe/od/01tklsjzgbdnstmw5wxjbyknn4nwrijxuj
+cover: https://img.0a0.moe/od/01tklsjzgbdnstmw5wxjbyknn4nwrijxuj
 ---
 
 大家都好有实力{{'{'}}{{'{'}}(>_<){{'}'}}{{'}'}}，就只做出babyapk
@@ -64,9 +64,9 @@ Interceptor.attach(addr, {
 
 打印出传入参数
 
-![image-20240924231927466](https://img.jks.moe/od/01tklsjzf3el2raugt7rek2mrgasaxf7js)
+![image-20240924231927466](https://img.0a0.moe/od/01tklsjzf3el2raugt7rek2mrgasaxf7js)
 
-可见正是传入的flag中间部分。对该函数使用IDA进行动调，可以发现上面部分没用（可能是校验是否是uuid格式？），加密主要是下面部分![image-20240924232115145](https://img.jks.moe/od/01tklsjzb2s5hd5vqq7bbi3pwui7gfreh7)
+可见正是传入的flag中间部分。对该函数使用IDA进行动调，可以发现上面部分没用（可能是校验是否是uuid格式？），加密主要是下面部分![image-20240924232115145](https://img.0a0.moe/od/01tklsjzb2s5hd5vqq7bbi3pwui7gfreh7)
 
 然后对这块部分写脚本即可得到flag。解方程本应用z3来解，但不知为何解不出，最后直接暴力跑了
 
@@ -126,7 +126,7 @@ int main()
 
 得到`32e750c8fb214562af22973fb5176b9c`，转成flag格式`ByteCTF{32e750c8-fb21-4562-af22-973fb5176b9c}`
 
-<img src="https://img.jks.moe/od/01tklsjzf3rt2n6ez3hjdyngbdenh3ro24" alt="d5989def95feb7e40ae3f6ae4d4a896" style="zoom:50%;" />
+<img src="https://img.0a0.moe/od/01tklsjzf3rt2n6ez3hjdyngbdenh3ro24" alt="d5989def95feb7e40ae3f6ae4d4a896" style="zoom:50%;" />
 
 ## 复盘
 
@@ -134,12 +134,12 @@ int main()
 
 看了一下其他队伍的wp，有通过Frida报错爆出调用链的(Nepnep)
 
-![image-20240924235258722](https://img.jks.moe/od/01tklsjzbnnyhm27nwb5gyjwv73hl5vy74)
+![image-20240924235258722](https://img.0a0.moe/od/01tklsjzbnnyhm27nwb5gyjwv73hl5vy74)
 
 有通过[flutter_rust_bridge](https://pub.dev/packages/flutter_rust_bridge)代码分析的(W&M)
 
-![image-20240924235654423](https://img.jks.moe/od/01tklsjzhydmaeaqobzjgj7nt5tqmyvita)
+![image-20240924235654423](https://img.0a0.moe/od/01tklsjzhydmaeaqobzjgj7nt5tqmyvita)
 
 还有直接从libapp.so直接分析的(Arr3stY0u)
 
-![image-20240925001813090](https://img.jks.moe/od/01tklsjzegnwti2ysbyjfieeosufja7owe)
+![image-20240925001813090](https://img.0a0.moe/od/01tklsjzegnwti2ysbyjfieeosufja7owe)
