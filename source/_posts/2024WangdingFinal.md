@@ -93,6 +93,8 @@ move_uploaded_file($imgURL,$uploadImg.$imgURL_name);
 
 ### modbus
 
+[题目附件](https://shamiko-my.sharepoint.com/:u:/g/personal/m_yuru_pro/EZLqLP612vtMmbyO3BBwriIB-FuqGnnGu4fh66WX-l0_Ng?e=ovWNBO)
+
 这题跟上面的第一题类似有个server和client。判断逻辑依旧在server。数据要加密会首先进入一个类似分发器的函数中，会将输入的char取第偶数个的高位来判断将输入传入哪个函数或者是退出。如果是`0?`会进入换表函数，如果是`3?`会进入魔改RC4，如果是`E?`会进入一个异或。
 
 可能是编译时开了优化的原因IDA除了魔改RC4都不能很好反编译这几个函数，尤其是换表函数，需要动调才能得到实际逻辑
@@ -336,6 +338,8 @@ if __name__ == '__main__':
 ![屏幕截图 2024-11-26 002941](https://img.0a0.moe/od/01tklsjzbf5mkrua4goffiolzxwoibrhbf)
 
 ### financeapk
+
+[题目附件](https://shamiko-my.sharepoint.com/:u:/g/personal/m_yuru_pro/ET3HYbU06cZHmMBk6IdFHrwBlXYMcVaNtaMMZ6OsP-661Q?e=idvO7n)
 
 应该是去逆登录请求的加密逻辑，但逆出来后感觉有些怪，不确定后面还有没有内容
 
