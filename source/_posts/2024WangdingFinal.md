@@ -436,4 +436,8 @@ Accept-Encoding: gzip, deflate, br
 username=admin&password=admin1234ô  
 ```
 
-然后就不知道了，感觉Cookie这里还有操作空间？但没找到相关代码，也没得提交验证
+~~然后就不知道了，感觉Cookie这里还有操作空间？但没找到相关代码，也没得提交验证~~
+
+经zeropeach提醒，拿去解一下Shiro rememberMe就行了
+
+![image-20241128232555325](https://img.0a0.moe/od/01tklsjza2ke7fzrdrjzdlwt7noynovlhr)
