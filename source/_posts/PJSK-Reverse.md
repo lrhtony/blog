@@ -12,6 +12,9 @@ categories:
 cover: https://img.0a0.moe/od/01tklsjzbpbxp4zusuwja33zfkwhydvd6r
 ---
 
+
+本文章仅供学习，严禁用于非法用途
+
 ## 环境准备
 
 一台可以获取root能够运行frida的ARM架构手机，我这里为了避免影响老账号用了台二手的Pixel 6
@@ -36,11 +39,17 @@ Il2Cpp.perform(() => {
 });
 ```
 
-打印出一堆东西，之后再慢慢分析
+看了下，LongNote的尾判是个NormalNote。
+
+
 
 ## 碎碎念
 
-看到lib里面有检查frida和root的lib，不过开着frida进去也没见发生什么，大不了再开个号测试就是。检测实在是有些松，适合Unity游戏逆向入门
+看到lib里面有检查frida和root的lib，不过开着frida进去也没见发生什么，大不了再开个号测试就是。检测是有些松，适合Unity游戏逆向入门
+
+日服global-metadata.dat有一个简单的异或加密，通过搜索global-metadata.dat反查找可以找到一个函数，追踪进去可以找到异或的128bytes内容，然后对其异或解密即可用Il2CppDumper提取内容
+
+国服内测看起来跟台服一样，直接删掉前8字节使用Il2CppDumper会报错，运行使用`ps -ef | grep [包名]`得pid，`cat /proc/[pid]/maps | grep global-metadata`得到内存地址，使用dd提取文件出来，再删掉前8字节即可使用Il2CppDumper不报错
 
 ## 参考文章
 
