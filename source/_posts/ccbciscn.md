@@ -103,6 +103,16 @@ miscsecure.com:192.168.116.130:443
 
 ![img](https://img.0a0.moe/od/01tklsjzc6jspu2knp5ze3gfqxs2v3xoif)
 
+### WinFT_5（赛后出）
+
+筛选http请求，发现client里面出现压缩包，但没东西。然后下面的server发现flag.txt
+
+![image-20241218021610285](https://img.0a0.moe/od/01tklsjzeelfbek3242zake4pnbxbd66ey)
+
+![image-20241218021727032](https://img.0a0.moe/od/01tklsjzefqjsff3rmzzhko6awdgu4lybi)
+
+提取出来，使用7zip打开绕过完整性报错，末尾注释解base64得到`时间线关联非常重要`，作为压缩文件密码解密即可得到`flag{a1b2c3d4e5f67890abcdef1234567890-2f4d90a1b7c8e2349d3f56e0a9b01b8a-CBC}`
+
 ### sc05_1
 
 综合firewall几个表，在tcp-export中发现最早外联时间为 2024/11/09 16:22:42 
