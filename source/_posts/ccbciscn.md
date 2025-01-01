@@ -1,5 +1,5 @@
 ---
-title: 第十八届全国大学生信息安全竞赛（创新实践能力赛）（CISCN）暨第二届“长城杯”铁人三项赛（防护赛）部分Writeup
+title: 第十八届全国大学生信息安全竞赛（CISCN）暨第二届“长城杯”铁人三项赛 部分Writeup
 comments: true
 date: 2024-12-17 21:47:44
 tags:
@@ -358,7 +358,7 @@ NphtxQC21Kp0H43gfgIsrmA53DCUgKT5yw0Kl325nv/ZQg7kX254+/7w4aPauSK4
 
 ```bash
 echo "tJkjkC9zdTfV/vjWjKBQERPvbJB+MTzNgv9Q7OsSeW9VO+cz9GM7gdfFu3+UwSfKp3OStBv6wESZitD8x9rR8Jx4LwKU+i1ysKUQWOvORYSSif1zt37ored1r1IALNX1jKEWRMZXTQU07kNULKk3Zve7Q8qTnbGviNqFjG3W4s0=" | base64 -d > encrypted_data.bin
-openssl rsautl -decrypt -inkey decrypted_private_key.pem -in encrypted_data.bin -out decrypted_data.txt
+openssl pkeyutl -decrypt -inkey decrypted_private_key.pem -in encrypted_data.bin
 ```
 
 得到`flag{12grd058g95-4gi698-g5mjt1m299-tgrtjhn570te45hur0t-t9kftt97n0b8}`
