@@ -48,7 +48,7 @@ cover: https://img.0a0.moe/od/01tklsjzesy66pxlj7gnejebpa23s4uyz2
 
 第一次体验到有娱乐系统的飞机。然后国泰航空服务还不错，我用英、粤、普都能对话，后排的用日语也行。餐食选了个海鲜咖喱饭，配巧克力味哈根达斯。
 
-然后22:20 UTC+7到达HND，降落过程还看到了虹ヶ咲老家台场和彩虹大桥
+然后22:20 UTC+9到达HND，降落过程还看到了虹ヶ咲老家台场和彩虹大桥
 
 ![落地](https://img.0a0.moe/od/01tklsjzfss5emwzukzvbj4v2spdlgkbal)
 
