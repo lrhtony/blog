@@ -1,5 +1,5 @@
 ---
-title: 2025-ccsssc
+title: 2025 CCSSSC Reverse Writeup
 comments: true
 date: 2025-01-08 14:32:38
 tags:
