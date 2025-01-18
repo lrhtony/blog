@@ -1,5 +1,5 @@
 ---
-title: 2025 第九届西湖论剑网络安全技能大赛 网络攻防实战赛初赛 Writeup
+title: 2025 第八届西湖论剑网络安全技能大赛 网络攻防实战赛初赛 Writeup
 comments: true
 date: 2025-01-18 16:13:18
 tags:
