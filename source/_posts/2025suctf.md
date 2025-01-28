@@ -83,7 +83,7 @@ def run(input_str:str, length:int):
     ql = Qiling(path, rootfs, multithread=True, verbose=QL_VERBOSE.DISABLED)
     ql.os.stdin = pipe.SimpleInStream(0)
     ql.os.stdin.write((input_str+'\n').encode())
-    ql.os.stdout = pipe.SimpleInStream(0)
+    ql.os.stdout = pipe.SimpleOutStream(0)
     # ql.hook_address(get_start_and_end, 0x462DD0)
     ql.hook_address(hook, 0x462eaa)
     ql.run()
@@ -1092,7 +1092,7 @@ reg[33] cmp结果
 
 大概能看出点雏形了，但还是没能做出来。后来知道是魔改SM4算法后看了一下确实基本都能对的上，魔改的地方上面也能很明显看出来是0和17数据转换时位数做了些变换。
 
-看了下补全的栈发现0-400 bytes都是SM4里面的常量，后面32bytes应该就是对应key和iv。可以没发现常量，不然确定是SM4后对照源码估计逆起来会轻松些
+看了下补全的栈发现0-400 bytes都是SM4里面的常量，后面32bytes应该就是对应key和iv。可惜没发现常量，不然确定是SM4后对照源码估计逆起来会轻松些
 
 ## SU_minesweeper
 
