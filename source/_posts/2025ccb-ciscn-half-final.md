@@ -17,9 +17,11 @@ cover: https://img.0a0.moe/od/01tklsjzbtahamit4g2faklmk5wockwrxv
 
 patch的主要是free和snprintf。snprintf我看它参数不大对劲，直接把call的汇编nop掉就过了，如果check严一些的话这应该影响了程序功能的（）
 
-这里贴个我认为还算标准的 0psu3的Writeup
+这里贴个我认为还算标准的 [0psu3的Writeup](https://mp.weixin.qq.com/s?__biz=Mzk2NDQ0Mjk0Ng==&mid=2247483811&idx=1&sn=a7d2b965052f0546339a93db33303ce9)
 
-https://mp.weixin.qq.com/s?__biz=Mzk2NDQ0Mjk0Ng==&mid=2247483811&idx=1&sn=a7d2b965052f0546339a93db33303ce9
+结算截图
+
+![image-20250319020636830](https://img.0a0.moe/od/01tklsjzbj4im7duc2gvfjvixhaikpcfoj)
 
 ## ISW
 
