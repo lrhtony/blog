@@ -9,6 +9,8 @@ categories:
 cover: https://img.0a0.moe/od/01tklsjzel5odsv37brbgj4wqkti72rmpf
 ---
 
+封面：[@Bison仓鼠](https://www.bilibili.com/opus/1050917272577638417)
+
 启动游戏后可以明显发现游戏存在加速、自瞄、透视等问题。
 
 首先判断虚幻引擎版本，我们可以直接在`AndroidManifest.xml`中找到UE4.27
