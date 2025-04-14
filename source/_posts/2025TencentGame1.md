@@ -6,8 +6,8 @@ tags:
   - CTF
 categories:
   - 技术
+cover: https://img.0a0.moe/od/01tklsjzel5odsv37brbgj4wqkti72rmpf
 ---
-
 
 启动游戏后可以明显发现游戏存在加速、自瞄、透视等问题。
 
