@@ -24,25 +24,25 @@ cover: https://img.0a0.moe/od/01tklsjzacvdybuhfi5vfzf2hdsj2eleot
 
 ![image-20250525123531553](https://img.0a0.moe/od/01tklsjzd2mucbru5qwnb3f6yvoy5vhwpj)
 
-至于内部怎么加载，我们可以不用考虑，想办法找到加载进去后这部分的代码就行，就上图的v23、v22这些地址的代码。通过Frida hook可以得知加载代码的函数只会在第一遍加载14个文件时调用14次，第二次不会再次加载，因此我当时考虑的是加载进去后通过什么方法把这部分dump出来分析。没有考虑直接使用IDA动调的原因主要是之前使用IDA动调基本上都是直接报SIGSEGV，调不下去，这次拿A15的Pixel6验证了下也是这样，我一直以为是IDA的问题，自从学了Frida后好久都没使用过这方法了。
+至于内部怎么加载，我们可以不用考虑，想办法找到加载进去后这部分的代码就行，就上图的v23、v22这些地址的代码。通过Frida hook可以得知加载代码的函数只会在第一遍加载assets里的14个文件时调用14次，第二次不会再次加载，因此我当时考虑的是加载进去后通过什么方法把这部分代码dump出来分析。没有考虑直接使用IDA动调的原因主要是之前使用IDA动调基本上都是直接报SIGSEGV，调不下去，这次拿A15的Pixel6验证了下也是这样，我一直以为是IDA的问题，自从学了Frida后好久都没使用过IDA 动调了。
 
-![image-20250525124951138](https://img.0a0.moe/od/01tklsjzhlf5kclgloyjezoe33wyv3vlwg)结束后Pangbai酱说是用IDA动调做出来的，我开始怀疑是我自己的问题。更换过历代IDA版本测试，问题依旧，于是换设备，换成Mi10 A13，结果就能正常动调了。感觉是A15有变更IDA尚未支持的原因
+![image-20250525124951138](https://img.0a0.moe/od/01tklsjzhlf5kclgloyjezoe33wyv3vlwg)比赛结束后Pangbai酱说是用IDA动调做出来的，我开始怀疑是我自己的问题。更换过历代IDA版本进行测试，问题依旧，于是换设备，换成Mi10 A13，结果就能正常动调了。感觉是A15运行时有变更，IDA9都尚未支持的原因
 
 ![image-20250525125142450](https://img.0a0.moe/od/01tklsjzbxg5ixrydbcvhlcwg4h4hb6dz6)
 
-动调进去以后就很容易了
+动调进去以后题目就很容易了
 
 ![image-20250525130202594](https://img.0a0.moe/od/01tklsjzapcwuzudpleng3e7imo6oo4p5t)
 
 4个加密，要求加密完跟上面计算得到的值一样，这里动调可以得到4组加密值（上图的v379、v11、v10、v9）。
 
-4个函数每个内部都是类似的构造
+4个函数每个内部都是类似的构造，只是大数不同
 
 ![image-20250525131030704](https://img.0a0.moe/od/01tklsjzfjz7zfujub4vey5dtc7asbjaan)
 
-函数里将大数变成DWORD List，每个idx对应一个十进制位进行运算加密。用户输入的也是一个大数，作为RSA的明文。目前已知4个密文和4个模数，e=11，要求同一个明文
+函数里将大数变成DWORD List，List里每个数对应一个十进制位进行运算加密。用户输入的也是一个大数，作为pow的m，即RSA的明文。目前已知由同一个明文通过4个模数加密得到的4个密文，e=11
 
-这时候拷问AI可以得知，可以采用CRT+Hastad广播攻击的方式恢复明文
+这时候拷问AI可以得知，可以采用CRT+Hastad广播攻击的方式恢复明文，找个脚本跑一下
 
 ![image-20250525131340461](https://img.0a0.moe/od/01tklsjzevy7lgz5t3tja3czrhztb2cxng)
 
