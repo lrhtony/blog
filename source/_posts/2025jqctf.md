@@ -4,8 +4,10 @@ comments: true
 date: 2025-05-25 12:28:36
 tags:
   - CTF
+  - 逆向
 categories:
   - 技术
+cover: https://img.0a0.moe/od/01tklsjzacvdybuhfi5vfzf2hdsj2eleot
 ---
 
 感觉自己有点不行了

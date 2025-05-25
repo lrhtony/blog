@@ -10,7 +10,9 @@
                     </div>
                     <div class="kira-friends-blogDetails" style="width: 100%;">
                         <div class="kira-friends-blogName"><%= friend.name %></div>
-                        <div class="kira-friends-blogDescription"><%= friend.description %></div>
+                        <% if (friend.description) { %>
+                            <div class="kira-friends-blogDescription"><%= friend.description %></div>
+                        <% } %>
                     </div>
                 </a>
             </div>
