@@ -8,4 +8,3 @@ layout: friends
 name: lrhtony
 avatar: https://jks.moe/avatar
 url: https://lrhtony.cn/
-description: 面向wp逆向
