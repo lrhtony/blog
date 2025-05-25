@@ -117,6 +117,12 @@ friends:
     #   link: <跳转连接>
     #   name: <名称>
     #   description: <描述>
+    A&D工作室:
+        - name: Phrinky
+          link: https://blog.rkk.moe/
+          avatar: https://img.0a0.moe/od/01tklsjzdefbinkflknnczt7skavqhpvlk
+          description: 可爱 技术超强
+
     朋友:
         - name: CDM258
           link: http://cdm258.tech/
