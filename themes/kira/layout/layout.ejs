@@ -16,8 +16,8 @@
 		<script src="https://registry.npmmirror.com/mdui/1.0.2/files/dist/js/mdui.min.js"></script>
 		<!-- lazyload -->
 		<script src="https://registry.npmmirror.com/lazysizes/5.1.0/files/lazysizes.min.js"></script>
-		<link rel="stylesheet" href="//registry.npmmirror.com/@highlightjs/cdn-assets/11.6.0/files/styles/atom-one-dark.min.css" />
-		<script src="//registry.npmmirror.com/@highlightjs/cdn-assets/11.6.0/files/highlight.min.js"></script>
+		<link rel="stylesheet" href="//registry.npmmirror.com/@highlightjs/cdn-assets/11.11.1/files/styles/atom-one-dark.min.css" />
+		<script src="//registry.npmmirror.com/@highlightjs/cdn-assets/11.11.1/files/highlight.min.js"></script>
 		<!-- 预置 kiraicon -->
 		<%- css("lib/iconfont/iconfont") %>
 		<% if (theme.iconlib) { %>
@@ -28,13 +28,11 @@
 			href="<%= theme.favicon.href %>"
 			type="<%= theme.favicon.type %>"
 		/>
-		<%- css("deps/css/APlayer.min") %>
 		<% if (theme.customStyles) { %>
 			<% theme.customStyles.forEach(function(customCss){ %>
 				<%- css(customCss) %>
 			<% }) %>
 		<% } %>
-		<%- js(["deps/js/APlayer.min", "deps/js/Meting.min"]) %>
 		<%- js("js/main") %>
 	</head>
 
