@@ -141,7 +141,49 @@ https://blog.csdn.net/weixin_45582916/article/details/144962552
 
 ## happyLock
 
-A15的frida炸了，暂时咕咕，快发版修复了等一下
+~~妈的 Pixel 6 A15兼容不了~~
+
+### so .data加密还原
+
+试了几种方法，只有这种方法能行
+
+objection启动
+
+```bash
+objection -g com.crackme.happylock explore
+```
+
+找进程
+
+```bash
+ps -A | grep happylock
+```
+
+查看maps找so
+
+```bash
+cat /proc/4639/maps | grep libhappylock.so
+6f88574000-6f885ac000 r-xp 00000000 fc:27 2637107                        /data/app/~~NbA-KHSbJJbtnG9hw0rWYA==/com.crackme.happylock-q0-HZIY75yX7TqR4gi8sAQ==/lib/arm64/libhappylock.so
+6f885af000-6f885b3000 r--p 00037000 fc:27 2637107                        /data/app/~~NbA-KHSbJJbtnG9hw0rWYA==/com.crackme.happylock-q0-HZIY75yX7TqR4gi8sAQ==/lib/arm64/libhappylock.so
+6f885b6000-6f885b9000 rw-p 0003a000 fc:27 2637107                        /data/app/~~NbA-KHSbJJbtnG9hw0rWYA==/com.crackme.happylock-q0-HZIY75yX7TqR4gi8sAQ==/lib/arm64/libhappylock.so
+```
+
+AI解释：这三行表示了 `libhappylock.so` 在进程内存中的三个主要段：
+
+1. 可执行代码段。
+
+2. 只读数据段。
+
+3. 可写数据段。
+
+Objection dump出第三个段，前面是地址后面是大小
+```bash
+memory dump from_base 0x6f885b6000 12288 dump.so
+```
+
+在010中根据上面的偏移对原本提取出来的so修改数据，如这里是`0003a000`，将dump出来的内容粘贴到原so 0x3a00的地方。拖入ida解析，发现段名不见了，跟原来的so对比后将信息复制回去，IDA再次打开能正常解析出对应解密后字符串，无报错。
+
+![image-20250111002443229](https://img.0a0.moe/od/01tklsjzdzabeu77xhsngyfxf66qixlqd5)
 
 ## 生日邮件
 
