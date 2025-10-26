@@ -10,7 +10,7 @@ categories:
 cover: https://img.0a0.moe/od/01tklsjzacvdybuhfi5vfzf2hdsj2eleot
 ---
 
-封面：[X@yas](https://x.com/yosiyasuyasu/status/1926473474744127545/photo/1)
+> 封面：[X@yas](https://x.com/yosiyasuyasu/status/1926473474744127545/photo/1)
 
 感觉自己有点不行了
 

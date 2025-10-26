@@ -9,7 +9,7 @@ categories:
 cover: https://img.0a0.moe/od/01tklsjzfrrsarktcrufd2lf2ccsis5vsz
 ---
 
-封面：Bison仓鼠
+> 封面：Bison仓鼠
 
 第二天早九考试，看了看题没怎么打，考完期末考来补，搜了一下已经有全部wp了，随便写下分析过程吧
 

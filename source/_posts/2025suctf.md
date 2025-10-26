@@ -4,12 +4,13 @@ comments: true
 date: 2025-01-14 20:55:40
 tags:
   - CTF
+  - 逆向
 categories:
   - 技术
 cover: https://img.0a0.moe/od/01tklsjzf3lnpqlkzecncyno5thmxd5hqx
 ---
 
-封面：[X-6](https://www.pixiv.net/users/2932264) 国人画师，但好像没找到Weibo？
+> 封面：[X-6](https://www.pixiv.net/users/2932264) 国人画师，但好像没找到Weibo？
 
 最近几天街角魔族还有舞台剧来着，有空看看（）
 

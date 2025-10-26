@@ -9,7 +9,7 @@ categories:
 cover: https://img.0a0.moe/od/01tklsjzb5yahxxbiaijbypuzkz2lqal6p
 ---
 
-封面：[X@りょうたん](https://x.com/ryoutanf)
+> 封面：[X@りょうたん](https://x.com/ryoutanf)
 
 逆向就只有一题还没附件...IOT除了一眼出不会
 

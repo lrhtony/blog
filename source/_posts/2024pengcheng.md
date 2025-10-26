@@ -9,7 +9,8 @@ categories:
 cover: https://img.0a0.moe/od/01tklsjzh6fosue5iz7rfjtukox3yeodxq
 ---
 
-封面：[X@ningen_mame](https://x.com/ningen_mame/status/1855187323832750153)
+> 封面：[X@ningen_mame](https://x.com/ningen_mame/status/1855187323832750153)
+
 难的题还是不会做
 
 ## exec

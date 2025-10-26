@@ -9,7 +9,8 @@ categories:
 cover: https://img.0a0.moe/od/01tklsjzccwbxq2awmt5dz7pmi3tqn3yan
 ---
 
-封面：[X@nyancodon7](https://x.com/nyancodon7/status/1860615439602303373)
+> 封面：[X@nyancodon7](https://x.com/nyancodon7/status/1860615439602303373)
+
 题目还挺好玩的，就是本人技术有点菜
 
 ## 半决赛
