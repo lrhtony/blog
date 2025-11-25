@@ -1,24 +1,170 @@
-//右边栏，主要是返回最顶
+//右边栏，主要是返回最顶和文章目录
+@import 'constants.styl';
+
 .kira-right-column {
-	width: 80px;
+	width: 260px;
+	min-width: 260px;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	position: sticky;
-	pointer-events: none;
-	top: 0;
+	top: 20px;
 	z-index: 10;
+	padding: 0 15px;
+	box-sizing: border-box;
+
+	// 文章目录样式
+	.kira-toc {
+		width: 100%;
+		max-height: calc(100vh - 120px);
+		overflow-y: auto;
+		overflow-x: hidden;
+		background-color: rgba(255, 255, 255, 0.95);
+		border-radius: $radius;
+		padding: 15px;
+		box-sizing: border-box;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+		margin-bottom: 15px;
+
+		// 自定义滚动条
+		&::-webkit-scrollbar {
+			width: 4px;
+		}
+
+		&::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background: rgba($color1, 0.3);
+			border-radius: 2px;
+		}
+
+		&::-webkit-scrollbar-thumb:hover {
+			background: rgba($color1, 0.5);
+		}
+
+		h3 {
+			margin: 0 0 12px 0;
+			font-size: 14px;
+			color: #333;
+			font-weight: 600;
+			padding-bottom: 10px;
+			border-bottom: 1px solid #eee;
+			position: relative;
+
+			&::after {
+				content: '';
+				position: absolute;
+				bottom: -1px;
+				left: 0;
+				width: 40px;
+				height: 2px;
+				background: $color1;
+				border-radius: 1px;
+			}
+		}
+
+		// TOC 列表容器
+		.toc {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			ol {
+				margin: 0;
+				padding: 0 0 0 12px;
+				list-style: none;
+			}
+
+			li {
+				margin: 0;
+				padding: 0;
+				line-height: 1.4;
+
+				// 去除文章样式中 li 的伪元素
+				&::before,
+				&::after {
+					display: none !important;
+					content: none !important;
+				}
+			}
+
+			// 不同层级的缩进
+			.toc-level-1 > .toc-child {
+				padding-left: 0;
+			}
+
+			.toc-level-2 > .toc-link {
+				padding-left: 16px;
+			}
+
+			.toc-level-3 > .toc-link {
+				padding-left: 28px;
+				font-size: 12px;
+			}
+
+			.toc-level-4 > .toc-link {
+				padding-left: 40px;
+				font-size: 12px;
+			}
+		}
+
+		// TOC 链接样式（使用高优先级选择器触盖 article a 样式）
+		a.toc-link {
+			display: block;
+			padding: 6px 8px;
+			font-size: 13px;
+			color: #666 !important;
+			text-decoration: none !important;
+			border-radius: 6px;
+			transition: all 0.2s ease;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			border-left: 2px solid transparent;
+			cursor: pointer;
+
+			// 强制去除文章样式中链接的图标
+			&::before {
+				display: none !important;
+				content: '' !important;
+				font-family: inherit !important;
+			}
+
+			&:hover {
+				color: $color1 !important;
+				background-color: $krlbgc1;
+				text-decoration: none !important;
+			}
+
+			// 当前激活的目录项
+			&.active {
+				color: $color1 !important;
+				background-color: $krlbgc1;
+				border-left-color: $color1;
+				font-weight: 500;
+			}
+		}
+	}
 
 	.kira-backtotop {
 		bottom: 20px;
 		color: rgb(85, 85, 85);
-		background-color: rgba(255, 255, 255, 0.501);
+		background-color: rgba(255, 255, 255, 0.9);
 		border-radius: 50%;
 		margin-top: auto;
 		margin-bottom: 15px;
 		transition: 500ms;
-		pointer-events: all;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+		&:hover {
+			background-color: $color1;
+			color: #fff;
+			transform: translateY(-3px);
+			box-shadow: 0 4px 12px rgba($color1, 0.3);
+		}
 
 		i {
 			font-size: 22px;

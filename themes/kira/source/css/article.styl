@@ -85,6 +85,26 @@ article {
 			text-decoration: underline;
 		}
 
+		// 隐藏标题锚点链接的图标
+		&.header-anchor {
+			color: #ccc;
+			text-decoration: none;
+			margin-left: 8px;
+			margin-right: 0;
+			opacity: 0;
+			transition: opacity 0.2s ease;
+			order: 1;
+
+			&::before {
+				content: none;
+			}
+
+			&:hover {
+				text-decoration: none;
+				color: $color1;
+			}
+		}
+
 		&.CodePenLink {
 			transition: 0.2s;
 			padding: 0.2em;
@@ -167,6 +187,15 @@ article {
 	h6 {
 		color: #111;
 		margin: $gutter 0;
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: flex-end;
+		align-items: center;
+
+		// 鼠标悬停时显示锚点链接
+		&:hover .header-anchor {
+			opacity: 0.6;
+		}
 	}
 
 	h4,

@@ -116,3 +116,11 @@ markdown:
   render:
     typographer: false
     linkify: false
+    html: true
+
+toc:
+  maxdepth: 3
+  class: toc
+  slugify: transliteration
+  decodeEntities: false
+

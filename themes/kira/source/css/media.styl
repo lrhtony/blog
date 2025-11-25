@@ -1,4 +1,11 @@
 // 响应式布局
+@media (max-width: 1400px) {
+	.kira-right-column {
+		width: 220px;
+		min-width: 220px;
+	}
+}
+
 @media (max-width: 1180px) {
 	.kira-sidebar {
 		left: 0;
@@ -10,11 +17,23 @@
 
 	.kira-right-column {
 		position: fixed;
-		top: 0;
+		top: auto;
+		bottom: 0;
 		right: 0;
+		width: 80px;
+		min-width: 80px;
+		height: auto;
+		padding: 0;
+		flex-direction: column;
+		justify-content: flex-end;
+
+		.kira-toc {
+			display: none;
+		}
 
 		.kira-backtotop {
 			background-color: rgba(255, 255, 255, 1);
+			margin: 15px;
 		}
 	}
 }
