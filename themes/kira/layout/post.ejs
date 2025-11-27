@@ -1,30 +1,7 @@
 <%- partial('components/kira-image') %>
 <div class="kira-post">
 	<article>
-		<% if (page.cover){ %>
-		<div class="kira-post-cover">
-			<img
-				data-src="<%- page.cover %>"
-				data-sizes="auto"
-				alt="<%= page.title %>"
-				class="lazyload kira-post-cover-image disabled-kira-image"
-			/>
-			<h1><%= page.title %></h1>
-		</div>
-		<% } else { %>
-		<div
-			class="kira-post-cover"
-			style="padding-bottom: '<%= theme.background.height/theme.background.width * 100 %>%'"
-		>
-			<img
-				data-src="<%- theme.background.path %>"
-				data-sizes="auto"
-				alt="<%= page.title %>"
-				class="lazyload kira-post-cover-image disabled-kira-image"
-			/>
-			<h1><%= page.title %></h1>
-		</div>
-		<% } %>
+		<%- partial('components/post-cover', { page: page, theme: theme }) %>
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i><%- date(page.date, "YYYY年MM月DD日") %></a>
 			<a><i class="kirafont icon-edit-fill"></i><%= wordcount(page.content) %> 字</a>
@@ -33,33 +10,12 @@
 		<%- image_auto_lazyload(page.content) %>
 	</article>
 
-	<% if (!page.reprinted){ %> <%- partial('components/copyright') %> <% } %> <% if (page.layout ===
-	'post') { %>
-	<div class="kira-post-nav">
-		<nav class="post-nav">
-			<% site.categories.map(function(category){ %> <%
-			page.categories.map(function(page_category){ %> <% if(page_category.name ===
-			category.name){ %>
-			<!-- 先找到与当前文字相同的目录 -->
-			<% let i = 0;%> <% category.posts.sort('date').map(function(post){ %> <% i++; %> <%
-			if(post.title === page.title){ %>
-			<!-- 在找到当前文章所在的 index -->
-			<% let ix = 0;%> <% category.posts.sort('date').map(function(post){ %> <% ix++; %> <%
-			if(ix === i + 1 && post.title){ %>
-			<!-- 下一篇文章 -->
-			<div class="new">
-				<span>下一篇</span>
-				<a href="<%- url_for(post.path) %>"> <%= post.title %></a>
-			</div>
-			<% } %> <% if(ix === i - 1 && post.title){ %>
-			<!-- 上一篇文章 -->
-			<div class="old">
-				<span>上一篇</span>
-				<a href="<%- url_for(post.path) %>"> <%= post.title %></a>
-			</div>
-			<% } %> <% }) %> <% } %> <% }) %> <% } %> <% })%> <% }) %>
-		</nav>
-	</div>
+	<% if (!page.reprinted) { %>
+		<%- partial('components/copyright') %>
+	<% } %>
+	
+	<% if (page.layout === 'post') { %>
+		<%- partial('components/post-nav', { page: page, site: site }) %>
 	<% } %>
 	<div class="kira-post-meta kira-rainbow">
 		<% if (page.categories && page.categories.length){ %>

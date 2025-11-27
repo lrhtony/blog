@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html <% if (config.language) { %>
-	lang="<%- config.language %>"<% } %>>
+<html lang="<%= config.language || 'zh-CN' %>">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="baidu-site-verification" content="codeva-Nz3lCP1sEj" />
 		<%- css("css/layout") %>
-		<% var title=page.title; if (is_archive()){ title=__('archive'); if
-		(is_month()){ title +='：' + page.year + '/' + page.month; } else if (is_year()){ title
-		+='：' + page.year; } } else if (is_category()){ title=__('count.categories') + '：' +
-		page.category; } else if (is_tag()){ title=__('count.tags') + '：' + page.tag; } %>
-		<title><% if (title){ %> <%= title %> - <% } %> <%= config.title %></title>
+		<%
+		// 根据页面类型计算标题
+		var title = page.title;
+		if (is_archive()) {
+			title = __('archive');
+			if (is_month()) {
+				title += '：' + page.year + '/' + page.month;
+			} else if (is_year()) {
+				title += '：' + page.year;
+			}
+		} else if (is_category()) {
+			title = __('count.categories') + '：' + page.category;
+		} else if (is_tag()) {
+			title = __('count.tags') + '：' + page.tag;
+		}
+		%>
+		<title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
 		<link rel="stylesheet" href="https://registry.npmmirror.com/mdui/1.0.2/files/dist/css/mdui.min.css" />
 		<script src="https://registry.npmmirror.com/mdui/1.0.2/files/dist/js/mdui.min.js"></script>
 		<!-- lazyload -->

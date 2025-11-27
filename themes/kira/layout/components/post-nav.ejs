@@ -1,0 +1,73 @@
+<%#
+    文章导航组件
+    显示同分类下的上一篇和下一篇文章链接
+    
+    参数:
+    - page: 当前页面对象
+    - site: 站点对象
+%>
+<%
+/**
+ * 查找同分类下的相邻文章
+ * @returns {{ prevPost: Object|null, nextPost: Object|null }}
+ */
+function findAdjacentPosts() {
+    let prevPost = null;
+    let nextPost = null;
+    
+    // 遍历当前文章的所有分类
+    page.categories.forEach(function(pageCategory) {
+        // 在站点分类中查找匹配的分类
+        site.categories.forEach(function(category) {
+            if (pageCategory.name !== category.name) return;
+            
+            // 获取该分类下按日期排序的文章列表
+            const posts = category.posts.sort('date').toArray();
+            
+            // 查找当前文章的索引
+            let currentIndex = -1;
+            for (let i = 0; i < posts.length; i++) {
+                if (posts[i].title === page.title) {
+                    currentIndex = i;
+                    break;
+                }
+            }
+            
+            if (currentIndex === -1) return;
+            
+            // 获取上一篇文章（索引更小，日期更早）
+            if (currentIndex > 0 && posts[currentIndex - 1].title) {
+                prevPost = posts[currentIndex - 1];
+            }
+            
+            // 获取下一篇文章（索引更大，日期更晚）
+            if (currentIndex < posts.length - 1 && posts[currentIndex + 1].title) {
+                nextPost = posts[currentIndex + 1];
+            }
+        });
+    });
+    
+    return { prevPost, nextPost };
+}
+
+const { prevPost, nextPost } = findAdjacentPosts();
+%>
+
+<% if (prevPost || nextPost) { %>
+<div class="kira-post-nav">
+    <nav class="post-nav">
+        <% if (nextPost) { %>
+        <div class="new">
+            <span>下一篇</span>
+            <a href="<%- url_for(nextPost.path) %>"><%= nextPost.title %></a>
+        </div>
+        <% } %>
+        <% if (prevPost) { %>
+        <div class="old">
+            <span>上一篇</span>
+            <a href="<%- url_for(prevPost.path) %>"><%= prevPost.title %></a>
+        </div>
+        <% } %>
+    </nav>
+</div>
+<% } %>

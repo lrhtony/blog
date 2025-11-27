@@ -4,64 +4,39 @@
     <div class="kira-widget">
       <ul class="category-list">
         <%
-          let categories = Array();
-          let categories_counter = 0;
-
-          site.categories.sort('name').each(function(item) {
-            categories[categories_counter] = {
+        /**
+         * 使用 Map 进行分类去重
+         * 合并相同名称的分类，累加文章数量
+         */
+        const uniqueCategories = new Map();
+        
+        site.categories.sort('name').each(function(item) {
+          if (uniqueCategories.has(item.name)) {
+            // 分类已存在，累加数量
+            const existing = uniqueCategories.get(item.name);
+            existing.length += item.length;
+          } else {
+            // 新分类，添加到 Map
+            uniqueCategories.set(item.name, {
               name: item.name,
               path: item.path,
               length: item.length
-            };
-            categories_counter++;
-          });
-        %>
-        <%
-          // 筛选 删掉重复的 将重复的数量放到唯一的哪一个
-          let counter;
-          let isDisplayed = false;
-          let displayed = Array();
-          let final_categories = Array();
-
-          for (counter = 0; counter < categories.length; counter++){
-            for (let i = 0; i < displayed.length; i++){
-              if (displayed[i].name === categories[counter].name){
-                for (let b = 0; b < final_categories.length; b++){
-                  if (displayed[i].name === final_categories[b].name){
-                    final_categories[b].length++;
-                  }
-                }
-                isDisplayed = true;
-                break;
-              }else{
-                isDisplayed = false;
-              }
-            }
-
-            if (isDisplayed == false){
-              final_categories[final_categories.length] = {
-                name: categories[counter].name,
-                path: categories[counter].path,
-                length: categories[counter].length
-              }
-
-              displayed[displayed.length] = {
-                name: categories[counter].name,
-                path: categories[counter].path,
-                length: categories[counter].length
-              }
-            }
+            });
           }
+        });
+        
+        // 转换为数组以便遍历
+        const finalCategories = Array.from(uniqueCategories.values());
         %>
 
-        <% for (let u = 0; u < final_categories.length; u++) { %>
+        <% finalCategories.forEach(function(category) { %>
           <li class="category-list-item">
-            <a class="category-list-link" href="<%- config.root %><%- final_categories[u].path %>">
-              <%= final_categories[u].name %>
+            <a class="category-list-link" href="<%- config.root %><%- category.path %>">
+              <%= category.name %>
             </a>
-            <span class="category-list-count"><%= final_categories[u].length %></span>
+            <span class="category-list-count"><%= category.length %></span>
           </li>
-        <% } %>
+        <% }); %>
       </ul>
     </div>
   </div>

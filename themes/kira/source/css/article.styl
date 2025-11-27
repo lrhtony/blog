@@ -1,19 +1,29 @@
-//文章内容
+// ============================================
+// Kira Hexo Theme - 文章内容样式
+// ============================================
+
 @import 'constants.styl';
 
+// ============================================
+// 文章主体样式
+// ============================================
+
 article {
-	color: #444;
+	color: $text-secondary;
 	font-family: microsoft yahei;
 
 	p {
 		line-height: 24px;
 	}
 
-	.highlight {  // 代码块
+	// ------------------------------------------
+	// 代码块样式
+	// ------------------------------------------
+	.highlight {
 		padding: 0 0.5em;
-		background: #282c34;
+		background: $bg-code;
 		color: #abb2bf;
-		margin: 25px 0;
+		margin: $gutter 0;
 		border-radius: $radius;
 		overflow: auto;
 
@@ -30,27 +40,24 @@ article {
 			}
 
 			&::-webkit-scrollbar-track {
-				background: #282c34;
+				background: $bg-code;
 			}
 
 			&::-webkit-scrollbar-thumb {
 				background: #777777;
-				-webkit-border-radius: 3px;
+				border-radius: 3px;
 			}
-
 		}
-
 	}
 
 	pre {
 		border-radius: $radius;
 		overflow: hidden;
-		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0 6px 0 0;
 		position: relative;
-		background: #282c34;
+		background: $bg-code;
 		line-height: 18px;
 
 		code {
@@ -67,9 +74,11 @@ article {
 		}
 	}
 
+	// ------------------------------------------
+	// 链接样式
+	// ------------------------------------------
 	a {
-		-webkit-transition: color 0.35s ease-out;
-		transition: color 0.35s ease-out;
+		transition: $transition-default;
 		color: $color1;
 		text-decoration: none;
 		word-wrap: break-word;
@@ -84,41 +93,31 @@ article {
 			color: $color1;
 			text-decoration: underline;
 		}
+	}
 
-		// 隐藏标题锚点链接的图标
-		&.header-anchor {
-			color: #ccc;
-			text-decoration: none;
-			margin-left: 8px;
-			margin-right: 0;
-			opacity: 0;
-			transition: opacity 0.2s ease;
-			order: 1;
+	// 标题锚点链接
+	a.header-anchor {
+		color: #ccc;
+		text-decoration: none;
+		margin-left: 8px;
+		margin-right: 0;
+		opacity: 0;
+		transition: $transition-fast;
+		order: 1;
 
-			&::before {
-				content: none;
-			}
-
-			&:hover {
-				text-decoration: none;
-				color: $color1;
-			}
+		&::before {
+			content: none;
 		}
 
-		&.CodePenLink {
-			transition: 0.2s;
-			padding: 0.2em;
+		&:hover {
+			text-decoration: none;
 			color: $color1;
-			border-bottom: 1px solid $krdbgc1;
-
-			&:hover {
-				text-shadow: 0 0 5px $krlbgc1;
-				text-decoration: none;
-				border-bottom: 1px solid $color1;
-			}
 		}
 	}
 
+	// ------------------------------------------
+	// 段落样式
+	// ------------------------------------------
 	p {
 		margin: $gutter 0;
 		position: relative;
@@ -130,6 +129,9 @@ article {
 		}
 	}
 
+	// ------------------------------------------
+	// 行内代码
+	// ------------------------------------------
 	code {
 		display: inline;
 		border-radius: 4px;
@@ -144,10 +146,13 @@ article {
 	}
 
 	del {
-		color: #999;
+		color: $text-light;
 		font-size: 0.9em;
 	}
 
+	// ------------------------------------------
+	// 图片样式
+	// ------------------------------------------
 	img {
 		display: block;
 		border-radius: $radius;
@@ -155,7 +160,7 @@ article {
 
 		&:not(.kira-post-cover-image) {
 			cursor: pointer;
-			transition: all 0.3s ease;
+			transition: $transition-default;
 
 			&:hover {
 				box-shadow: 0 0 10px rgba($krlbgc1, 0.3);
@@ -168,6 +173,7 @@ article {
 			}
 		}
 
+		// 懒加载状态
 		&.lazyload,
 		&.lazyloading {
 			opacity: 0;
@@ -179,12 +185,10 @@ article {
 		}
 	}
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
+	// ------------------------------------------
+	// 标题样式
+	// ------------------------------------------
+	h1, h2, h3, h4, h5, h6 {
 		color: #111;
 		margin: $gutter 0;
 		display: flex;
@@ -192,15 +196,12 @@ article {
 		justify-content: flex-end;
 		align-items: center;
 
-		// 鼠标悬停时显示锚点链接
 		&:hover .header-anchor {
 			opacity: 0.6;
 		}
 	}
 
-	h4,
-	h5,
-	h6 {
+	h4, h5, h6 {
 		position: relative;
 
 		&::before {
@@ -224,7 +225,7 @@ article {
 			content: '';
 			width: 100%;
 			padding: 0 $gutter;
-			border-bottom: 1px solid #eee;
+			border-bottom: 1px solid $border-color;
 			position: absolute;
 			bottom: -1px;
 			left: -($gutter);
@@ -232,7 +233,7 @@ article {
 		}
 
 		&::after {
-			transition: all 0.35s ease-out;
+			transition: $transition-default;
 			content: '';
 			position: absolute;
 			background: $color1;
@@ -264,15 +265,18 @@ article {
 		font-size: 0.9em;
 	}
 
+	// ------------------------------------------
+	// 引用块
+	// ------------------------------------------
 	blockquote {
-		color: #666;
+		color: $text-muted;
 		margin: $gutter 0;
 		padding: 0.1em 2.2em;
-		background-color: #f8f8f8;
+		background-color: $bg-light;
 		line-height: 28px;
 		position: relative;
 		border-radius: 10px;
-		border: 1px solid #eee;
+		border: 1px solid $border-color;
 		font-family: sf pro sc, sf pro display, sf pro icons, aos icons, pingfang sc, helvetica neue,
 			helvetica, arial, sans-serif;
 
@@ -295,6 +299,9 @@ article {
 		}
 	}
 
+	// ------------------------------------------
+	// 分割线
+	// ------------------------------------------
 	hr {
 		display: block;
 		border: 0;
@@ -303,8 +310,10 @@ article {
 		padding: 0;
 	}
 
-	sub,
-	sup {
+	// ------------------------------------------
+	// 上下标
+	// ------------------------------------------
+	sub, sup {
 		font-size: 75%;
 		line-height: 0;
 		position: relative;
@@ -319,6 +328,9 @@ article {
 		top: -0.5em;
 	}
 
+	// ------------------------------------------
+	// 无序列表
+	// ------------------------------------------
 	ul {
 		padding: 0 0 0 2em;
 		margin-top: 0;
@@ -375,6 +387,9 @@ article {
 		}
 	}
 
+	// ------------------------------------------
+	// 有序列表
+	// ------------------------------------------
 	ol {
 		padding: 0 0 0 2.5em;
 		margin-top: 0;
@@ -416,6 +431,9 @@ article {
 		margin: 0 0 0 2em;
 	}
 
+	// ------------------------------------------
+	// 表格样式
+	// ------------------------------------------
 	& > table {
 		color: #5b6064;
 		border-spacing: 0;
@@ -423,29 +441,27 @@ article {
 		max-width: 100%;
 		overflow: auto;
 		white-space: nowrap;
-		margin: 25px auto;
+		margin: $gutter auto;
 		background: transparent;
 		display: block;
 
-
-
 		thead {
-			border-bottom: 1px solid #eee;
-			background-color: #f8f8f8;
+			border-bottom: 1px solid $border-color;
+			background-color: $bg-light;
 
 			tr {
-				background-color: #f8f8f8;
+				background-color: $bg-light;
 			}
 		}
 
 		th {
-			border: 1px solid #eee;
+			border: 1px solid $border-color;
 			padding: 13px 26px;
 			font-weight: 400;
 		}
 
 		td {
-			border: 1px solid #eee;
+			border: 1px solid $border-color;
 			padding: 13px 26px;
 		}
 
@@ -453,35 +469,38 @@ article {
 			background-color: #fff;
 
 			&:nth-child(2n) {
-				background-color: #f8f8f8;
+				background-color: $bg-light;
 			}
 		}
 	}
 
-	img,
-	canvas,
-	iframe,
-	video,
-	svg,
-	select,
-	textarea {
+	// ------------------------------------------
+	// 媒体元素
+	// ------------------------------------------
+	img, canvas, iframe, video, svg, select, textarea {
 		width: auto;
 		max-width: 100%;
 	}
 
+	// ------------------------------------------
+	// 键盘按键样式
+	// ------------------------------------------
 	kbd {
 		display: inline-block;
 		padding: 3px 5px;
-		font: 1rem ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+		font: 1rem ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
 		line-height: 10px;
-		color: #444;
+		color: $text-secondary;
 		vertical-align: middle;
-		background-color: #f8f8f8;
+		background-color: $bg-light;
 		border: solid 1px #adb3b9;
 		border-radius: 6px;
 		box-shadow: inset 0 -1px 0 #e7e7e7;
 	}
 
+	// ------------------------------------------
+	// 复选框样式
+	// ------------------------------------------
 	input[type='checkbox'] {
 		margin-right: 0.25em;
 
@@ -501,7 +520,7 @@ article {
 		}
 
 		&:disabled::after {
-			cursor: not-allowed;	
+			cursor: not-allowed;
 		}
 
 		&:checked::after {
@@ -510,6 +529,10 @@ article {
 		}
 	}
 }
+
+// ============================================
+// Details 折叠面板样式
+// ============================================
 
 details {
 	ul {
@@ -549,86 +572,6 @@ details {
 			color: #fff;
 		}
 	}
-
-	.aplayer {
-		-webkit-box-shadow: 0 0 0 1px #eee !important;
-		box-shadow: 0 0 0 1px #eee !important;
-		border-radius: 10px !important;
-		margin: $gutter 0 !important;
-		height: 90px;
-
-		.aplayer-info {
-			padding: 9px 7px 0 10px !important;
-
-			.aplayer-controller {
-				.aplayer-bar-wrap {
-					margin-left: 1px !important;
-					padding-right: 3px;
-
-					.aplayer-bar {
-						&,
-						& .aplayer-loaded,
-						& .aplayer-played {
-							height: 6px !important;
-							border-radius: 10px !important;
-						}
-
-						.aplayer-played .aplayer-thumb {
-							height: 12px !important;
-							width: 12px !important;
-							right: 3px !important;
-							-webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.18) !important;
-							box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.18) !important;
-							-webkit-transition: all 0.35s ease-out;
-							transition: all 0.35s ease-out;
-						}
-					}
-				}
-
-				.aplayer-volume-wrap .aplayer-volume-bar-wrap .aplayer-volume-bar {
-					right: 10.5px;
-
-					&,
-					& .aplayer-volume {
-						border-radius: 10px;
-						width: 6px;
-					}
-				}
-			}
-		}
-
-		.aplayer-list ol li {
-			border-top: none !important;
-
-			&.aplayer-list-light {
-				background: #f8f8f8 !important;
-			}
-		}
-	}
-
-	div.kira-aplayer-container {
-		margin: 0;
-
-		div[id^='aplayer-'] {
-			div.aplayer-body {
-				div.aplayer-pic {
-					width: 90px;
-					height: 90px;
-				}
-
-				div.aplayer-info {
-					margin-left: 90px;
-					height: 90px;
-
-					div.aplayer-controller > div.aplayer-bar-wrap > div.aplayer-bar > div.aplayer-played {
-						background: $color1 !important;
-
-						span.aplayer-thumb {
-							background: $color1 !important;
-						}
-					}
-				}
-			}
-		}
-	}
 }
+
+
