@@ -41,7 +41,7 @@ maxTagcloud: 10 # 标签云组件显示的标签数量，0 表示不限制
 
 social:
     X:
-        - https://twitter.com/lrhtony
+        - https://x.com/lrhtony
         - icon-x-social-media
         - rgb(25, 23, 23)
         - rgba(25, 23, 23, .15)
@@ -120,13 +120,13 @@ friends:
     A&D工作室:
         - name: Phrinky
           link: https://blog.rkk.moe/
-          avatar: https://img.0a0.moe/od/01tklsjzdefbinkflknnczt7skavqhpvlk
+          avatar: https://gravatar.shojo.cn/avatar/28069568a8b1f77c411f61904d18884e3c2fc5fdd330da0092b66db1170c9cf7?size=512
           description: 可爱 技术超强
 
     朋友:
         - name: CDM258
           link: http://cdm258.tech/
-          avatar: https://0.gravatar.com/avatar/cdc1b1ffd4c68f546ebde3ab56ef34e7f1bf6a9b426527a9112cf4c816ec30de?size=512
+          avatar: https://gravatar.shojo.cn/avatar/cdc1b1ffd4c68f546ebde3ab56ef34e7f1bf6a9b426527a9112cf4c816ec30de?size=512
           description: Think what Ichiro would do
 
 # 可复制的代码块
