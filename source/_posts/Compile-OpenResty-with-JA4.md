@@ -131,3 +131,16 @@ server {
 ![ja4_result](https://img.0a0.moe/od/01tklsjzge2gwli6b4uvezewauazpftca6)
 
 可以看到工作正常。
+
+
+
+## 其他
+
+如果要使用要使用异步 SSL session，需要应用 OpenResty 里 patches 的补丁
+
+```bash
+cd openssl-3.5.4/
+patch -p1 < ../patches/openssl-3.4.1-sess_set_get_cb_yield.patch
+```
+
+OpenSSL 3.5.4 可以直接应用 3.4.1 的补丁，patch 后重新 configure 和 make 编译即可
