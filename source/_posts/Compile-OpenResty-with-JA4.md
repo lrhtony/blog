@@ -8,7 +8,6 @@ tags:
   - 设备指纹
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzatrsbvh45ijbd3ntl55afv56r7
 ---
 
 想用 OpenResty 收集 JA4 指纹信息，以便后续进一步处理。找了一圈没找到文章代码仓库之类的，遂写篇文章记录下。
@@ -53,7 +52,7 @@ patch -p1 < ../../ja4-nginx-module/patches/nginx.patch
 
 尽管在 Dockerfile 中这个是对应 Nginx 1.28.1 的 patch，但是这里能够直接应用且编译时不会报错
 
-![patch_nginx](https://img.0a0.moe/od/01tklsjzentsyevts7a5gltfafzey55lsr)
+![patch_nginx](https://img.0a0.moe/blog/2026/01/27/%E7%BC%96%E8%AF%91%E5%B8%A6%E6%9C%89-ja4-%E6%8C%87%E7%BA%B9%E7%9A%84-openresty/3f80a7d3bb53d349f66e679df8752622bb6ad0779c70d644d1886c43a8466b74.webp)
 
 接下来运行 configure，可以按实际需要进行修改
 
@@ -128,7 +127,7 @@ server {
 
 其中，`server_name` 以及 `ssl_certificate`、`ssl_certificate_key` 按实际配置，需要配置证书才能有 ssl，才可以有 JA4 指纹。
 
-![ja4_result](https://img.0a0.moe/od/01tklsjzge2gwli6b4uvezewauazpftca6)
+![ja4_result](https://img.0a0.moe/blog/2026/01/27/%E7%BC%96%E8%AF%91%E5%B8%A6%E6%9C%89-ja4-%E6%8C%87%E7%BA%B9%E7%9A%84-openresty/127044df7c755ade129e5b481cf5346793e63e9450085d2815bb4cc2c9b30241.webp)
 
 可以看到工作正常。
 

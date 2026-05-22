@@ -11,7 +11,6 @@ tags:
   - 圣地巡礼
 categories: 
   - 游记
-cover: https://img.0a0.moe/od/01tklsjzesy66pxlj7gnejebpa23s4uyz2
 ---
 
 记录一下第一次去日本旅游。半年了终于憋出来了，C105都结束了（

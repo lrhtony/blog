@@ -38,13 +38,13 @@ void __fastcall sub_A84(char a1[], _BYTE *a2)
 
 我没能看出来这是Base64，但我使用Bing就能提示出来
 
-<img src="https://img.0a0.moe/od/01tklsjzbmuya3iepptffzpdqiuovx4agw" style="zoom:50%;" />
+<img src="https://img.0a0.moe/blog/2024/01/28/ai%E5%9C%A8%E9%80%86%E5%90%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/aaffd61f1a88f137235f23c6ade83361a709b5af1e141e9054475e37f4c37e9f.webp" style="zoom:50%;" />
 
-<img src="https://img.0a0.moe/od/01tklsjzcgritrfebxzfh3q3umprey5sfe" style="zoom:50%;" />
+<img src="https://img.0a0.moe/blog/2024/01/28/ai%E5%9C%A8%E9%80%86%E5%90%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/e5d2386d8836dd2c7330181a50c7d6be4c70388fceacbc4a970666300326c1fd.webp" style="zoom:50%;" />
 
 以及像AES算法
 
-<img src="https://img.0a0.moe/od/01tklsjzcuy42s5gzmdvei57k6mywolveq" style="zoom:50%;" />
+<img src="https://img.0a0.moe/blog/2024/01/28/ai%E5%9C%A8%E9%80%86%E5%90%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/52addd24d9798dfeb984d0fa5fdf901d7b942e5533319fff9bacea778cd53d89.webp" style="zoom:50%;" />
 
 还有像normal21中的RC4算法
 
@@ -89,7 +89,7 @@ void __cdecl sub_401850(_DWORD *a1, int a2, int a3)
 }
 ```
 
-<img src="https://img.0a0.moe/od/01tklsjzea6v5o6wdxt5bklmjzgm7e2x2a" style="zoom:50%;" />
+<img src="https://img.0a0.moe/blog/2024/01/28/ai%E5%9C%A8%E9%80%86%E5%90%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/7f38b09d29bce926195a21d0a312a5ec34d3c6fb20639819b2738c9d97d7ee11.webp" style="zoom:50%;" />
 
 ```c
 void __cdecl sub_4018D0(_DWORD *a1, _BYTE *a2, int a3)
@@ -131,7 +131,7 @@ void __cdecl sub_4018D0(_DWORD *a1, _BYTE *a2, int a3)
 }
 ```
 
-<img src="https://img.0a0.moe/od/01tklsjzhy6333mrzppzhj4zbsqzj4xgjw" style="zoom:50%;" />
+<img src="https://img.0a0.moe/blog/2024/01/28/ai%E5%9C%A8%E9%80%86%E5%90%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/ab555f72fa53a9d4e0e72a6fea15a79e399432291a1a3d483d4550a668989b4a.webp" style="zoom:50%;" />
 
 但是要注意AI的能力有限，对于一些修改AI可能识别不出来，像安洵杯这个魔改的base64
 
@@ -167,4 +167,4 @@ __int64 __fastcall sub_140001360(char a1[], char a2[], int a3)
 }
 ```
 
-<img src="https://img.0a0.moe/od/01tklsjzgprueprbezyzg3xfgx6uot7flu" style="zoom:50%;" />
+<img src="https://img.0a0.moe/blog/2024/01/28/ai%E5%9C%A8%E9%80%86%E5%90%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/164e61f29018ea6183dac7de1c4e86ca065764bab4a03595fb18e736f8692861.webp" style="zoom:50%;" />

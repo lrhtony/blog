@@ -26,11 +26,11 @@ adb forward tcp:23946 tcp:23946
 
 将APK文件解包，将运行的对应架构so文件拖入对应版本IDA，这里我用是是`x86_64`架构。然后在对应函数下断点，我这里是`cmpstr`
 
-![image-20240712232247988](https://img.0a0.moe/od/01tklsjzbrqnnq7pi5tbb2w5ibx762qdx3)
+![image-20240712232247988](https://img.0a0.moe/blog/2024/07/08/%E4%BD%BF%E7%94%A8ida%E5%AF%B9android-so%E8%BF%9B%E8%A1%8C%E5%8A%A8%E8%B0%83/a28eb68c6fdeab0e90303ae3d03a358b1fe156a27298896c5af470cab84fa7a8.webp)
 
 配置Remote Linux debugger的Hostname和Port
 
-![image-20240712232346619](https://img.0a0.moe/od/01tklsjzgoiagugjn34za2zuhzj6vooneb)
+![image-20240712232346619](https://img.0a0.moe/blog/2024/07/08/%E4%BD%BF%E7%94%A8ida%E5%AF%B9android-so%E8%BF%9B%E8%A1%8C%E5%8A%A8%E8%B0%83/6ab8ce843dea3256103aaeeb2f7cd720287c10196140540976ac3c5f6e480307.webp)
 
 调试模式启动应用
 
@@ -53,7 +53,7 @@ stop;start;
 adb forward tcp:[port] jdwp:[pid]
 ```
 
-IDA-Debugger-Attach to process...，里面找到进程，可以<kbd>Ctrl</kbd>+<kbd>F</kbd>查找，这里也能看到pid![image-20240712233456572](https://img.0a0.moe/od/01tklsjzds434vj2itv5fzsa6u7ermp3xn)
+IDA-Debugger-Attach to process...，里面找到进程，可以<kbd>Ctrl</kbd>+<kbd>F</kbd>查找，这里也能看到pid![image-20240712233456572](https://img.0a0.moe/blog/2024/07/08/%E4%BD%BF%E7%94%A8ida%E5%AF%B9android-so%E8%BF%9B%E8%A1%8C%E5%8A%A8%E8%B0%83/3473fb75e7a7c1c1e67ebf609cfca4e79fa7a6d675e50afbddc16c6049715098.webp)
 
 然后使用`jdb`连接就行了
 
@@ -77,14 +77,14 @@ adb shell pm path com.ad2001.frida0x8
 
 这时应用运行时优先使用lib中的so文件
 
-![image-20240712235323035](https://img.0a0.moe/od/01tklsjzggsdm65n26p5gz7od7pgjvf236)
+![image-20240712235323035](https://img.0a0.moe/blog/2024/07/08/%E4%BD%BF%E7%94%A8ida%E5%AF%B9android-so%E8%BF%9B%E8%A1%8C%E5%8A%A8%E8%B0%83/5cef60baeba3e566ca4af0cc6e19fe14b938bbcfbd06c3dee4a16de4dbbe94b7.webp)
 
 ## 继续调试
 
-这时就能在断点处正常断下了![image-20240712235529299](https://img.0a0.moe/od/01tklsjzeyjcftnsrrrvbifq2jkbqq3rrx)
+这时就能在断点处正常断下了![image-20240712235529299](https://img.0a0.moe/blog/2024/07/08/%E4%BD%BF%E7%94%A8ida%E5%AF%B9android-so%E8%BF%9B%E8%A1%8C%E5%8A%A8%E8%B0%83/09679f8f28905b955e3c093ecc4586698f6bfeaea2561266bec3762e100875dc.webp)
 
 平时怎么动调现在怎么动调就行，对应的变量的值也能够正常读取显示
 
-![image-20240712235713830](https://img.0a0.moe/od/01tklsjzbu6tuf47mxavck7kjfxp626cwu)
+![image-20240712235713830](https://img.0a0.moe/blog/2024/07/08/%E4%BD%BF%E7%94%A8ida%E5%AF%B9android-so%E8%BF%9B%E8%A1%8C%E5%8A%A8%E8%B0%83/99384e984b84bd1d2656436a19e29c4f2855191a0c35b01841d251a950991196.webp)
 
 至此通过IDA完成对Android so文件的动调

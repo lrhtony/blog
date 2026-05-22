@@ -35,9 +35,9 @@ set_perm_recursive "$MODPATH" 0 0 0755 0644
 
 接着一样跟初赛时加载so的方法类似，在`.init_array`中调用`pthread_create`创建一个新线程对游戏内存进行修改。跟进创建新线程的函数，可以看到`sub_12D8`获取了`libUE4.so`的基址，然后在baseAddr+0x6711AC4的位置，先是通过`sub_1618`对该地址4字节修改为`rwx`，然后将位于该地址的`08 14 A8 52`改为`08 59 A8 52`，即汇编的`MOV W8, #5.0`变成`MOV W8, #100.0`
 
-![image-20250411172535879](https://img.0a0.moe/od/01tklsjzhkgicbjn2eurbj5bqelhp6dcdq)
+![image-20250411172535879](https://img.0a0.moe/blog/2025/04/11/tencent2/fb7f7c0e1cd13a3121c4496605b33f0076b81e13a4236020cf3f19cb2094d2e4.webp)
 
-![image-20250411172548264](https://img.0a0.moe/od/01tklsjzhojevoefjl3jfkqtqqoi7ii4x4)
+![image-20250411172548264](https://img.0a0.moe/blog/2025/04/11/tencent2/acbb1bf755e66356acbbed5a4f03136e7868568e88a138b3475302a098e62213.webp)
 
 可以看到球体半径参数被修改
 
@@ -47,7 +47,7 @@ set_perm_recursive "$MODPATH" 0 0 0755 0644
 
 程序在start中通过libc_init调用sub_241D90，里面通过am start启动游戏activity后等待进入sub_241BF0。进入后在一串函数中可以发现imgui的特征
 
-![image-20250411191602526](https://img.0a0.moe/od/01tklsjzghhhdvhwqmorbiw43rnlulk3i2)
+![image-20250411191602526](https://img.0a0.moe/blog/2025/04/11/tencent2/6dc19b3314f6bdfc2e7f559bd8f5c5668feaef0f5e1fafb9abc85dc5494b0366.webp)
 
 在sub_247504可以看到绘制的整个外挂ui。在这里面的“初始化辅助”下面的sub_243414里面，我们可以看到获取了libUE4.so的基址。还是在这个函数里，sub_242C5C函数传入了"MyProjectCharacter"，查看函数内部逻辑，以及进一步查找这个函数的引用，可以发现这个函数在其他地方传入了"TP_ThirdPersonCharacter"，因此可以分析推测该函数获取了相应Actor的地址。
 
@@ -243,7 +243,7 @@ void scan_zygisk() {
 
 https://pshocker.github.io/2022/05/08/Android%E5%86%85%E5%AD%98%E8%AF%BB%E5%86%99%E6%A3%80%E6%B5%8B-mincore/
 
-![image-20250413004712611](https://img.0a0.moe/od/01tklsjzahdvi7y3vkwvbk6oarjlecg5a3)
+![image-20250413004712611](https://img.0a0.moe/blog/2025/04/11/tencent2/9dccc6fe1e7720c00d7231a457eabcc5882eb717df95bbfaffb22194acbf0251.webp)
 
 来源：https://bbs.kanxue.com/thread-284041.htm，想知道另外一个方法是什么
 

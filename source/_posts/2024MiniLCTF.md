@@ -463,7 +463,7 @@ for i in range(50):
             break
 ```
 
-即可爆出flag![image-20240501002251924](https://img.0a0.moe/od/01tklsjzg27mgfk7zit5ez3kwqppy5wosx)
+即可爆出flag![image-20240501002251924](https://img.0a0.moe/blog/2024/05/01/2024-minilctf-reverse/2bc9f2eb4c42f581a8b8a7eb8fa10ec9d3bf6521a1b24c2c54681524198386ac.webp)
 
 ## Long long call
 

@@ -7,7 +7,6 @@ tags:
   - 逆向
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzel5odsv37brbgj4wqkti72rmpf
 ---
 
 > 封面：[@Bison仓鼠](https://www.bilibili.com/opus/1050917272577638417)
@@ -16,7 +15,7 @@ cover: https://img.0a0.moe/od/01tklsjzel5odsv37brbgj4wqkti72rmpf
 
 首先判断虚幻引擎版本，我们可以直接在`AndroidManifest.xml`中找到UE4.27
 
-![UE_ver](https://img.0a0.moe/od/01tklsjzg26v2fr36wjfgkw5bl25vpvw33)
+![UE_ver](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/ae11228100b46684e88826c7bd3c3f00fce82385d4cda3fdc5c41587826df482.webp)
 
 对所有so文件进行分析。首先利用偷懒的方法，将so文件通过Virustotal计算一下hash查看首次上传时间可以得知，除`libUE4.so`和`libGame.so`都曾经上传过，是标准库，可以不用看
 
@@ -36,31 +35,31 @@ GUObject 0xAE34A98
 
 这个so通过`.init_array`调用函数，通过`pthread_create`创建新线程，在`0x1B9C`通过读取`/proc/self/maps`等方法获取`libUE4.so`的基址，然后下面通过基址+偏移计算得到UE4中关键参数的地址
 
-![image-20250329185455154](https://img.0a0.moe/od/01tklsjzdu66g2yz6eurhyt6zuoxayhxyy)
+![image-20250329185455154](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/4d1d3a2c1809faeb1d6d0d9490aac090f597f9da901b29fdbfa7b0b5dd06e5ef.webp)
 
 在下面通过遍历Actors中的元素，找到所要的Actor后，通过偏移计算找到对应要修改的参数
 
-![image-20250329190346023](https://img.0a0.moe/od/01tklsjzf7kup2f7cenzg2bvjw57s64ysd)
+![image-20250329190346023](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/912ac18d9979a79193f226f0a7cf973ff88cb054fa8f8d6b78fcde1eb6588a1b.webp)
 
 ### 异常点1
 
 根据偏移查找SDK可以得知是开枪时的后坐力，后续通过Frida修改为其他值也可以进一步验证
 
-![image-20250329190400922](https://img.0a0.moe/od/01tklsjzgoo47lbfekyrh22pcpc4n7dfhr)
+![image-20250329190400922](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/e1c4b88c11ec6112c452c2c165bf7e4b57187d6683b3136776ca9153c6e4f20b.webp)
 
 ### 异常点2、3
 
 同理，根据偏移去查找对应的参数，可知是人物的速度和加速度
 
-![image-20250329190618465](https://img.0a0.moe/od/01tklsjzhi5tczyvpnd5gyibll7e56gx74)
+![image-20250329190618465](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/c579358bd72e04cf3ae6289145ccbc6b46b3a1c2ad0edb91e9bc938c4876368a.webp)
 
 ### 修复
 
 这里选择将这三个地方的`STR`赋值汇编NOP掉，阻止其修改，应用patch，使用MT管理器替换so将apk重新打包签名，即可修复
 
-![image-20250329191133745](https://img.0a0.moe/od/01tklsjzffnyq2zikjerd2y3azf6saggny)
+![image-20250329191133745](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/c4ade98298ded5ba5a15093b615885b1feab439f1e39defbff818ef44aa69109.webp)
 
-![image-20250329191152965](https://img.0a0.moe/od/01tklsjzcvoygodescfnfii6qlum7kw6eb)
+![image-20250329191152965](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/c5fc46a5da938e08ad1e84cf68b4ae8e07865826805fda20d86cb2e54430c28e.webp)
 
 ## 异常点4：自瞄
 
@@ -103,15 +102,15 @@ function writeControlRotation(actorAddr, a, b, c){
 
 ```
 
-![image-20250329191835258](https://img.0a0.moe/od/01tklsjzeqg3rf6detibayv4gly7p6vxr5)
+![image-20250329191835258](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/22db69e93a7e97c39e5e5669be6312e68c886edaedee43ea5ba2acc4c3f8fc4a.webp)
 
 因此可以对Actor列表里的`PlayerController+0x288`的位置下一个写硬件断点，在其被修改时栈回溯找到修改函数。
 
-![屏幕截图 2025-03-29 104825](https://img.0a0.moe/od/01tklsjzfc5fs7dvkux5glytzslzwfnhrq)
+![屏幕截图 2025-03-29 104825](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/c4e96a8bec48a6b223297c7505bae4d58714ecd7656287884658aa54b5014fa7.webp)
 
 使用[stackplz](https://github.com/SeeFlowerX/stackplz)断点，可以发现正常移动视角时，堆栈情况如hit_count:4，而开枪时则hit_count:3的情况，对比两种情况，因为两种情况都要进入#00所在的函数，因此不好patch。通过frida replace置空#01所在函数，可以发现无法正常开枪，因此该函数与开枪有关系，在这之前也不能动。因此只能对#01所在的函数跳转`BLR`patch成`NOP`，阻止其修改ControlRotation，即可修复。
 
-![image-20250329193238453](https://img.0a0.moe/od/01tklsjzdrhvg635zeijczsghik3ptjvaz)
+![image-20250329193238453](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/22c61a021b5beba63bcc35a881617a2d1b832997b41a9890bd9e0e590602b703.webp)
 
 ## 异常点5：子弹乱飞
 
@@ -132,23 +131,23 @@ function writeGunOffset(actorAddr, x, y, z){
 writeGunOffset(actorAddrs["FirstPersonCharacter_C"], 0, 0, 20);
 ```
 
-![image-20250329193930047](https://img.0a0.moe/od/01tklsjzamori4kxlovjhkmacgrm7hkguv)
+![image-20250329193930047](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/e1b004faf4302a50ea1b6043251416572fe9b372e19ca06ee69fee3a686361eb.webp)
 
 在射击函数中，也就是前面自瞄修复的下面，可以看到0x670FBAC的函数中有两个rand函数。将其patch成固定值后，此处我patch成0x7fffff(0xffffff/2)后运行发现小球能够以相对稳定的角度射出，说明此处随机数确实与前面小球左右横跳的情况有关
 
-![image-20250330005044597](https://img.0a0.moe/od/01tklsjzc6tv2xmstdrbc22zggwwfu6stk)
+![image-20250330005044597](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/c509b1bc64a49b1835c3539c9f0adcb29982213e64b0f4a03efaeb1231f6b7da.webp)
 
 但仍未弄清楚此处计算结果与ControlRotation还会如何运算。在`0x8D2ED80`、`0x8D2E214`的函数里面，可见`ActorSpawning`的字符串以及对`UObject`列表等进行修改，此处应该生成了Projectile。本人猜想是需要在这附近对生成子弹的角度修改为ControlRotation，使小球恢复向玩家前方射出，参考UE官方示例代码https://dev.epicgames.com/documentation/zh-cn/unreal-engine/3---implementing-projectiles?application_version=4.27#%E5%AE%9E%E7%8E%B0%E5%8F%91%E5%B0%84%E5%87%BD%E6%95%B0
 
-![image-20250330112923633](https://img.0a0.moe/od/01tklsjzb46qukffzmsnf3bq3sxqgcp2vg)
+![image-20250330112923633](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/2cf6c86f32f27959ce0c00143bead4225d965819e4cbe724a48c1baaa6eefeb0.webp)
 
 对应一下
 
-![image-20250330120524114](https://img.0a0.moe/od/01tklsjzdnhs6z7og3hzhkgbeoeanxhbxo)
+![image-20250330120524114](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/a3aa8781b7c93db47b478eb56c3dcc0fac8811393b3b4a3797f1bce93cfa0f53.webp)
 
 刚好符合SpawnActor的构造，1个指针+4个参数，使用脚本hook一下第3个参数
 
-![image-20250330120647854](https://img.0a0.moe/od/01tklsjzg77dqzk7yy3zhifuqrkmpwc3wx)
+![image-20250330120647854](https://img.0a0.moe/blog/2025/03/29/2025-%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%AB%9E%E8%B5%9B-%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B9%E5%90%91-%E5%88%9D%E8%B5%9B/73fc097d3198a15ea6c656df048856fddf43fb8d137191d8d939c97b2b82d553.webp)
 
 上面是传入该函数的Rotation，下面是PlayerController的Rotation，可见刚好写反（此处调试时已把rand patch掉），把传参改回来就行
 

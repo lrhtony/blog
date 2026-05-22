@@ -6,7 +6,6 @@ tags:
   - CTF
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzbx3vmxhujafjazoxpahcloib3v
 ---
 
 > 封面：[pixiv@海月ヨル](https://www.pixiv.net/artworks/118919349)
@@ -71,7 +70,7 @@ read_node(start_addr)
 
 验证
 
-![image-20240521164545050](https://img.0a0.moe/od/01tklsjzapjmr2pg5qgzhley23xklarv3d)
+![image-20240521164545050](https://img.0a0.moe/blog/2024/05/21/2024-%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD%E5%88%9B%E6%96%B0%E5%A4%A7%E8%B5%9B%E6%95%B0%E5%AD%97%E5%AE%89%E5%85%A8%E8%B5%9B%E9%81%93-%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AEwp/4b207dc80ebe9d120eaeaf00bf965fb9fa3138bb026d2d9b087ad3e53ca7800d.webp)
 
 该题的难点主要在于前面巨大的生成迷宫代码，给逆向及动调都带来了麻烦。不过耐心点还是可以动调看汇编看出原理的。算不上特别难，但需要有阅读汇编的能力和足够的耐心。
 

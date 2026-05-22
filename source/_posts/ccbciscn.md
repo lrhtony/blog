@@ -6,7 +6,6 @@ tags:
   - CTF
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzf6pcjdha2fxvb2krlvxwlhgk2e
 ---
 
 Misc好玩嘿嘿，逆向真不熟（
@@ -17,7 +16,7 @@ Misc好玩嘿嘿，逆向真不熟（
 
 使用Cutter查看汇编，可以得到
 
-![img](https://img.0a0.moe/od/01tklsjzhlyfi7qmgbsjclwoeq3xxzy7hx)
+![image-20260522222256366](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/bcecea996545b94db468a0527340dc014fdf4b54b295f661038e723b08d63d84.webp)
 
 根据符号名猜测，对data区0x8AA0的42bytes数据使用testkey作为key进行RC4解密，得到数据。通过观测解密后的数据，发现末尾出现}，经过汇编代码及反复测试，发现异或后一位数据即可还原flag
 
@@ -35,7 +34,7 @@ print(''.join([chr(x) for x in a]))
 
 ida观察发现程序运行需要传入字符串，然后输出对应长度的hex加密后字符串。通过fuzz发现每位的字符不会影响到其他字符的状态，故可以逐位爆破，此处flag长度较短，因此采用了手动爆破
 
-![img](https://img.0a0.moe/od/01tklsjzc2yvctwnglgfdkiw6tnvmgoet2)
+![image-20260522222312250](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/87b91fec89d2186239d49a7e17c1de24edf913334ecbe054e2cee8de9b2e865b.webp)
 
 ### rand0m
 
@@ -49,7 +48,7 @@ ida观察发现程序运行需要传入字符串，然后输出对应长度的he
 
 排查http流量，发现
 
-![img](https://img.0a0.moe/od/01tklsjze4ixxvwgf4ybhj7dwearjsn53h)
+![image-20260522222326055](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/7f9ef129a99bb2eb73f00a33ba2bfb9f36e53c60dc7a56e36d45fd36a7649831.webp)
 
 对Referer解base64得flag{6C2E38DA-D8E4-8D84-4A4F-E2ABD07A1F3A}
 
@@ -61,7 +60,7 @@ ida观察发现程序运行需要传入字符串，然后输出对应长度的he
 
 对.nginx可疑隐藏文件分析，发现
 
-![img](https://img.0a0.moe/od/01tklsjzef7fe27o4lp5gkidxdrtq52ugb)
+![image-20260522222342361](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/de9a7476cb58ae747db75b4e9e4a605e96940d3c7126bca7af81bdb5913887ee.webp)
 
 提交ip
 
@@ -71,7 +70,7 @@ ida观察发现程序运行需要传入字符串，然后输出对应长度的he
 
 ### zeroshell_5
 
-![img](https://img.0a0.moe/od/01tklsjzfzytuge6cq5rb3ajfzzwde63yu)
+![image-20260522222357247](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/90003ce8b587d06dcb0f4fb34ccfd48c09108a46281d161c2ca8af0c7a5c0917.webp)
 
 在刚刚ip下面可发现字符串，查找引用即可确定为密钥
 
@@ -79,7 +78,7 @@ ida观察发现程序运行需要传入字符串，然后输出对应长度的he
 
 使用vscode对/var/register/system文件夹下搜索恶意文件名，找到
 
-![img](https://img.0a0.moe/od/01tklsjzdbfxr3tn33mfgzse6uufoowqbd)
+![image-20260522222410541](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/422e540199a26832738a6ba99e79513c63a11f008b377ff50fb2c41ae7fa8656.webp)
 
 即/var/register/system/startup/scripts/nat/File
 
@@ -87,11 +86,11 @@ ida观察发现程序运行需要传入字符串，然后输出对应长度的he
 
 使用CurrPorts发现外联
 
-![img](https://img.0a0.moe/od/01tklsjzbmibsuqs6nwzdiclrdkpumujm4)
+![image-20260522222423372](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/b2f066768e913c6a019dda04252bc457a02d9c2323d5caf65a22418805e3a4dd.webp)
 
 看不到域名，查找hosts文件
 
-![img](https://img.0a0.moe/od/01tklsjzcmtomvrvxr25e3ynjtv5f2r4bt)
+![image-20260522222435468](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/9ddcbd58955a53d46ac2eb35d5baa43deba61078b8cbf0205e2a787500f80315.webp)
 
 miscsecure.com:192.168.116.130:443
 
@@ -99,17 +98,17 @@ miscsecure.com:192.168.116.130:443
 
 计算机管理计划任务里面发现flag
 
-![img](https://img.0a0.moe/od/01tklsjzaumjmo7ipq5fhllrjf7d5cm3j7)
+![image-20260522222447249](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/1556fde8cb5a0b1117fee52f2788d4bb0e5372e9cbb273f9e995c531a97d5d9c.webp)
 
-![img](https://img.0a0.moe/od/01tklsjzc6jspu2knp5ze3gfqxs2v3xoif)
+![image-20260522222505791](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/fe70268b527600eb3acf8e522d990036abc74395244cc0644813e028ad53f8af.webp)
 
 ### WinFT_5（赛后出）
 
 筛选http请求，发现client里面出现压缩包，但没东西。然后下面的server发现flag.txt
 
-![image-20241218021610285](https://img.0a0.moe/od/01tklsjzeelfbek3242zake4pnbxbd66ey)
+![image-20241218021610285](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/7286d4c909f347a84fa78e81df463702315f8512127262864514574064d9a3e6.webp)
 
-![image-20241218021727032](https://img.0a0.moe/od/01tklsjzefqjsff3rmzzhko6awdgu4lybi)
+![image-20241218021727032](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/fb99c15a7cc33045d672bad8ff9e634669c99a6e031e2453b058573adb5331cf.webp)
 
 提取出来，使用7zip打开绕过完整性报错，末尾注释解base64得到`时间线关联非常重要`，作为压缩文件密码解密即可得到`flag{a1b2c3d4e5f67890abcdef1234567890-2f4d90a1b7c8e2349d3f56e0a9b01b8a-CBC}`
 
@@ -117,21 +116,21 @@ miscsecure.com:192.168.116.130:443
 
 综合firewall几个表，在tcp-export中发现最早外联时间为 2024/11/09 16:22:42 
 
-![img](https://img.0a0.moe/od/01tklsjzc2k5xpwilbsvejiy6i5lwgaxsf)
+![image-20260522222542355](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/f94883a02989575a4a03eef54d332e9865e030d9a0767f489d7589c4f1305b2c.webp)
 
 ### Kiwi
 
 对Kiwi进行逆向
 
-![img](https://img.0a0.moe/od/01tklsjzgttjb4otgnzjb37rvs7n5n7ku3)
+![image-20260522222557335](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/cca8a2da8398c82f61026877cd9f9b03ce12b19e9e22d610849c1a122397ef90.webp)
 
 可以发现前面通过lsadump获取密钥，然后通过sub_140082974对数据加密，最后通过sub_140082774发送http://421aa90e079fa326b6494f812ad13e79.com/upload
 
 加密部分为换表base64+随机数
 
-![img](https://img.0a0.moe/od/01tklsjzh2oy7va7luuvbjl3qetfl5ssjt)
+![image-20260522222609881](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/2256aa0482991eee08234ba48440428751dd4534ce2905307adfa94968ee5896.webp)
 
-![img](https://img.0a0.moe/od/01tklsjza7rpyucionhzglielrxehyxagr)
+![image-20260522222621148](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/3804bfed29c670987e58eb1a6077be123f3943f5e169e12c0eb2f687002d231a.webp)
 
 ```C
 #include <stdio.h>
@@ -170,7 +169,7 @@ int main()
 
 使用hashcat爆破NTLM
 
-![img](https://img.0a0.moe/od/01tklsjzbmfelzt6chgbclwslgavkrdbta)
+![image-20260522222635366](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/eea01a49f25b6c9a303ff273c19413cb83090642f68b33ac9983e9f329a5cee3.webp)
 
 ### sxmisc (赛后出)
 
@@ -279,7 +278,7 @@ This is sample text data for Scootney Books, publisher 9952 in the pubs database
 
 查找update流量，发现有/update_pubinfoform.php和/updatepubinfo.php。前一个没东西，后面有一个JPEG
 
-![dump1](https://img.0a0.moe/od/01tklsjzczn72boi5nzzdjxteeqwbpl5gj)
+![dump1](https://img.0a0.moe/blog/2024/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B-ciscn-%E6%9A%A8%E7%AC%AC%E4%BA%8C%E5%B1%8A%E9%95%BF%E5%9F%8E%E6%9D%AF%E9%93%81%E4%BA%BA%E4%B8%89%E9%A1%B9%E8%B5%9B-%E9%83%A8%E5%88%86writeup/b44d91c5daa5e65208bae1fa9fed30013f2a07fcfdf3eecc0e9f8a801847c4f1.webp)
 
 找到Pontes这个用户盲注出来的数据
 

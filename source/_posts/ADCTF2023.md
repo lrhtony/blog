@@ -406,7 +406,7 @@ TEA加密，没解出来，不知道哪里错了
 
 ### Grass
 
-根据题目名以及无法直接IDA反编译可知是花指令。如图片所示，对所有相似结构的jnz跳转patch成nop，即可正常反编译。~~（晚上动态调试一步步标记才看出来）~~![flower](https://img.0a0.moe/od/01tklsjzev2z3bpenelzezsqd676j5blh6)
+根据题目名以及无法直接IDA反编译可知是花指令。如图片所示，对所有相似结构的jnz跳转patch成nop，即可正常反编译。~~（晚上动态调试一步步标记才看出来）~~![flower](https://img.0a0.moe/blog/2023/11/20/adctf-2023/da6335ea063294b895d8887c1b31e43430739bc3c4ba4e08ff3709ea1bee15c7.webp)
 
 得到一个标准的TEA加密
 
@@ -812,7 +812,7 @@ flag{another_weird_construction}
 
 ### bin_gift
 
-反编译可看到存在任意地址读写![bin_gift](https://img.0a0.moe/od/01tklsjzgh7vchdwh3xneig5iexp6vr5zb)
+反编译可看到存在任意地址读写![bin_gift](https://img.0a0.moe/blog/2023/11/20/adctf-2023/2b6dfe0d8abde7a3e81b537fab05b6fa493acd7b21fbae77d811ebea2dbff73c.webp)
 
 用LibcSearcher计算得到system地址，修改got表
 
@@ -951,7 +951,7 @@ flag{HAHAHA_you_h0v3_F0und_The_t3ue_Flag}
 
 DTMF识别：http://dialabc.com/sound/detect/index.html
 
-根据hint，所有数字拼接在一起后使用塔珀公式![tupper](https://img.0a0.moe/od/01tklsjzg7twhqptkwtfd2l4v56ptv2adn)
+根据hint，所有数字拼接在一起后使用塔珀公式![tupper](https://img.0a0.moe/blog/2023/11/20/adctf-2023/dcb568b1f26073a277bf77838c9335182545c9e539e7ff449484f8485587ed28.webp)
 
 #### flag
 

@@ -14,17 +14,17 @@ categories:
 
 上来拖入IDA，在汇编中即可看见在输入后触发异常进入SEH
 
-![image-20240323192805475](https://img.0a0.moe/od/01tklsjzdjm2w33i4nm5gzmzrlanryxq7f)
+![image-20240323192805475](https://img.0a0.moe/blog/2024/03/23/dubhectf-2024-reverse/579fa94318692f07c147b57ad8a062fa93d1d675348c85f97af25931153c0f22.webp)
 
-尝试动调，闪退，寻找反调试。这里我通过勾选进程开始时断点来逐步运行寻找，哪里结束就进去。![image-20240323194043019](https://img.0a0.moe/od/01tklsjzgcaarkkfskbng3u47gscugadre)
+尝试动调，闪退，寻找反调试。这里我通过勾选进程开始时断点来逐步运行寻找，哪里结束就进去。![image-20240323194043019](https://img.0a0.moe/blog/2024/03/23/dubhectf-2024-reverse/aaea6bbea7c840e57c9c3e903994f07fc6d8eea5d123fe1aa644a681546194cb.webp)
 
 最后发现是在地址`0x00418279`处有个`j__initterm`，查找可知该函数通过传入开始和结束两个地址，然后逐个运行其中的函数。在这个地址区间首先有`?pre_cpp_initialization@@YAXXZ`，然后后面有3个函数，多多少少都和反调试有点关系，因此我直接在外面把`j__initterm`patch掉。然后还有`0x0041B3AB`有个`IsProcessorFeaturePresent`，把下面`jnz     short loc_41B3BC`nop掉，基本上反调试就处理完了。
 
-动调跟随进入`0x4140D7`，可以发现这里代码有混淆。动调跟踪即可发现这里是将汇编每行拆开，然后跳转到下一个地方继续执行。![image-20240323235603176](https://img.0a0.moe/od/01tklsjzbcarwf5bm7srb3fwdl7nkjhf7l)
+动调跟随进入`0x4140D7`，可以发现这里代码有混淆。动调跟踪即可发现这里是将汇编每行拆开，然后跳转到下一个地方继续执行。![image-20240323235603176](https://img.0a0.moe/blog/2024/03/23/dubhectf-2024-reverse/fdd9e14d809bf086a89b4a3a4b0e325490870300a199ef53307b5c606af3db9c.webp)
 
 第一行是相应的汇编，中间三行为无用花指令，直接改成`nop`，下面为跳转，由于是`jz`和`jnz`，会导致下面不会运行的内容也被识别成代码，为了方便分析，我这里直接将其patch成`jmp`。我这里手动进行patch，工作量还行，其实应该用脚本的。
 
-patch完成后IDA可以直接构建函数同时反编译出代码![image-20240324000135955](https://img.0a0.moe/od/01tklsjzhbmydqjvuzfzbiklm3zppidoxc)
+patch完成后IDA可以直接构建函数同时反编译出代码![image-20240324000135955](https://img.0a0.moe/blog/2024/03/23/dubhectf-2024-reverse/0143a2e76de0879213848f8919ecad3d27090764207ef9b4bf7637f1e7063ef4.webp)
 
 优化一下就变成
 
@@ -79,15 +79,15 @@ int __usercall sub_4143A6@<eax>(int base_address@<ebp>)
 
 可以看出这是个XXTEA。通过动调可知输入先通过XXTEA加密了两次，然后到下面jump进去后又加密一次
 
-![image-20240324002258209](https://img.0a0.moe/od/01tklsjzfyu4sxlvkf2nhi35baobh2oztn)
+![image-20240324002258209](https://img.0a0.moe/blog/2024/03/23/dubhectf-2024-reverse/703f5d4148050e8e031aec95f677fccb87a28de4387c8ff7b06e681b6f09c4ae.webp)
 
 但是根据IDA显示的地址跟踪进去只是垃圾数据，尝试在`0x4142A7`下断点也不行，尝试在input数据那里下断点，也仅仅能断下来，并不能定位到程序运行到的地址。后来看其他队伍的wp得知这里是“天堂之门”的技术。
 
-首先是跳转地址应为`0x413F77`，这点在其他调试器里可以看到![image-20240324104003366](https://img.0a0.moe/od/01tklsjzdnqgbwyl6v7ff3taifju2dcq37)
+首先是跳转地址应为`0x413F77`，这点在其他调试器里可以看到![image-20240324104003366](https://img.0a0.moe/blog/2024/03/23/dubhectf-2024-reverse/1d9db24cdd09d5640e8e0682ee4ec903b81e0eeba8f97f0c10ed5a04ab4603e9.webp)
 
 而我们把断点设置在`0x413F77`时，也能够断下来，但由于是64位的缘故，并不能直接动调，直接分析也有错误。我们需要把这段dump下来使用64位IDA进行分析。
 
-![image-20240324104449307](https://img.0a0.moe/od/01tklsjzfjzai5oe4qybczmru4ops2qt4u)
+![image-20240324104449307](https://img.0a0.moe/blog/2024/03/23/dubhectf-2024-reverse/7cb733e473f181bf4201123fc737df276700e131c0b0718d25d88e4f62412d75.webp)
 
 经验证这是第三次加密。加密流程确定好就能写出解密脚本
 

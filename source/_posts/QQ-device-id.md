@@ -6,7 +6,6 @@ tags:
   - 风控
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjze2eby6aqo3vjejorv7pcsss4h4
 ---
 
 最近在清老手机小米10上的设备ID。想着现在Android14外部存储权限管理严格，把能看到的可能是设备id的文件和目录全部清掉，防止设备被标记（清完后我的美团半黑号确实解了）。然后就发现了在/sdcard/Android下面，每次打开QQ都会生成一个`.android_lq`的设备id文件。

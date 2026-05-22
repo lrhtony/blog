@@ -726,7 +726,7 @@ void __fastcall sub_A84(char a1[], _BYTE *a2)
 
 或许问一下AI可能会比较好
 
-<img src="https://img.0a0.moe/od/01tklsjzbuxv36udpql5dyzwzi2dmha7xa" alt="ai-base64" style="zoom:50%;" />
+![image-20260522191026057](https://img.0a0.moe/blog/2024/01/18/re%E7%BB%83%E4%B9%A0/102ab58f5a6c86a9dda18e1509153b65221312c2aabeeaeee2407869edd6768a.webp)
 
 ## normal2
 

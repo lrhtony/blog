@@ -287,15 +287,15 @@ for i in range(6):
 
 说是pwn不如说是逆向
 
-main函数里有一个login，login成功后会读取`./flag`并输出![image-20240407002519538](https://img.0a0.moe/od/01tklsjzagjiddf6tmlrb33ikbuffbs37v)
+main函数里有一个login，login成功后会读取`./flag`并输出![image-20240407002519538](https://img.0a0.moe/blog/2024/04/07/geekctf-2024/12a23171ac223eff95045c430d4b91401c882a9f2b1de53cbcc50364ed2e71d3.webp)
 
-在`sub_12E9`显而易见变表base64![image-20240407002913156](https://img.0a0.moe/od/01tklsjzas55opmvvjingjvtqxrv7b37yp)
+在`sub_12E9`显而易见变表base64![image-20240407002913156](https://img.0a0.moe/blog/2024/04/07/geekctf-2024/eb70e905f7e427fc45fa282c00d6fcd1063cc0c9409c08069ee041a1dfa537ee.webp)
 
 找到下面比较的字符串，发现并不是base64样式，查找引用找到`sub_1555`在程序初始化时调用，将每个字符的值+1
 
-![image-20240407003814440](https://img.0a0.moe/od/01tklsjzcrhkrd3pfqzfckltq76gc6oqea)
+![image-20240407003814440](https://img.0a0.moe/blog/2024/04/07/geekctf-2024/1c2088e09bba8cec0101680cf273ede3b44b36220cd3009d7a389e2547ee9431.webp)
 
-因此可以得到字符串`J8ITC7oaC7ofwTEbACM9zD4mC7oayqY9C7o9Kd==`，通过变表`ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba9876543210+/`解得密码`CTF_is_interesting_isn0t_it?`，连接服务器得到flag![image-20240407004036713](https://img.0a0.moe/od/01tklsjzgqdl34ekqpznciaquy25aut7s3)
+因此可以得到字符串`J8ITC7oaC7ofwTEbACM9zD4mC7oayqY9C7o9Kd==`，通过变表`ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba9876543210+/`解得密码`CTF_is_interesting_isn0t_it?`，连接服务器得到flag![image-20240407004036713](https://img.0a0.moe/blog/2024/04/07/geekctf-2024/7c70294a30aa2b673838262f47366acc84402dc358a98db67ea5880b637d59e1.webp)
 
 ## MISC
 
@@ -303,6 +303,6 @@ main函数里有一个login，login成功后会读取`./flag`并输出![image-20
 
 这道题有点投毒内味了
 
-刚开始以为是git，没找到。仔细审阅文件可以发现`schedule-ics-exporter.py`文件最末端有一串代码![image-20240407013116501](https://img.0a0.moe/od/01tklsjzfrd4twpiw2mjf34nsplen2fcqn)
+刚开始以为是git，没找到。仔细审阅文件可以发现`schedule-ics-exporter.py`文件最末端有一串代码![image-20240407013116501](https://img.0a0.moe/blog/2024/04/07/geekctf-2024/58c2b86e786946a4ad14ffdefc970f6203bc334caaefffdf67e97f9b97d22e30.webp)
 
 gz连续解压后得到文件，拖到最末端可得到`flag{760671da3ca23cae060262190c01e575873c72e6}`

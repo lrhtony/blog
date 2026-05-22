@@ -6,7 +6,6 @@ tags:
   - CTF
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzccwbxq2awmt5dz7pmi3tqn3yan
 ---
 
 > 封面：[X@nyancodon7](https://x.com/nyancodon7/status/1860615439602303373)
@@ -23,23 +22,23 @@ cover: https://img.0a0.moe/od/01tklsjzccwbxq2awmt5dz7pmi3tqn3yan
 
 刚开始想直接爆md5，忽然想起来还有段流量。查看流量可以直接找到`WangDingCUPKEY!!`
 
-![image-20241126212631576](https://img.0a0.moe/od/01tklsjza4u5i2voebhng2xfjpqmsy3fpd)
+![image-20241126212631576](https://img.0a0.moe/blog/2024/11/26/2024-%E7%BD%91%E9%BC%8E%E6%9D%AF%E5%86%B3%E8%B5%9B-%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE-writeup/df566c30a30ee2521bde852beb79a759056267c80846fc71913687b17e02d8b8.webp)
 
 然后是返回完right下面的RC4解密，非常标准，注意还有个异或
 
-![屏幕截图 2024-11-23 102203](https://img.0a0.moe/od/01tklsjzfo426oihu3lbez24a3fmasxvqj)
+![屏幕截图 2024-11-23 102203](https://img.0a0.moe/blog/2024/11/26/2024-%E7%BD%91%E9%BC%8E%E6%9D%AF%E5%86%B3%E8%B5%9B-%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE-writeup/4da8398e91293ca5ff817576a4f899e9e90d8d9897440dbe31e0b2dea57c3335.webp)
 
 得到flag
 
 这道题其实如果有libcrypto.so.1.1运行库还能做得快一些。回去有网后整了个lib得到password后直接运行ser和cli输入即可得到
 
-![image-20241126212945284](https://img.0a0.moe/od/01tklsjzdtthusd52hfbei4d5paxnmiiru)
+![image-20241126212945284](https://img.0a0.moe/blog/2024/11/26/2024-%E7%BD%91%E9%BC%8E%E6%9D%AF%E5%86%B3%E8%B5%9B-%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE-writeup/71487d21567f3522a7c345d134bee810404b5e7f88c6b99ed98e4fccc2109d55.webp)
 
 ### 5G 网络隐私保护 - Get_supi
 
 这类标准的题目做法一般都是看文档慢慢找就能做出来，不过这题看流量就能做出来。翻一下后面的流量就能找到supi的数据
 
-![image-20241126213337136](https://img.0a0.moe/od/01tklsjzgoh2fudurabvazlvi72wvr4ou2)
+![image-20241126213337136](https://img.0a0.moe/blog/2024/11/26/2024-%E7%BD%91%E9%BC%8E%E6%9D%AF%E5%86%B3%E8%B5%9B-%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE-writeup/2de7f4816d6d9adc70098f8c7eb0c653386abd2774e9c1f03210790fe3e601f2.webp)
 
 测试把数字交上去就行
 
@@ -49,7 +48,7 @@ cover: https://img.0a0.moe/od/01tklsjzccwbxq2awmt5dz7pmi3tqn3yan
 
 这里看硬盘镜像，先使用AccessData FTK Imager提取出所有文件，不要直接挂载，有些文件会看不到。然后到Windows\System32\winevt\Logs下面找Windows Defender的日志文件查看id就行
 
-![image-20241127002251088](https://img.0a0.moe/od/01tklsjza326ecjpbhbnfyipq3eu7mcbqj)
+![image-20241127002251088](https://img.0a0.moe/blog/2024/11/26/2024-%E7%BD%91%E9%BC%8E%E6%9D%AF%E5%86%B3%E8%B5%9B-%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE-writeup/45b7acc3d8498a767b47f77bc07b1c76673aec55090d8a2b5dc85707b1611bc5.webp)
 
 ### 安全运营挑战赛-应急响应-07 
 
@@ -63,7 +62,7 @@ cover: https://img.0a0.moe/od/01tklsjzccwbxq2awmt5dz7pmi3tqn3yan
 
 D盾扫一下找到`LKT/images/173016881275.php`
 
-![image-20241127004004979](https://img.0a0.moe/od/01tklsjzavsljvypie5zhjajqcjexhy4us)
+![image-20241127004004979](https://img.0a0.moe/blog/2024/11/26/2024-%E7%BD%91%E9%BC%8E%E6%9D%AF%E5%86%B3%E8%B5%9B-%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE-writeup/cb7ad18647927e65793f63f49136586aaf82b176c62829b8b4d479808ff4c96b.webp)
 
 eval执行，直接把images目录下php全清掉
 
@@ -336,7 +335,7 @@ if __name__ == '__main__':
 # 35e887ec0a49d315f0bb96da9146a90e
 ```
 
-![屏幕截图 2024-11-26 002941](https://img.0a0.moe/od/01tklsjzbf5mkrua4goffiolzxwoibrhbf)
+![屏幕截图 2024-11-26 002941](https://img.0a0.moe/blog/2024/11/26/2024-%E7%BD%91%E9%BC%8E%E6%9D%AF%E5%86%B3%E8%B5%9B-%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE-writeup/24d90724d57f315534dec8144a4b24f628e13c3d11ed1c964bf49fa8f2b1ea53.webp)
 
 ### financeapk
 
@@ -346,7 +345,7 @@ if __name__ == '__main__':
 
 根据流量找到调用的setLoginPost这个native函数，可以看到里面先有一个魔改XXTEA加密然后是b64encode，先解base64然后再逆XXTEA。key可以通过frida hook XXTEA加密函数得到
 
-![image-20241126234912813](https://img.0a0.moe/od/01tklsjzfr2copblqbcjdk23l5axutbxnm)
+![image-20241126234912813](https://img.0a0.moe/blog/2024/11/26/2024-%E7%BD%91%E9%BC%8E%E6%9D%AF%E5%86%B3%E8%B5%9B-%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE-writeup/b8dfd5488a0e63bae11c5fc71d4bbee1dfca2b6a738d431852ef459c9e4a4e77.webp)
 
 或者查看逻辑，由
 
@@ -441,4 +440,4 @@ username=admin&password=admin1234ô
 
 经zeropeach提醒，拿去解一下Shiro rememberMe就行了
 
-![image-20241128232555325](https://img.0a0.moe/od/01tklsjza2ke7fzrdrjzdlwt7noynovlhr)
+![image-20241128232555325](https://img.0a0.moe/blog/2024/11/26/2024-%E7%BD%91%E9%BC%8E%E6%9D%AF%E5%86%B3%E8%B5%9B-%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE-writeup/8dd158e8dfbed892284a9ba493dbeef316041350d88dbb883173bd4e4a60b2c2.webp)

@@ -6,7 +6,6 @@ tags:
   - CTF
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzb5yahxxbiaijbypuzkz2lqal6p
 ---
 
 > 封面：[X@りょうたん](https://x.com/ryoutanf)

@@ -6,7 +6,6 @@ tags:
   - 刷机
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzd77ggapwzelze2xybbi3zz5dlb 
 ---
 
 > 封面：[Pixiv@わろじく](https://www.pixiv.net/artworks/119295833)
@@ -28,7 +27,7 @@ repo init -u https://mirrors.tuna.tsinghua.edu.cn/git/lineageOS/LineageOS/androi
 
 然后参考清华源的文档https://mirrors.tuna.tsinghua.edu.cn/help/lineageOS/修改 xml 文件
 
-![mirrors](https://img.0a0.moe/od/01tklsjzfnohcfha6lprd2so3mpn2t2ec3)
+![mirrors](https://img.0a0.moe/blog/2025/12/15/%E7%BB%99-pixel6-%E6%9E%84%E5%BB%BA-lineageos-21-0/bc4c627a6a649aba32d08d66e933935005e37da7a73c2aad7b23d05617cd6c9c.webp)
 
 然后同步代码
 
@@ -51,7 +50,7 @@ breakfast oriole
 
 这个步骤貌似没走镜像，建议开着代理。然后就会收到报错
 
-![breakfast](https://img.0a0.moe/od/01tklsjzcsm2uk72v72vhy6z7xc6libgvu)
+![breakfast](https://img.0a0.moe/blog/2025/12/15/%E7%BB%99-pixel6-%E6%9E%84%E5%BB%BA-lineageos-21-0/09a9c69c90ce4e4809fce7f2465d055a39eacc6719386099ef7e292df3205544.webp)
 
 这时候你需要一台运行着 LineageOS 的手机，或者找 LineageOS 刷机包解出来。很遗憾的是，LineageOS 不对旧版本刷机包提供存档，只能找别人收集的 https://lineage-archive.timschumi.net/#oriole。我这里用的是`lineage-21.0-20241223-nightly-oriole-signed.zip`
 
@@ -69,7 +68,7 @@ breakfast oriole
 
 然后包出问题的
 
-![error1](https://img.0a0.moe/od/01tklsjzh5e7j6kt2byzaj4mfygwemyhn3)
+![error1](https://img.0a0.moe/blog/2025/12/15/%E7%BB%99-pixel6-%E6%9E%84%E5%BB%BA-lineageos-21-0/36566eac1ff2dcc5fb516feec922f4427cabc39f4abe2b6c7049b3c58f5d9156.webp)
 
 解出来的包并没有`bootloader-*.img`的文件，搜索发现`abl.img`、`bl1.img`、`bl2.img`等已经是解出来的。查看`extract_files.sh`文件，可以发现里面调用了`prepare-firmware.sh`，里面调用 fbpacktool 解包 bootloader，因此可以直接把这行注释掉。文件路径如下
 
@@ -77,7 +76,7 @@ breakfast oriole
 ~/android/lineage/lineage/scripts/pixel/prepare-firmware.sh
 ```
 
-![fix1](https://img.0a0.moe/od/01tklsjzbxyvwhoikm35fj6d5gzq2n3tin)
+![fix1](https://img.0a0.moe/blog/2025/12/15/%E7%BB%99-pixel6-%E6%9E%84%E5%BB%BA-lineageos-21-0/f6e8095a703a01e167b1e691a260111055325b6b70b126670042436f5669d39f.webp)
 
 重新运行
 
@@ -103,7 +102,7 @@ brunch oriole
 
 当然不会这么顺利
 
-![error2](https://img.0a0.moe/od/01tklsjzbpivt25fkkqrfldkh4ecxuesp5)
+![error2](https://img.0a0.moe/blog/2025/12/15/%E7%BB%99-pixel6-%E6%9E%84%E5%BB%BA-lineageos-21-0/b08193acee8d1520260424b4a2da1629f0cf337755e74b76c1ec39f1be30d85d.webp)
 
 发生了些冲突
 
@@ -145,9 +144,9 @@ brunch oriole
 
 我配置 24G RAM + 24G SWAP，仍然有爆内存的情况
 
-![OOM1](https://img.0a0.moe/od/01tklsjzaubrkrgdpvgfg3py3b4lphzjv3)
+![OOM1](https://img.0a0.moe/blog/2025/12/15/%E7%BB%99-pixel6-%E6%9E%84%E5%BB%BA-lineageos-21-0/5b3b8b340bdcc16ad8b3623aa94ab6d924f92cf74ebfb7118f7261a6a613dfa0.webp)
 
-![OOM2](https://img.0a0.moe/od/01tklsjzguenjvm6xqpbazvzv2kh322ezf)
+![OOM2](https://img.0a0.moe/blog/2025/12/15/%E7%BB%99-pixel6-%E6%9E%84%E5%BB%BA-lineageos-21-0/0b6c550cc5aafeef6a7b11f307bf6be39ad132ffde2f5f4a3b1f3257079a9e4b.webp)
 
 后面修改成 24 + 48 终于没爆了，推荐 64GB 内存编译
 

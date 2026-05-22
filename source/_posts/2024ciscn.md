@@ -6,7 +6,6 @@ tags:
   - CTF
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzeuadpiikx2enhy53bbtwifp7mt
 ---
 
 > 封面：[X@ryoutanf](https://x.com/ryoutanf/status/1630775568148074496)
@@ -19,7 +18,7 @@ cover: https://img.0a0.moe/od/01tklsjzeuadpiikx2enhy53bbtwifp7mt
 
 ### 火锅链观光打卡
 
-连接钱包，答题，兑换NFT即可获得![img](https://img.0a0.moe/od/01tklsjzer6uxtkad3wzgy3c2hrbwatazm)
+连接钱包，答题，兑换NFT即可获得
 
 后面想用blockchain browser通过rpc去查看链上记录，好像不行
 
@@ -44,11 +43,11 @@ for i in range(80, 120):
     plt.show()
 ```
 
-![image-20240520012016582](https://img.0a0.moe/od/01tklsjzbs5s3ylawmxzd3youjmqgnfj2n)
+![image-20240520012016582](https://img.0a0.moe/blog/2024/05/20/2024-ciscn-%E5%88%9D%E8%B5%9B/5f8f509f603a842d37b84a6bb10be194d0460409a7ed8e0bbe4a27c4f558bc65.webp)
 
-![image-20240520012024713](https://img.0a0.moe/od/01tklsjzacfz5g4zjzpjf26jlaixrf6i4f)
+![image-20240520012024713](https://img.0a0.moe/blog/2024/05/20/2024-ciscn-%E5%88%9D%E8%B5%9B/9834eb35e74bb3447283541aa2e15703b4a43d793ca9da9849ec7622bb71deb0.webp)
 
-![image-20240520012032452](https://img.0a0.moe/od/01tklsjzf5mrmdqp4zkncig3r6ah4f5tch)
+![image-20240520012032452](https://img.0a0.moe/blog/2024/05/20/2024-ciscn-%E5%88%9D%E8%B5%9B/c2ece622b6ffbe46d14f87292f3fac32be169896d5dd806ec990b5998222fc32.webp)
 
 这样一来就能明显看出该位密码是c，循环此步骤最后得到`flag{_ciscn_2024_}`
 
@@ -58,7 +57,7 @@ for i in range(80, 120):
 
 文件是IDA逆向后得到的汇编代码。这里偷了个懒，直接丢给ChatGPT，也算是体验了GPT-4o的强大
 
-![image-20240520012651462](https://img.0a0.moe/od/01tklsjzd7wl6mihkc4jgyiqmwbna4zpcr)
+![image-20240520012651462](https://img.0a0.moe/blog/2024/05/20/2024-ciscn-%E5%88%9D%E8%B5%9B/c849c8ef8ef0b306a22d9f849f834680ebfd3982c7c20f6672cf82061f7259e0.webp)
 
 ```python
 data = [0x1fd7, 0x21b7, 0x1e47, 0x2027, 0x26e7, 0x10d7, 0x1127, 0x2007, 0x11c7, 0x1e47, 0x1017, 0x1017, 0x11f7, 0x2007, 0x1037, 0x1107, 0x1f17, 0x10d7, 0x1017, 0x1017, 0x1f67, 0x1017, 0x11c7, 0x11c7, 0x1017, 0x1fd7, 0x1f17, 0x1107, 0x0f47, 0x1127, 0x1037, 0x1e47, 0x1037, 0x1fd7, 0x1107, 0x1fd7, 0x1107, 0x2787]
@@ -141,9 +140,9 @@ int __fastcall Java_com_example_re11113_jni_getkey(int a1)
 }
 ```
 
-![屏幕截图 2024-05-19 163919](https://img.0a0.moe/od/01tklsjzdye4l5psib6vdittea36cqmn35)
+![屏幕截图 2024-05-19 163919](https://img.0a0.moe/blog/2024/05/20/2024-ciscn-%E5%88%9D%E8%B5%9B/91a28eb2156abd3932c69a62ffbbb42bf0c2b7f79c5f919ad209f172371a0435.webp)
 
-![屏幕截图 2024-05-19 163942](https://img.0a0.moe/od/01tklsjza2w2zex7eld5gjx3cf4ftszdp4)
+![屏幕截图 2024-05-19 163942](https://img.0a0.moe/blog/2024/05/20/2024-ciscn-%E5%88%9D%E8%B5%9B/47e3b89c6b474a73c70e5c6749a59d1df22da0a84aacd3fd0347e71431b779f4.webp)
 
 因此通过iv:`Wf3DLups`,key:`A8UdWaeq`解`JqslHrdvtgJrRs2QAp+FEVdwRPNLswrnykD/sZMivmjGRKUMVIC/rw==`得`188cba3a5c0fbb2250b5a2e590c391ce`
 

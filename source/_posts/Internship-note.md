@@ -23,4 +23,4 @@ categories:
 
 不得不说大厂福利真是好。各种小零食纸巾外设节日礼品确实多，8月还有1个月的免费雪糕。因为学校课程安排的原因不得已回学校了😭
 
-![PXL_20250930_101205339](https://img.0a0.moe/od/01tklsjzgmn2zvgqkoyzhjwq744q26awpa)
+![PXL_20250930_101205339](https://img.0a0.moe/blog/2025/08/04/%E5%AE%9E%E4%B9%A0%E5%B0%8F%E8%AE%B0/8500df7b05a1498474a3e8c5edfb286b70369ed567c2632376423dcfe70e0cf2.webp)

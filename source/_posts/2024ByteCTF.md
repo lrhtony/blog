@@ -6,7 +6,6 @@ tags:
   - CTF
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzgbdnstmw5wxjbyknn4nwrijxuj
 ---
 
 大家都好有实力{{'{'}}{{'{'}}(>_<){{'}'}}{{'}'}}，就只做出babyapk
@@ -64,9 +63,9 @@ Interceptor.attach(addr, {
 
 打印出传入参数
 
-![image-20240924231927466](https://img.0a0.moe/od/01tklsjzf3el2raugt7rek2mrgasaxf7js)
+![image-20240924231927466](https://img.0a0.moe/blog/2024/09/22/2024-bytectf-reverse-babyapk/72303224cd54fa2b22880ef62dd2aa3e2faf089d33024df2d3b8a06c873cbba1.webp)
 
-可见正是传入的flag中间部分。对该函数使用IDA进行动调，可以发现上面部分没用（可能是校验是否是uuid格式？），加密主要是下面部分![image-20240924232115145](https://img.0a0.moe/od/01tklsjzb2s5hd5vqq7bbi3pwui7gfreh7)
+可见正是传入的flag中间部分。对该函数使用IDA进行动调，可以发现上面部分没用（可能是校验是否是uuid格式？），加密主要是下面部分![image-20240924232115145](https://img.0a0.moe/blog/2024/09/22/2024-bytectf-reverse-babyapk/a5358f5c7df96bb217fc46b77d2419974424fc182ce53b2e42ea18283d16ce34.webp)
 
 然后对这块部分写脚本即可得到flag。解方程本应用z3来解，但不知为何解不出，最后直接暴力跑了
 
@@ -126,7 +125,7 @@ int main()
 
 得到`32e750c8fb214562af22973fb5176b9c`，转成flag格式`ByteCTF{32e750c8-fb21-4562-af22-973fb5176b9c}`
 
-<img src="https://img.0a0.moe/od/01tklsjzf3rt2n6ez3hjdyngbdenh3ro24" alt="d5989def95feb7e40ae3f6ae4d4a896" style="zoom:50%;" />
+<img src="https://img.0a0.moe/blog/2024/09/22/2024-bytectf-reverse-babyapk/2f94d99944b32ffd1a0275ed3970f055b8b0a629c85802c2a9925fd7dc134d28.webp" alt="image-20260522211101335" style="zoom:50%;" />
 
 ## 复盘
 
@@ -134,12 +133,12 @@ int main()
 
 看了一下其他队伍的wp，有通过Frida报错爆出调用链的(Nepnep)
 
-![image-20240924235258722](https://img.0a0.moe/od/01tklsjzbnnyhm27nwb5gyjwv73hl5vy74)
+![image-20240924235258722](https://img.0a0.moe/blog/2024/09/22/2024-bytectf-reverse-babyapk/dfad53ab92e1a7cf8ffb6cf3420264bd7ab85fedbb7ed2a807d78aa5177a6c29.webp)
 
 有通过[flutter_rust_bridge](https://pub.dev/packages/flutter_rust_bridge)代码分析的(W&M)
 
-![image-20240924235654423](https://img.0a0.moe/od/01tklsjzhydmaeaqobzjgj7nt5tqmyvita)
+![image-20240924235654423](https://img.0a0.moe/blog/2024/09/22/2024-bytectf-reverse-babyapk/d608a0e7f5bb2b3bda6130106b67fc04608d89704ffe784f8e9d8f07e78b8ebb.webp)
 
 还有直接从libapp.so直接分析的(Arr3stY0u)
 
-![image-20240925001813090](https://img.0a0.moe/od/01tklsjzegnwti2ysbyjfieeosufja7owe)
+![image-20240925001813090](https://img.0a0.moe/blog/2024/09/22/2024-bytectf-reverse-babyapk/7d84144cd1903156635be367595df6e5d9436f1339424ec15bbedf9f7f58cf81.webp)

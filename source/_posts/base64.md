@@ -12,13 +12,13 @@ categories:
 
 ## 起因
 
-安洵杯re的“感觉有点简单”中有个base64，除了换表以外，连算法都进行了一定的魔改![question](https://img.0a0.moe/od/01tklsjzdlwx56ku4xgbdlt3ly6kdm7ln3)
+安洵杯re的“感觉有点简单”中有个base64，除了换表以外，连算法都进行了一定的魔改![question](https://img.0a0.moe/blog/2023/12/24/%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BA%86%E8%A7%A3base64/7b3213e0547afb4d0d26aa54847a94f4e3424ba6d5e73341b81f21651dd7a8c0.webp)
 
 第一眼看下去没啥问题，但如果熟悉base64算法的话可以发现中间部分被魔改过
 
 ## 基本的base64
 
-根据维基百科所描述的算法![base64_algorithm](https://img.0a0.moe/od/01tklsjzbnwvl3esh7fjbixltnfku4y3ur)
+根据维基百科所描述的算法![base64_algorithm](https://img.0a0.moe/blog/2023/12/24/%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BA%86%E8%A7%A3base64/55d39e681e3aaa1932963ba7c69b2a8020bfccaf45045fa0b81c944834e8196f.webp)
 
 可以写出下面的代码
 
@@ -80,4 +80,4 @@ for i in range(0, len(str1), 4):
 
 ## 拓展
 
-其他的base64逆向后伪代码![other_base64](https://img.0a0.moe/od/01tklsjzg2yf3qsk2cj5hkcogkyoq7zhj7)
+其他的base64逆向后伪代码![other_base64](https://img.0a0.moe/blog/2023/12/24/%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BA%86%E8%A7%A3base64/071549e030c88875ced7552d90e8e39fad85cf94254a9d271523ea29a4626d4b.webp)

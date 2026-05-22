@@ -36,7 +36,7 @@ void start()
 }
 ```
 
-于是乎我们可以在循环后打一个断点，逐步调试，观察情况![ida-debugger](https://img.0a0.moe/od/01tklsjzhf2odlypq6xvejclvdyymiojvn)
+于是乎我们可以在循环后打一个断点，逐步调试，观察情况![ida-debugger](https://img.0a0.moe/blog/2023/12/28/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-re150/c4fee3a1c28582f5cc595d6b7a0d88a18331a00936d60d6645e1602842e18952.webp)
 
 可以发现代码已经解密
 

@@ -6,7 +6,6 @@ tags:
   - CTF
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzh6fosue5iz7rfjtukox3yeodxq
 ---
 
 > 封面：[X@ningen_mame](https://x.com/ningen_mame/status/1855187323832750153)
@@ -222,6 +221,6 @@ main函数有花指令patch掉即可。
 
 base64后有个异或
 
-![img](https://img.0a0.moe/od/01tklsjzczjlsggbtvznajjl6u6vav5ujj)
+![img](https://img.0a0.moe/blog/2024/11/09/2024-%E9%B9%8F%E5%9F%8E%E6%9D%AF-reverse-writeup/1da3b303db112c62f7bbc5867231bad213eec6791ccd847b24fdff0bcdfb079b.webp)
 
-![img](https://img.0a0.moe/od/01tklsjzc5luwuabvnn5fjbggnsdvrjl6t)
+![img](https://img.0a0.moe/blog/2024/11/09/2024-%E9%B9%8F%E5%9F%8E%E6%9D%AF-reverse-writeup/ef1cbe777eb0ec26f5d320ef3a137094663c8230256a643ee98a7b3dd098d4ae.webp)

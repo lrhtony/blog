@@ -7,7 +7,6 @@ tags:
   - 逆向
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzf3lnpqlkzecncyno5thmxd5hqx
 ---
 
 > 封面：[X-6](https://www.pixiv.net/users/2932264) 国人画师，但好像没找到Weibo？
@@ -106,7 +105,7 @@ if __name__ == '__main__':
     find('', 0)
 ```
 
-![image-20250115171633388](https://img.0a0.moe/od/01tklsjzavrt5it635lfh3v7ideqkt35i3)
+![image-20250115171633388](https://img.0a0.moe/blog/2025/01/14/2025-suctf-%E9%80%86%E5%90%91%E9%83%A8%E5%88%86writeup/2a129704dd693be95069ce0e6695579febbb86ea78f23e260d3489236582bde3.webp)
 
 ## SU_vm_master
 

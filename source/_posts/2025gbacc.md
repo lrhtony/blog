@@ -7,7 +7,6 @@ tags:
   - 逆向
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzehovovuy2f5nbk2kmsiy7tuf4j
 ---
 > 封面：[Pixiv@Nya](https://www.pixiv.net/users/100585577)
 
@@ -84,7 +83,7 @@ if __name__ == "__main__":
 
 核心dex被抽取了
 
-![img](https://img.0a0.moe/od/01tklsjzhesllpiso7tng3er6f66axmodi)
+![img](https://img.0a0.moe/blog/2025/09/25/2025%E5%B9%B4%E6%B9%BE%E5%8C%BA%E6%9D%AF%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%E5%88%9D%E8%B5%9B%E5%86%B3%E8%B5%9B-writeup/813e18da1eeabbde62347071798efb8c25f2be13f963d4fdc907fbe5619c1182.webp)
 
 尝试用dexdump，pixel6跑不起来, 分析了一下app的so发现是自定义linker加固, 盲猜是写死了linker的偏移导致app在其他Android版本的设备运行会崩溃
 
@@ -96,7 +95,7 @@ if __name__ == "__main__":
 
 AES加密直接解即可得
 
-![img](https://img.0a0.moe/od/01tklsjzfl5xnsct7325ck4b3sqe2gzgrq)
+![image-20260522204759758](https://img.0a0.moe/blog/2025/09/25/2025%E5%B9%B4%E6%B9%BE%E5%8C%BA%E6%9D%AF%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%E5%88%9D%E8%B5%9B%E5%86%B3%E8%B5%9B-writeup/9e7438ef2a5fbba3e8cdbf99b420739613e896c676c20efd2725b7cca7372237.webp)
 
 ### Minigame
 
@@ -104,11 +103,11 @@ AES加密直接解即可得
 
 使用https://github.com/threecha/wxappUnpacker解包，查阅代码发现有一个utils/validator.wasm，使用Jeb反编译
 
-![img](https://img.0a0.moe/od/01tklsjzezzwhhrtpzyfd2nnupozfakmgy)
+![img](https://img.0a0.moe/blog/2025/09/25/2025%E5%B9%B4%E6%B9%BE%E5%8C%BA%E6%9D%AF%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%E5%88%9D%E8%B5%9B%E5%86%B3%E8%B5%9B-writeup/86831ca1365f3431743607214cbe08ecc0a61e9d2d6a2d8fa482564803e354c7.webp)
 
 逆向分析可得为0x400的数据异或0x99
 
-![img](https://img.0a0.moe/od/01tklsjzfyddjxsazbn5hkbkomv7u2g5km)
+![img](https://img.0a0.moe/blog/2025/09/25/2025%E5%B9%B4%E6%B9%BE%E5%8C%BA%E6%9D%AF%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%E5%88%9D%E8%B5%9B%E5%86%B3%E8%B5%9B-writeup/f5222b9a4b861c9aa7536a319f766b0db19d7c4ea8e32fea0d14b1916cb2f9ca.webp)
 
 ## 决赛
 

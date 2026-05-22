@@ -7,7 +7,6 @@ tags:
   - 逆向
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzacvdybuhfi5vfzf2hdsj2eleot
 ---
 
 > 封面：[X@yas](https://x.com/yosiyasuyasu/status/1926473474744127545/photo/1)
@@ -18,33 +17,33 @@ cover: https://img.0a0.moe/od/01tklsjzacvdybuhfi5vfzf2hdsj2eleot
 
 这题拿到后，可以看到Java层调用了`stringFromJNI`对输入进行了验证
 
-![image-20250525123226358](https://img.0a0.moe/od/01tklsjzaeg4tklj42anbldj6fus2io4o4)
+![image-20250525123226358](https://img.0a0.moe/blog/2025/05/25/2025-%E4%BA%AC%E9%BA%92ctf-%E9%80%86%E5%90%91%E9%83%A8%E5%88%86wp/4555b227115a06b5b3722553ecc3e312bbf6c469a83ca4cdedfcec7bedad5a18.webp)
 
 查看so文件，可以发现是静态注册，首先验证了输入的字符范围为数字，然后分别使用函数加载`__lI11lli1`和`entry`两个文件
 
-![image-20250525123531553](https://img.0a0.moe/od/01tklsjzd2mucbru5qwnb3f6yvoy5vhwpj)
+![image-20250525123531553](https://img.0a0.moe/blog/2025/05/25/2025-%E4%BA%AC%E9%BA%92ctf-%E9%80%86%E5%90%91%E9%83%A8%E5%88%86wp/763a3d1e31689afa15beab6691b84dcdcdacaa521f8cbb8c59dab825938e7722.webp)
 
 至于内部怎么加载，我们可以不用考虑，想办法找到加载进去后这部分的代码就行，就上图的v23、v22这些地址的代码。通过Frida hook可以得知加载代码的函数只会在第一遍加载assets里的14个文件时调用14次，第二次不会再次加载，因此我当时考虑的是加载进去后通过什么方法把这部分代码dump出来分析。没有考虑直接使用IDA动调的原因主要是之前使用IDA动调基本上都是直接报SIGSEGV，调不下去，这次拿A15的Pixel6验证了下也是这样，我一直以为是IDA的问题，自从学了Frida后好久都没使用过IDA 动调了。
 
-![image-20250525124951138](https://img.0a0.moe/od/01tklsjzhlf5kclgloyjezoe33wyv3vlwg)比赛结束后Pangbai酱说是用IDA动调做出来的，我开始怀疑是我自己的问题。更换过历代IDA版本进行测试，问题依旧，于是换设备，换成Mi10 A13，结果就能正常动调了。感觉是A15运行时有变更，IDA9都尚未支持的原因
+![image-20250525124951138](https://img.0a0.moe/blog/2025/05/25/2025-%E4%BA%AC%E9%BA%92ctf-%E9%80%86%E5%90%91%E9%83%A8%E5%88%86wp/14bdabff759b5809a78cf4bbd9f858f97dfe2bc0fee98d10718cb54d9ba41346.webp)比赛结束后Pangbai酱说是用IDA动调做出来的，我开始怀疑是我自己的问题。更换过历代IDA版本进行测试，问题依旧，于是换设备，换成Mi10 A13，结果就能正常动调了。感觉是A15运行时有变更，IDA9都尚未支持的原因
 
-![image-20250525125142450](https://img.0a0.moe/od/01tklsjzbxg5ixrydbcvhlcwg4h4hb6dz6)
+![image-20250525125142450](https://img.0a0.moe/blog/2025/05/25/2025-%E4%BA%AC%E9%BA%92ctf-%E9%80%86%E5%90%91%E9%83%A8%E5%88%86wp/155ef422cc22209c103459431df655bbf13221aa678925720c64b0c8d51d3153.webp)
 
 动调进去以后题目就很容易了
 
-![image-20250525130202594](https://img.0a0.moe/od/01tklsjzapcwuzudpleng3e7imo6oo4p5t)
+![image-20250525130202594](https://img.0a0.moe/blog/2025/05/25/2025-%E4%BA%AC%E9%BA%92ctf-%E9%80%86%E5%90%91%E9%83%A8%E5%88%86wp/e2d0fc5272af2c950bce672281708628e77d18d200efb18fdfa37c363ba5fd2b.webp)
 
 4个加密，要求加密完跟上面计算得到的值一样，这里动调可以得到4组加密值（上图的v379、v11、v10、v9）。
 
 4个函数每个内部都是类似的构造，只是大数不同
 
-![image-20250525131030704](https://img.0a0.moe/od/01tklsjzfjz7zfujub4vey5dtc7asbjaan)
+![image-20250525131030704](https://img.0a0.moe/blog/2025/05/25/2025-%E4%BA%AC%E9%BA%92ctf-%E9%80%86%E5%90%91%E9%83%A8%E5%88%86wp/629ba58fe589dbca71212d010c67df0ba471ea78fc4d81fcc118602d19f5a86c.webp)
 
 函数里将大数变成DWORD List，List里每个数对应一个十进制位进行运算加密。用户输入的也是一个大数，作为pow的m，即RSA的明文。目前已知由同一个明文通过4个模数加密得到的4个密文，e=11
 
 这时候拷问AI可以得知，可以采用CRT+Hastad广播攻击的方式恢复明文，找个脚本跑一下
 
-![image-20250525131340461](https://img.0a0.moe/od/01tklsjzevy7lgz5t3tja3czrhztb2cxng)
+![image-20250525131340461](https://img.0a0.moe/blog/2025/05/25/2025-%E4%BA%AC%E9%BA%92ctf-%E9%80%86%E5%90%91%E9%83%A8%E5%88%86wp/915b607c40de3b0b88416498c735064e0b7186b72cb5e3d6c6581e754cfcdc76.webp)
 
 ```python
 import gmpy2
@@ -94,7 +93,7 @@ else:
 5a95c9c2-c91f-421d-a7bb-9833c710116a
 ```
 
-![image-20250525131835241](https://img.0a0.moe/od/01tklsjzfdui5x5j763nd33wokwbgtczm5)
+![image-20250525131835241](https://img.0a0.moe/blog/2025/05/25/2025-%E4%BA%AC%E9%BA%92ctf-%E9%80%86%E5%90%91%E9%83%A8%E5%88%86wp/2e619b71763a393f75d2e62ce87056f1a54a2c442c12c6c6073eb1eae2797f55.webp)
 
 从发现能动调进去到解出验证用时不到2个半钟
 

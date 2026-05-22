@@ -6,7 +6,6 @@ tags:
   - CTF
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzfrrsarktcrufd2lf2ccsis5vsz
 ---
 
 > 封面：Bison仓鼠
@@ -23,7 +22,7 @@ cover: https://img.0a0.moe/od/01tklsjzfrrsarktcrufd2lf2ccsis5vsz
 
 经过调试可以发现，程序在`sub_4B5470`中利用循环按顺序调用了`.init_array`的函数，其中第三个函数`sub_4053A5`输出了该字符串。追踪进去可以发现存在花指令，这里通过调试和观察汇编，可以把`push rax`和`pop rax`之间的花指令nop掉
 
-![image-20250108161402920](https://img.0a0.moe/od/01tklsjzffjplpfnfwardz2tqpwlw3mxi2)
+![image-20250108161402920](https://img.0a0.moe/blog/2025/01/08/2025-ccsssc-reverse-writeup/b2e017fee56b0a91ef17ca02c85e6bf1f5d0e34e4f43d59ededad32a817c626e.webp)
 
 同理把上下周围几个有类似花指令的的函数patch掉，方便后面分析
 
@@ -63,11 +62,11 @@ if __name__ == '__main__':
 
 可以看到在main函数里首先进入一个函数，里面有两个大数。根据动调结果以及函数的传参分析，大概可以整理得到
 
-![image-20250109154711014](https://img.0a0.moe/od/01tklsjzctjkccwowjzrekfll36soujg3z)
+![image-20250109154711014](https://img.0a0.moe/blog/2025/01/08/2025-ccsssc-reverse-writeup/7a71e120993dd73d308b347d5c20c546a05a6791e98458839baf2db6d1c5dd45.webp)
 
 对于上面的大数以及65537，猜测是rsa加密，可以验证一下
 
-![image-20250109154737013](https://img.0a0.moe/od/01tklsjzd5o6otwsjuc5d26aolo3imisfu)
+![image-20250109154737013](https://img.0a0.moe/blog/2025/01/08/2025-ccsssc-reverse-writeup/18ac10b7e315a4fdf0753b1f1836b440edbe0e42e7a8b7cd94b69fa907cdecd2.webp)
 
 确实是公钥和私钥。因此我们可以通过流量得到通讯时使用的密钥。这题要注意数字的大小端序的问题
 
@@ -183,7 +182,7 @@ memory dump from_base 0x6f885b6000 12288 dump.so
 
 在010中根据上面的偏移对原本提取出来的so修改数据，如这里是`0003a000`，将dump出来的内容粘贴到原so 0x3a00的地方。拖入ida解析，发现段名不见了，跟原来的so对比后将信息复制回去，IDA再次打开能正常解析出对应解密后字符串，无报错。
 
-![image-20250111002443229](https://img.0a0.moe/od/01tklsjzdzabeu77xhsngyfxf66qixlqd5)
+![image-20250111002443229](https://img.0a0.moe/blog/2025/01/08/2025-ccsssc-reverse-writeup/3d850daae693c458f9beb4288c8af6d0e9e5393f92619242d5f7daea565ed73a.webp)
 
 ## 生日邮件
 

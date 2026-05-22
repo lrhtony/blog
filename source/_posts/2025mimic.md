@@ -7,7 +7,6 @@ tags:
   - 逆向
 categories:
   - 技术
-cover: https://img.0a0.moe/od/01tklsjzciheijjvav7na2balh7fvzwv5w
 ---
 
 > 封面：[Pixiv@Nya](https://www.pixiv.net/users/100585577)
@@ -256,7 +255,7 @@ if __name__ == "__main__":
         exploit_local()
 ```
 
-![img](https://img.0a0.moe/od/01tklsjzblewvqeelqnngy27geys6fud4z)
+![image-20260522204912677](https://img.0a0.moe/blog/2025/10/26/2025-%E7%AC%AC%E5%85%AB%E5%B1%8A%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-%E9%83%A8%E5%88%86writeup/233721d418a7af7f8391edcbf2a500d167c40a5e1fe82081c0c7cec05f8fce9b.webp)
 
 ## 低空经济网络安全
 
@@ -410,7 +409,7 @@ async function sendRequest() {
 
 300多次就成功了
 
-![img](https://img.0a0.moe/od/01tklsjzcbh37wi5x76be2hmgfqlugyo5j)
+![image-20260522205005677](https://img.0a0.moe/blog/2025/10/26/2025-%E7%AC%AC%E5%85%AB%E5%B1%8A%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-%E9%83%A8%E5%88%86writeup/895e0403eddbdd96218d7c015ef0e88a84e18de98c5e088b45daa9af4d28325d.webp)
 
 拿到了部署合约时的key
 
@@ -420,7 +419,7 @@ buiqhrvilHwigdClBuiTucduZnXmrLoHleieggbawsgsgcAyaFekhqWmAvqTocwhBuiiARfyurergyhN
 
 根据题意是要找古典密码的key，因此用https://www.dcode.fr/identification-chiffrement识别出是vigenere，然后自动解密
 
-![img](https://img.0a0.moe/od/01tklsjzbfqgsh7huwpff375q3sj56mwuo)
+![image-20260522205021725](https://img.0a0.moe/blog/2025/10/26/2025-%E7%AC%AC%E5%85%AB%E5%B1%8A%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-%E9%83%A8%E5%88%86writeup/649fc08983e64394bae4750de0d4b140d0bc4faed5d26696e6429ed42ff8dc38.webp)
 
 大写INEEDYOU不行改成小写过了，flag{ineedyou}
 
@@ -430,15 +429,15 @@ buiqhrvilHwigdClBuiTucduZnXmrLoHleieggbawsgsgcAyaFekhqWmAvqTocwhBuiiARfyurergyhN
 
 得知放到仓库，找到仓库https://github.com/Yu2ul0ver/Ciallo_Encrypt0r
 
-![img](https://img.0a0.moe/od/01tklsjzch5cvrcyf6tzakiw67qe4fhkxq)
+![image-20260522205315383](https://img.0a0.moe/blog/2025/10/26/2025-%E7%AC%AC%E5%85%AB%E5%B1%8A%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-%E9%83%A8%E5%88%86writeup/72552bc84eca0c1965145c7fd7b82c041d86f1df4d704b4a76544badb9340102.webp)
 
-![img](https://img.0a0.moe/od/01tklsjza5qrm66ufjnzfiert5ule56doy)
+![image-20260522205250521](https://img.0a0.moe/blog/2025/10/26/2025-%E7%AC%AC%E5%85%AB%E5%B1%8A%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-%E9%83%A8%E5%88%86writeup/0a0b97eb314d81065a667873799d66e1e9e5c19f737e3c948003c69599f755d5.webp)
 
 找到后台的账号密码，登录后台可以看到最开始的加密数据
 
 然后加密的逻辑根据更新信息可知放到了私密的fork里，由于GitHub平台的特性，可以通过修改commit hash看到同一base下的所有commit，无论公开还是私密，而commit hash链接最短只需要4位，因此可以通过爆破找到“私密”的commit
 
-![img](https://img.0a0.moe/od/01tklsjzano3wy3chr2vhkbndsfl72lkah)
+![image-20260522205116688](https://img.0a0.moe/blog/2025/10/26/2025-%E7%AC%AC%E5%85%AB%E5%B1%8A%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-%E9%83%A8%E5%88%86writeup/9541cd3a9fbbd6f30cecf3c184867cb880bdd6c9d7bc8be208b82f82c8886d15.webp)
 
 https://github.com/Yu2ul0ver/Ciallo_Encrypt0r/commit/887c57ac0b19946e32674b45ca71b219e6e08a94
 
