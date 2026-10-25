@@ -203,7 +203,6 @@ function initToc() {
                 // 计算偏移量（考虑固定头部）
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - TOC_SCROLL_OFFSET;
-                const startPos = window.pageYOffset;
 
                 window.scrollTo({
                     top: offsetPosition,
@@ -216,14 +215,8 @@ function initToc() {
                     history.pushState(null, null, href);
                 }
 
-                // 部分内嵌 WebView 不执行平滑滚动、也不为程序化滚动派发事件，
-                // 兜底：位置无进展则瞬时跳转，并主动刷新一次目录高亮
-                setTimeout(() => {
-                    if (window.pageYOffset === startPos && startPos !== offsetPosition) {
-                        window.scrollTo(0, offsetPosition);
-                    }
-                    updateTocHighlight();
-                }, 350);
+                // 部分环境不为程序化滚动派发事件，延迟主动刷新一次目录高亮
+                setTimeout(updateTocHighlight, 350);
             } else {
                 console.warn('TOC: 未找到目标元素', link.textContent);
             }

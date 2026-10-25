@@ -33,7 +33,9 @@
         <%
         if (!page.year) {
             let years = {};
-            let allpost = page.tag ? site.tags.findOne({name: page.tag}).posts :  site.posts;
+            let allpost = page.tag ? site.tags.findOne({name: page.tag}).posts
+                : page.category ? site.categories.findOne({name: page.category}).posts
+                : site.posts;
             allpost.each(post => years[post.date.year()] = null);
             for (let year of Object.keys(years).sort((a, b) => b - a)) {
                 let posts = allpost.filter(p => p.date.year() == year);

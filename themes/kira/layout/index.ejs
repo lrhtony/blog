@@ -1,5 +1,7 @@
 <div class="kira-posts">
-    <% page.posts.each(function (page) { %>
+    <% page.posts.each(function (page, i) { %>
+        <% // 首屏第一张封面是 LCP 候选，立即加载；其余懒加载 %>
+        <% var coverAttrs = i === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy" decoding="async"'; %>
         <div class="kira-post">
             <a href="<%- url_for(page.path) %>">
                 <% if (page.cover){ %>
@@ -9,8 +11,7 @@
                 >
                     <img
                         src="<%- page.cover %>"
-                        loading="lazy"
-                        decoding="async"
+                        <%- coverAttrs %>
                         alt="<%= page.title %>"
                         class="kira-post-cover-image"
                     />
@@ -23,8 +24,7 @@
                 >
                     <img
                         src="<%- theme.background.path %>"
-                        loading="lazy"
-                        decoding="async"
+                        <%- coverAttrs %>
                         alt="<%= page.title %>"
                     />
                     <h1><%= page.title %></h1>

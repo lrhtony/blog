@@ -71,6 +71,11 @@ archive_generator:
   yearly: true
   monthly: false
 
+# 站点地图：排除标签/分类薄页面（其 lastmod 每次部署都会翻新为构建日）
+sitemap:
+  tags: false
+  categories: false
+
 # Category & Tag
 default_category: uncategorized
 category_map:

@@ -61,4 +61,13 @@
 	color: inherit;
 	cursor: pointer;
 	user-select: none;
+
+	&:active {
+		transform: scale(0.95);
+	}
+
+	&:focus-visible {
+		outline: 2px solid $color1;
+		outline-offset: 2px;
+	}
 }

@@ -10,7 +10,8 @@
 <div class="kira-post-cover">
     <img
         src="<%- page.cover %>"
-        loading="lazy"
+        loading="eager"
+        fetchpriority="high"
         decoding="async"
         alt="<%= page.title %>"
         class="kira-post-cover-image disabled-kira-image"
@@ -24,7 +25,8 @@
 >
     <img
         src="<%- theme.background.path %>"
-        loading="lazy"
+        loading="eager"
+        fetchpriority="high"
         decoding="async"
         alt="<%= page.title %>"
         class="kira-post-cover-image disabled-kira-image"

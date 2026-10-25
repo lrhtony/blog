@@ -5,6 +5,7 @@
 		<%- image_auto_lazyload(page.content) %>
 	</article>
 	<% if (theme.copyableCodeblock) { %>
-		<script src="/js/kira-code-copy.js"></script>
+		<%- css("css/kira-code-copy") %>
+		<script defer src="<%- url_for('js/kira-code-copy.js') %>"></script>
 	<% } %>
 </div>

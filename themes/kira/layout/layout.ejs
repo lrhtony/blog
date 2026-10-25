@@ -23,17 +23,18 @@
 		%>
 		<title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
 		<% var seoDescription = page.description || config.description; %>
+		<% var canonicalUrl = full_url_for(page.path || ''); if (canonicalUrl.slice(-1) !== '/') canonicalUrl += '/'; %>
 		<meta name="description" content="<%= seoDescription %>" />
-		<link rel="canonical" href="<%- full_url_for(page.path || '') %>" />
+		<link rel="canonical" href="<%= canonicalUrl %>" />
 		<meta property="og:site_name" content="<%= config.title %>" />
 		<meta property="og:title" content="<%= title || config.title %>" />
 		<meta property="og:type" content="<%= is_post() ? 'article' : 'website' %>" />
-		<meta property="og:url" content="<%- full_url_for(page.path || '') %>" />
+		<meta property="og:url" content="<%= canonicalUrl %>" />
 		<meta property="og:image" content="<%= page.cover || theme.background.path %>" />
 		<meta property="og:description" content="<%= seoDescription %>" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<link rel="preconnect" href="https://img.0a0.moe" />
-		<!-- 基础样式重置与代码高亮配色（自托管，替代原 mdui/highlight.js CDN） -->
+		<!-- 基础样式重置与代码高亮配色（自托管） -->
 		<%- css("lib/normalize") %>
 		<%- css("lib/hljs/atom-one-dark") %>
 		<!-- 预置 kiraicon -->

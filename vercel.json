@@ -3,8 +3,8 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/archive",
-      "destination": "/archives",
+      "source": "/archive/",
+      "destination": "/archives/",
       "permanent": true
     }
   ]
