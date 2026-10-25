@@ -1,4 +1,11 @@
 {
   "cleanUrls": true,
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/archive",
+      "destination": "/archives",
+      "permanent": true
+    }
+  ]
 }
