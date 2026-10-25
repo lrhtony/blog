@@ -10,12 +10,6 @@ window.addEventListener('load', () => {
 	const codeBlocks = document.querySelectorAll('figure.highlight');
 	if (!codeBlocks.length) return;
 
-	// 动态加载样式
-	const style = document.createElement('link');
-	style.rel = 'stylesheet';
-	style.href = '/css/kira-code-copy.css';
-	document.head.appendChild(style);
-
 	/**
 	 * 为代码块添加复制按钮
 	 * @param {HTMLElement} codeBlock - 代码块元素

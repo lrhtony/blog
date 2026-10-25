@@ -24,6 +24,13 @@
 	animation: kira-ripple-wave 500ms ease-out forwards;
 }
 
+// 尊重系统"减少动态效果"偏好
+@media (prefers-reduced-motion: reduce) {
+	.kira-ripple-wave {
+		display: none;
+	}
+}
+
 @keyframes kira-ripple-wave {
 	to {
 		transform: scale(1);

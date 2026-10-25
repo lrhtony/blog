@@ -14,7 +14,7 @@
             ],
             lang: '<%= config.language %>',
             requiredMeta: ['nick', 'mail'],
-            wordLimit: 2048,
+            wordLimit: <%= theme.waline.wordLimit %>,
             imageUploader: false,
             reaction: false,
             recaptchaV3Key: '<%= theme.waline.recaptchaV3Key %>',

@@ -27,7 +27,7 @@ function findAdjacentPosts() {
             // 查找当前文章的索引
             let currentIndex = -1;
             for (let i = 0; i < posts.length; i++) {
-                if (posts[i].title === page.title) {
+                if (posts[i].path === page.path) {
                     currentIndex = i;
                     break;
                 }

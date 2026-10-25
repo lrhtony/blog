@@ -114,13 +114,14 @@ window.addEventListener('load', () => {
 		/**
 		 * 拖动结束清理事件监听
 		 */
-		const onDragEnd = () => {
-			nowImage.removeEventListener('mousemove', onDragging);
-			nowImage.removeEventListener('mouseup', onDragEnd);
-		};
+			const onDragEnd = () => {
+				document.removeEventListener('mousemove', onDragging);
+				document.removeEventListener('mouseup', onDragEnd);
+			};
 
-		nowImage.addEventListener('mouseup', onDragEnd);
-		nowImage.addEventListener('mousemove', onDragging);
+			// 绑定在 document 上，光标移出图片后拖拽依然跟随
+			document.addEventListener('mouseup', onDragEnd);
+			document.addEventListener('mousemove', onDragging);
 	};
 
 	nowImage.addEventListener('mousedown', onDragStart);

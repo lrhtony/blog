@@ -2,7 +2,6 @@
 <html lang="<%= config.language || 'zh-CN' %>">
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="baidu-site-verification" content="codeva-Nz3lCP1sEj" />
 		<%- css("css/layout") %>
@@ -23,6 +22,17 @@
 		}
 		%>
 		<title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
+		<% var seoDescription = page.description || config.description; %>
+		<meta name="description" content="<%= seoDescription %>" />
+		<link rel="canonical" href="<%- full_url_for(page.path || '') %>" />
+		<meta property="og:site_name" content="<%= config.title %>" />
+		<meta property="og:title" content="<%= title || config.title %>" />
+		<meta property="og:type" content="<%= is_post() ? 'article' : 'website' %>" />
+		<meta property="og:url" content="<%- full_url_for(page.path || '') %>" />
+		<meta property="og:image" content="<%= page.cover || theme.background.path %>" />
+		<meta property="og:description" content="<%= seoDescription %>" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="preconnect" href="https://img.0a0.moe" />
 		<!-- 基础样式重置与代码高亮配色（自托管，替代原 mdui/highlight.js CDN） -->
 		<%- css("lib/normalize") %>
 		<%- css("lib/hljs/atom-one-dark") %>

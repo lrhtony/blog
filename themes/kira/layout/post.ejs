@@ -36,7 +36,8 @@
 		<% } %>
 	</div>
 	<% if (theme.copyableCodeblock) { %>
-		<script src="/js/kira-code-copy.js"></script>
+		<%- css("css/kira-code-copy") %>
+		<script defer src="<%- url_for('js/kira-code-copy.js') %>"></script>
 	<% } %>
 	<% if (page.comments){ %>
 	<div class="kira-post-footer">
