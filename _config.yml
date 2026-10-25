@@ -65,6 +65,12 @@ index_generator:
   per_page: 15
   order_by: -date
 
+# 归档页：按年分组全量列出，不分页不按月（避免与首页样式重复及薄页面）
+archive_generator:
+  per_page: 0
+  yearly: true
+  monthly: false
+
 # Category & Tag
 default_category: uncategorized
 category_map:
