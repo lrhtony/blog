@@ -16,6 +16,12 @@ const TOC_SCROLL_OFFSET = 80;
 /** 标题高亮检测的偏移量（像素） */
 const ACTIVE_HEADING_OFFSET = 100;
 
+/** 用户偏好减少动效时禁用平滑滚动 */
+const PREFERS_REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/** 滚动行为：尊重系统"减少动态效果"设置 */
+const SCROLL_BEHAVIOR = PREFERS_REDUCED_MOTION ? 'auto' : 'smooth';
+
 /** 头部栏背景色 - 透明 */
 const HEADER_BG_TRANSPARENT = 'transparent';
 
@@ -86,7 +92,8 @@ function handleScroll() {
     updateTocHighlight();
 }
 
-window.addEventListener('scroll', handleScroll);
+// 直接消费滚动事件（TOC 数量级很小，无需节流；rAF 节流在页面不重绘时会挂起）
+window.addEventListener('scroll', handleScroll, { passive: true });
 
 // ============================================
 // 波纹效果（事件委托，替代原 mdui-ripple）
@@ -143,67 +150,11 @@ function initSidebarControls() {
 // ============================================
 
 /**
- * 修复 TOC 链接
- * Hexo toc() 生成的链接可能没有正确的 href，此函数补全链接
- */
-function fixTocLinks() {
-    const tocContainer = document.querySelector('.kira-toc');
-    if (!tocContainer) return;
-
-    const tocLinks = tocContainer.querySelectorAll('.toc-link');
-    const headings = document.querySelectorAll('article h1, article h2, article h3, article h4, article h5, article h6');
-    
-    // 建立标题文本到元素的映射
-    const headingMap = new Map();
-    headings.forEach(heading => {
-        // 获取标题文本（去除锚点符号）
-        let text = heading.textContent.replace(/^#\s*/, '').trim();
-        // 也尝试从 span 中获取
-        const span = heading.querySelector('span[id]');
-        if (span) {
-            text = span.textContent.trim();
-        }
-        if (text) {
-            headingMap.set(text, heading);
-        }
-    });
-
-    // 为每个 TOC 链接补全 href
-    tocLinks.forEach(link => {
-        const textSpan = link.querySelector('.toc-text');
-        const text = textSpan ? textSpan.textContent.trim() : link.textContent.trim();
-        const heading = headingMap.get(text);
-        
-        if (heading) {
-            // 查找标题中的锚点
-            const span = heading.querySelector('span[id]');
-            const anchor = heading.querySelector('a.header-anchor');
-            
-            if (span && span.id) {
-                link.setAttribute('href', '#' + span.id);
-            } else if (anchor && anchor.getAttribute('href')) {
-                link.setAttribute('href', anchor.getAttribute('href'));
-            } else if (heading.id) {
-                link.setAttribute('href', '#' + heading.id);
-            }
-            
-            // 存储对应的标题元素引用
-            link._targetHeading = heading;
-        }
-    });
-}
-
-/**
  * 根据 TOC 链接查找目标标题元素
  * @param {HTMLElement} link - TOC 链接元素
  * @returns {HTMLElement|null} 目标标题元素，未找到返回 null
  */
 function findTargetElement(link) {
-    // 优先使用缓存的引用
-    if (link._targetHeading) {
-        return link._targetHeading;
-    }
-    
     const href = link.getAttribute('href');
     if (!href || !href.startsWith('#')) return null;
     
@@ -237,9 +188,6 @@ function initToc() {
     const tocContainer = document.querySelector('.kira-toc');
     if (!tocContainer) return;
 
-    // 首先修复 TOC 链接
-    fixTocLinks();
-
     const tocLinks = tocContainer.querySelectorAll('.toc-link');
     if (!tocLinks.length) return;
 
@@ -255,10 +203,11 @@ function initToc() {
                 // 计算偏移量（考虑固定头部）
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - TOC_SCROLL_OFFSET;
+                const startPos = window.pageYOffset;
 
                 window.scrollTo({
                     top: offsetPosition,
-                    behavior: 'smooth'
+                    behavior: SCROLL_BEHAVIOR
                 });
 
                 // 更新 URL hash
@@ -266,6 +215,15 @@ function initToc() {
                 if (href) {
                     history.pushState(null, null, href);
                 }
+
+                // 部分内嵌 WebView 不执行平滑滚动、也不为程序化滚动派发事件，
+                // 兜底：位置无进展则瞬时跳转，并主动刷新一次目录高亮
+                setTimeout(() => {
+                    if (window.pageYOffset === startPos && startPos !== offsetPosition) {
+                        window.scrollTo(0, offsetPosition);
+                    }
+                    updateTocHighlight();
+                }, 350);
             } else {
                 console.warn('TOC: 未找到目标元素', link.textContent);
             }
@@ -318,12 +276,16 @@ function updateTocHighlight() {
     if (activeHeading) {
         activeHeading.link.classList.add('active');
 
-        // 将激活的链接滚动到可视区域
+        // 将激活的链接滚进目录面板可视区域。
+        // 只调整目录容器自身的 scrollTop，不能用 scrollIntoView——
+        // 它会连带滚动 window，与点击目录后的页面平滑滚动互相抵消。
         const tocRect = tocContainer.getBoundingClientRect();
         const linkRect = activeHeading.link.getBoundingClientRect();
-        
-        if (linkRect.top < tocRect.top || linkRect.bottom > tocRect.bottom) {
-            activeHeading.link.scrollIntoView({ block: 'center', behavior: 'smooth' });
+
+        if (linkRect.top < tocRect.top) {
+            tocContainer.scrollTop -= tocRect.top - linkRect.top + 8;
+        } else if (linkRect.bottom > tocRect.bottom) {
+            tocContainer.scrollTop += linkRect.bottom - tocRect.bottom + 8;
         }
     }
 }
