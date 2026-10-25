@@ -4,9 +4,9 @@
     <div style="display: flex; flex-wrap: wrap; width: 100%; position: relative;">
         <% theme.friends[category].forEach(friend => { %>
             <div class="kira-friends-friendWrapper">
-                <a href="<%= friend.link %>" target="_blank" class="mdui-ripple">
+                <a href="<%= friend.link %>" target="_blank" class="kira-ripple">
                     <div class="kira-friends-avatarWrapper" style="height: 65px; min-width: 65px; width: 65px;">
-                        <img data-src="<%= friend.avatar %>" class="disabled-kira-image lazyload" alt="<%= friend.name %>"/>
+                        <img src="<%= friend.avatar || theme.avatar %>" loading="lazy" decoding="async" class="disabled-kira-image" alt="<%= friend.name %>"/>
                     </div>
                     <div class="kira-friends-blogDetails" style="width: 100%;">
                         <div class="kira-friends-blogName"><%= friend.name %></div>

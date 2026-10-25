@@ -11,8 +11,8 @@ window.addEventListener('load', () => {
 	/** 图片切换动画时长（毫秒） */
 	const SWITCH_ANIMATION_DURATION = 200;
 	
-	/** 图片放大倍数 */
-	const ZOOM_SCALE = 2;
+	/** 图片放大倍数（与 kira-image.styl 中 .zoom 的 scale 值保持一致） */
+	const ZOOM_SCALE = 3;
 	
 	/** 匹配 transform translate 值的正则表达式 */
 	const TRANSLATE_REGEX = /translate\((-?\d+(?:\.\d+)?)px,\s*(-?\d+(?:\.\d+)?)px\)/;

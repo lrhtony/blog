@@ -23,15 +23,13 @@
 		}
 		%>
 		<title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
-		<link rel="stylesheet" href="https://registry.npmmirror.com/mdui/1.0.2/files/dist/css/mdui.min.css" />
-		<script src="https://registry.npmmirror.com/mdui/1.0.2/files/dist/js/mdui.min.js"></script>
-		<!-- lazyload -->
-		<script src="https://registry.npmmirror.com/lazysizes/5.1.0/files/lazysizes.min.js"></script>
-		<link rel="stylesheet" href="//registry.npmmirror.com/@highlightjs/cdn-assets/11.11.1/files/styles/atom-one-dark.min.css" />
-		<script src="//registry.npmmirror.com/@highlightjs/cdn-assets/11.11.1/files/highlight.min.js"></script>
+		<!-- 基础样式重置与代码高亮配色（自托管，替代原 mdui/highlight.js CDN） -->
+		<%- css("lib/normalize") %>
+		<%- css("lib/hljs/atom-one-dark") %>
 		<!-- 预置 kiraicon -->
 		<%- css("lib/iconfont/iconfont") %>
 		<% if (theme.iconlib) { %>
+			<link rel="preconnect" href="https://at.alicdn.com" />
 			<link rel="stylesheet" href="<%= theme.iconlib %>" crossorigin />
 		<% } %>
 		<link
@@ -44,7 +42,7 @@
 				<%- css(customCss) %>
 			<% }) %>
 		<% } %>
-		<%- js("js/main") %>
+		<script defer src="<%- url_for('js/main.js') %>"></script>
 	</head>
 
 	<body>

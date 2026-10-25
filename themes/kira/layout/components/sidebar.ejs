@@ -1,5 +1,5 @@
 <div class="kira-sidebar" id="sidebar">
-	<div class="kira-avatar mdui-ripple">
+	<div class="kira-avatar kira-ripple">
 		<a href="<%= config.url %>" title="<%= config.author || config.title %>">
 			<img
 				src="<%= theme.avatar %>"
@@ -15,7 +15,7 @@
 	<div class="kira-list">
 		<% for (name in theme.menu) { %>
 		<a
-			class="kira-list-item mdui-ripple <%= is_current(theme.menu[name][0]) %>"
+			class="kira-list-item kira-ripple <%= is_current(theme.menu[name][0]) %>"
 			href="<%- url_for(theme.menu[name][0]) -%>"
 			title="<%= name %>"
 		>

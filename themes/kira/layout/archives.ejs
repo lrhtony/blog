@@ -3,7 +3,7 @@
         <%- list_tags({
             show_count: true,
             style: "unordered list",
-            class: "mdui-ripple ",
+            class: "kira-ripple ",
             separator: ""
         }) %>
     </div>
@@ -15,7 +15,7 @@
                     <% coverx = post.cover %> 
                 <% } %>
             <% }) %>
-            <a class="mdui-ripple" href="<%- url_for(category.path) %>">
+            <a class="kira-ripple" href="<%- url_for(category.path) %>">
                 <div class="bg" style="background-image:url('<%= coverx %>')"></div>
                 <h1><%= category.name %></h1>
             </a>

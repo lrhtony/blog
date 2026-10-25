@@ -1,0 +1,57 @@
+// 自绘 UI 组件样式（替代已停止维护的 mdui 1.x）
+// 包含：kira-ripple 波纹、kira-fab 悬浮操作按钮
+@import 'constants.styl';
+
+// ============================================
+// 波纹效果（原 mdui-ripple 的等价实现）
+// 配合 main.js 中的事件委托使用
+// ============================================
+.kira-ripple {
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.kira-ripple-wave {
+	position: absolute;
+	border-radius: 50%;
+	background: currentColor;
+	opacity: 0.15;
+	transform: scale(0);
+	pointer-events: none;
+	animation: kira-ripple-wave 500ms ease-out forwards;
+}
+
+@keyframes kira-ripple-wave {
+	to {
+		transform: scale(1);
+		opacity: 0;
+	}
+}
+
+// ============================================
+// 悬浮操作按钮（原 mdui-fab 的等价实现）
+// 背景色/阴影/悬浮态等外观细节由 .kira-backtotop 提供
+// ============================================
+.kira-fab {
+	position: relative;
+	box-sizing: border-box;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	min-width: 56px;
+	height: 56px;
+	padding: 0;
+	overflow: hidden;
+	font-size: 24px;
+	line-height: normal;
+	border: none;
+	border-radius: 50%;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	user-select: none;
+}

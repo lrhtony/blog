@@ -1,5 +1,6 @@
 //总布局
 @import 'constants.styl';
+@import 'kira-ui.styl';
 
 body {
 	width: 100%;
@@ -8,10 +9,28 @@ body {
 	position: absolute;
 	left: 0;
 	top: 0;
+	// 以下排版基础接管自 mdui 1.x 全局样式（mdui 已移除）
+	color: rgba(0, 0, 0, 0.87);
+	font-size: 14px;
+	font-family: Roboto, Noto, Helvetica, Arial, sans-serif;
+	background-color: #fff;
+}
+
+@media (min-width: 600px) {
+	body {
+		font-size: 14.5px;
+	}
+}
+
+@media (min-width: 1024px) {
+	body {
+		font-size: 15px;
+	}
 }
 
 * {
 	outline: none;
+	-webkit-tap-highlight-color: transparent;
 
 	&::selection {
 		background: $color1;

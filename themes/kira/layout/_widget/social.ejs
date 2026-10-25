@@ -2,10 +2,10 @@
 	<div class="kira-widget kira-social">
 		<% for (name in theme.social) { %>
 			<a
-				class="mdui-ripple"
+				class="kira-ripple"
 				href="<%- url_for(theme.social[name][0]) -%>"
 				target="_blank"
-				mdui-tooltip="{content: '<%= name %>'}"
+				title="<%= name %>"
 				style="color: <%= theme.social[name][2] %>; background-color: <%= theme.social[name][3] %>;"
 			>
 				<i

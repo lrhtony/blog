@@ -89,6 +89,28 @@ function handleScroll() {
 window.addEventListener('scroll', handleScroll);
 
 // ============================================
+// 波纹效果（事件委托，替代原 mdui-ripple）
+// ============================================
+
+document.addEventListener('pointerdown', (e) => {
+    const host = e.target.closest('.kira-ripple');
+    if (!host) return;
+
+    const rect = host.getBoundingClientRect();
+    // 波纹直径取元素最长边的一倍以上，保证从点击点扩散后能覆盖整个元素
+    const size = Math.max(rect.width, rect.height) * 2;
+    const wave = document.createElement('span');
+    wave.className = 'kira-ripple-wave';
+    wave.style.width = size + 'px';
+    wave.style.height = size + 'px';
+    wave.style.left = e.clientX - rect.left - size / 2 + 'px';
+    wave.style.top = e.clientY - rect.top - size / 2 + 'px';
+    host.appendChild(wave);
+    wave.addEventListener('animationend', () => wave.remove());
+    wave.addEventListener('animationcancel', () => wave.remove());
+});
+
+// ============================================
 // DOM 初始化
 // ============================================
 

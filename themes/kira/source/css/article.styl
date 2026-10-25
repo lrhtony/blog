@@ -173,16 +173,6 @@ article {
 			}
 		}
 
-		// 懒加载状态
-		&.lazyload,
-		&.lazyloading {
-			opacity: 0;
-			transition: opacity 400ms ease-out;
-		}
-
-		&.lazyloaded {
-			opacity: 1;
-		}
 	}
 
 	// ------------------------------------------
@@ -336,15 +326,6 @@ article {
 		margin-top: 0;
 		list-style: none;
 		padding-left: 0 !important;
-
-		.mdui-checkbox {
-			padding-left: 22px;
-			height: 18px;
-		}
-
-		.mdui-checkbox-icon {
-			top: 4px;
-		}
 
 		li {
 			position: relative;
@@ -558,18 +539,6 @@ details {
 
 		.remove {
 			display: none;
-		}
-	}
-
-	.mdui-btn {
-		background-color: $color1;
-		color: #fff;
-		border-radius: 10px;
-
-		&:focus,
-		&:active {
-			background-color: $color1;
-			color: #fff;
 		}
 	}
 }
