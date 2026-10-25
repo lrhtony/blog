@@ -2,7 +2,6 @@
 db.json
 public/
 .deploy_git/
-package-lock.json
 .idea
 .vscode
 node_modules
