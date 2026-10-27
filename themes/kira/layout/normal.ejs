@@ -5,7 +5,7 @@
 		<%- image_auto_lazyload(page.content) %>
 	</article>
 	<% if (theme.copyableCodeblock) { %>
-		<%- css("css/kira-code-copy") %>
+		<%# 样式由 layout.ejs head 统一加载（css/kira-code-copy） %>
 		<script defer src="<%- url_for('js/kira-code-copy.js') %>"></script>
 	<% } %>
 </div>

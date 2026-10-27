@@ -2,7 +2,14 @@ continue: Di più
 nav:
   home: Home
 
-search: Cerca
+search:
+  label: Cerca
+  placeholder: Cerca articoli…
+  clear: Cancella ricerca
+  loading: Caricamento indice…
+  noResult: Nessun articolo trovato
+  error: Impossibile caricare l'indice, aggiorna la pagina
+  count: '{n} articoli trovati in totale'
 archive: Archivio
 categories: Categorie
 tagcloud: Tagcloud

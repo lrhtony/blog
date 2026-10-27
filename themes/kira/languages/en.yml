@@ -2,7 +2,14 @@ continue: More
 nav:
   home: Home
 
-search: Search
+search:
+  label: Search
+  placeholder: Search posts…
+  clear: Clear search
+  loading: Loading index…
+  noResult: No matching posts
+  error: Failed to load the search index, please refresh
+  count: '{n} matching posts in total'
 archive: Archive
 categories: Categories
 tagcloud: Tag Cloud

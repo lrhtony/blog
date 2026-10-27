@@ -78,6 +78,13 @@
 		}
 	}
 
+	// 文章页顶部的 meta 行（article 直接子元素）会被 article a::before 的
+	// 链接图标误伤（日期/字数/阅读时间并非链接）；底部分类/标签行的图标类
+	// 挂在 <a> 上且不在 article 内，不受影响——按结构精确排除，不能一刀切
+	article > .kira-post-meta a::before {
+		content: none;
+	}
+
 	.kira-post-copyright {
 		margin: 0 -25px;
 		margin-bottom: 25px;

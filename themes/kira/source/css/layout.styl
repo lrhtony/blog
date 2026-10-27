@@ -152,9 +152,28 @@ figure.highlight table tbody tr td {
 }
 
 
+// ============================================
+// 跨文档视图过渡（Chromium 126+ / 新版浏览器）
+// 同源页面切换由"白屏硬切"变为短促交叉淡入淡出，
+// 消除打开文章等跨页导航时的闪烁与跳动；不支持的平台自动忽略。
+// ============================================
+@css {
+	@view-transition {
+		navigation: auto;
+	}
+
+	// 用户偏好减少动效时直接关闭跨文档过渡（跳过快照，回到直接切换）
+	@media (prefers-reduced-motion: reduce) {
+		@view-transition {
+			navigation: none;
+		}
+	}
+}
+
 @import 'article.styl';
 
 @import 'sidebar.styl';
+@import 'kira-search.styl';
 @import 'content.styl';
 @import 'right-column.styl';
 @import 'post.styl';

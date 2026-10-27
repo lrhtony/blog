@@ -1,5 +1,9 @@
 <% if (theme.waline.active) { %>
-    <link rel="stylesheet" href="<%- theme.cdn.waline.css %>" />
+    <%# 评论 CSS 异步加载：评论区在正文下方且由 JS 延迟渲染，不值得阻塞任何页面渲染。preconnect 提前建连，加速 CSS 与 JS 模块的首访加载 %>
+    <link rel="preconnect" href="https://registry.npmmirror.com" />
+    <link rel="preload" as="style" href="<%- theme.cdn.waline.css %>" />
+    <link rel="stylesheet" href="<%- theme.cdn.waline.css %>" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="<%- theme.cdn.waline.css %>" /></noscript>
     <div id="waline"></div>
     <script type="module">
         import { init } from '<%- theme.cdn.waline.js %>';

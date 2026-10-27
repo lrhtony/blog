@@ -33,6 +33,7 @@ menu:
 
 widgets:
     - social
+    - search
     - category
     - tagcloud
     - archive

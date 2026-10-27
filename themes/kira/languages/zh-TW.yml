@@ -2,7 +2,14 @@ continue: 查看更多
 nav:
   home: 回到首頁
 
-search: 搜索
+search:
+  label: 搜尋
+  placeholder: 搜尋文章…
+  clear: 清空搜尋
+  loading: 正在載入索引…
+  noResult: 未找到相關文章
+  error: 索引載入失敗，請重新整理後重試
+  count: 共 {n} 篇相關文章
 archive: 文章歸檔
 categories: 文章分類
 tagcloud: 標籤雲

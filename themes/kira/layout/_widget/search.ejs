@@ -1,0 +1,40 @@
+<% if (config.search) { %>
+	<div class="kira-widget-wrap kira-search-widget-wrap">
+		<div class="kira-widget kira-search">
+			<div class="kira-search-box">
+				<i class="kirafont icon-search" aria-hidden="true"></i>
+				<input
+					type="search"
+					id="kira-search-input"
+					class="kira-search-input"
+					placeholder="<%= __('search.placeholder') %>"
+					aria-label="<%= __('search.label') %>"
+					aria-controls="kira-search-results"
+					autocomplete="off"
+					spellcheck="false"
+					data-src="<%= url_for(config.search.path || 'search.xml') %>"
+				/>
+				<button
+					type="button"
+					id="kira-search-clear"
+					class="kira-search-clear"
+					aria-label="<%= __('search.clear') %>"
+					hidden
+				>
+					<i class="kirafont icon-close" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div
+				id="kira-search-results"
+				class="kira-search-results"
+				hidden
+				data-msg-loading="<%= __('search.loading') %>"
+				data-msg-no-result="<%= __('search.noResult') %>"
+				data-msg-error="<%= __('search.error') %>"
+				data-msg-count="<%= __('search.count') %>"
+			></div>
+			<!-- 供屏幕阅读器实时播报命中数量/状态，视觉隐藏 -->
+			<div id="kira-search-live" class="kira-search-sr" aria-live="polite"></div>
+		</div>
+	</div>
+<% } %>

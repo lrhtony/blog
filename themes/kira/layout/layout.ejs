@@ -40,8 +40,19 @@
 		<!-- 预置 kiraicon -->
 		<%- css("lib/iconfont/iconfont") %>
 		<% if (theme.iconlib) { %>
+			<%# 图标库为跨域 CSS，同步加载会阻塞每次导航的首绘造成白闪；改为异步（图标区域尺寸固定，仅字形晚一点出现） %>
 			<link rel="preconnect" href="https://at.alicdn.com" />
-			<link rel="stylesheet" href="<%= theme.iconlib %>" crossorigin />
+			<link rel="preload" as="style" href="<%= theme.iconlib %>" crossorigin />
+			<link
+				rel="stylesheet"
+				href="<%= theme.iconlib %>"
+				media="print"
+				onload="this.media='all'"
+				crossorigin
+			/>
+			<noscript>
+				<link rel="stylesheet" href="<%= theme.iconlib %>" crossorigin />
+			</noscript>
 		<% } %>
 		<link
 			rel="shortcut icon"
@@ -53,7 +64,16 @@
 				<%- css(customCss) %>
 			<% }) %>
 		<% } %>
+		<%# 内容页专属样式前置到 head 并行加载（原先由正文模板在 body 中部输出，发现晚、串行下载）。friends 页无灯箱与代码块，排除以免白载 %>
+		<% if ((is_post() || is_page()) && page.layout !== 'friends') { %>
+		<%- css('css/kira-image') %>
+		<% if (theme.copyableCodeblock) { %><%- css('css/kira-code-copy') %><% } %>
+		<% } %>
+		<% if (page.layout === 'friends') { %><%- css('css/kira-friends') %><% } %>
 		<script defer src="<%- url_for('js/main.js') %>"></script>
+		<% if (config.search && theme.widgets && theme.widgets.indexOf('search') !== -1) { %>
+		<script defer src="<%- url_for('js/kira-search.js') %>"></script>
+		<% } %>
 	</head>
 
 	<body>
