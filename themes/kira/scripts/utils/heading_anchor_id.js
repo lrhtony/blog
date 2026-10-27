@@ -1,13 +1,16 @@
 /**
- * Kira Hexo Theme - 标题锚点 id 修正
- * @description hexo-toc 会把锚点 id 放进标题内层的 <span>，而 Hexo 内核的
- * toc() helper 只解析 <hN> 标签自身的 id，导致目录链接没有 href。
- * 此处把 id 提升到标题标签上，使目录链接在服务端原生可用；
- * 并对同名标题的 id 去重（hexo-toc 的 slugify 不去重，重复 id 会让
- * 目录与锚点跳到第一个同名标题）。
+ * Kira Hexo Theme - 标题锚点 id 拼音化
+ * @description 渲染器（hexo-renderer-markdown-it 的 anchors 规则）给标题打的
+ * id 是原文（中文标题即中文 id）。这里统一改写为拼音 slug，与历史锚点
+ * URL 保持一致（原由 hexo-toc 提供，因其依赖链存在安全漏洞而移除），
+ * 并对同名标题的 id 去重，避免目录与锚点跳到第一个同名标题。
+ * 相关：根 package.json 的 overrides（linkify-it ^5、transliteration 内
+ * yargs ^17）同样为清除依赖安全告警所设，理由见依赖变更的提交说明。
  */
 
 'use strict';
+
+const { slugify } = require('transliteration');
 
 hexo.extend.filter.register('after_post_render', function (data) {
 	if (!data.content) return data;
@@ -15,12 +18,20 @@ hexo.extend.filter.register('after_post_render', function (data) {
 	const seenIds = new Set();
 
 	data.content = data.content.replace(
-		/(<h[1-6])([^>]*?)>\s*<span id="([^"]+)">([\s\S]*?)<\/span>\s*<\/h[1-6]>/gi,
-		function (match, openTag, attrs, id, inner) {
-			// 标题上已有 id 则保持原样，避免重复 id
-			if (/\sid=/.test(attrs)) return match;
+		/(<h[1-6])([^>]*?)\sid="([^"]*)"([^>]*)>([\s\S]*?)<\/h[1-6]>/gi,
+		function (match, openTag, preAttrs, oldId, postAttrs, inner) {
+			// 标题纯文本：仅去内联标签。刻意不做 HTML 实体解码——历史上
+			// hexo-toc（cheerio decodeEntities:false）就是拿未解码文本做的
+			// slugify（如 "&amp;" 产生 "amp" 段），解码会改变既有锚点 URL
+			const text = inner
+				.replace(/<[^>]+>/g, '')
+				.trim();
 
-			// 同名标题追加序号后缀
+			let id = slugify(text, { lowercase: true, separator: '-' });
+			if (!id) id = oldId; // 纯符号标题等无法音译时保留原 id
+			if (!id) return match;
+
+			// 同名标题追加序号后缀（延续历史行为：-1、-2…）
 			let finalId = id;
 			let n = 1;
 			while (seenIds.has(finalId)) {
@@ -28,7 +39,10 @@ hexo.extend.filter.register('after_post_render', function (data) {
 			}
 			seenIds.add(finalId);
 
-			return openTag + attrs + ' id="' + finalId + '">' + inner + '</' + openTag.slice(1) + '>';
+			return (
+				openTag + preAttrs + ' id="' + finalId + '"' + postAttrs + '>' +
+				inner + '</' + openTag.slice(1) + '>'
+			);
 		}
 	);
 

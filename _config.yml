@@ -121,14 +121,12 @@ search:
   content: true
 
 markdown:
+  # 渲染器 anchors 规则默认 level:2（h2 起才加锚点 id）；恢复 h1-h6 全覆盖
+  # （与移除掉的 hexo-toc 行为一致）
+  anchors:
+    level: 1
   render:
     typographer: false
     linkify: false
     html: true
-
-toc:
-  maxdepth: 3
-  class: toc
-  slugify: transliteration
-  decodeEntities: false
 
